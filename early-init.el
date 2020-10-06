@@ -13,6 +13,8 @@
 (setq gc-cons-threshold (* 20 1024 1024)
       gc-cons-percentage 0.1)
 
+;;;; Prevent initializing twice
+(setq package-enable-at-startup nil)
 (add-hook 'emacs-startup-hook
           (lambda ()
             (message "Emacs ready in %s with %d garbage collections."
