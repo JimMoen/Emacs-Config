@@ -213,7 +213,7 @@
   ('after-init   . 'persp-mode)
   ('server-after-make-frame . (lambda ()
                                 (persp-frame-switch "none")
-                                (switch-to-buffer "*scratch*")))
+                                (switch-to-buffer (get-buffer-create "*scratch*")))
   :custom
   (persp-keymap-prefix "w")
   :config
