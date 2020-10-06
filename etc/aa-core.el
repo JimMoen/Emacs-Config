@@ -50,7 +50,8 @@
 
            ;; ==============================########## base editing
            ;; [Built-in] align display-line-numbers delsel
-           ;; [Site]     so-long subword whitespace hideshow
+           ;;            so-long subword whitespace hideshow
+           ;; [Site]     None
            wgrep avy rainbow-mode smartparens
            rainbow-delimiters
 

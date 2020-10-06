@@ -30,11 +30,11 @@
 
 
 ;;;; ####################################################### Load Path
-(setq my-lisp-dirs '("etc"))
+(defvar my-lisp-dirs '("etc"))
 (setq custom-file (expand-file-name "./etc/custom.el" user-emacs-directory))
 
 (defun update-load-path ()
-  "Update `load-path'. "
+  "Update `load-path'."
   (let* ()
     (dolist (each-dir my-lisp-dirs)
       (push (expand-file-name each-dir user-emacs-directory) load-path))))
@@ -44,6 +44,7 @@
 ;;;; ####################################################### Open init file
 
 (defun open-my-init-dir()
+  "To open my init dir faster."
   (interactive)
   (let ((default-directory "~/.config/emacs"))
     (projectile-dired)))
@@ -104,6 +105,7 @@
 ;;;; Developeing Core Tools.
 ;;;; #################### PACKAGES
 ;;;; magit(TODO) projectile counsel-projectile
+;;;; persp-mode-projectile-bridge(None melpa)
 
 
 (require 'bb-dev-complete)
