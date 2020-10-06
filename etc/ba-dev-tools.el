@@ -19,7 +19,7 @@
   (:map projectile-command-map
         ("r"     . nil))
   :bind-keymap
-  ("C-c p" . projectile-command-map))
+  ("C-x p" . projectile-command-map))
 
 ;;;;                                              ========== Counsel Projectile (None Built-in)
 (use-package counsel-projectile

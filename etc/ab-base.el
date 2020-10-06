@@ -111,7 +111,7 @@
   ;; delete action
   (("C-h"         . backward-delete-char-untabify)
    ("C-w"         . backward-kill-word)
-   ("C-c C-k"     . kill-region)
+   ("C-c C-w"     . kill-region)
    ("C-x h"       . help-command)
    ("C-x w h"     . mark-whole-buffer)
    ("M-g g"       . nil)
@@ -212,12 +212,10 @@
   :hook
   ('after-init   . 'persp-mode)
   ('server-after-make-frame . (lambda ()
-                                (persp-frame-switch "none")
-                                (switch-to-buffer (get-buffer-create "*scratch*")))
+                                (persp-frame-switch persp-nil-name)
+                                (switch-to-buffer (get-buffer-create "*scratch*"))))
   :custom
   (persp-keymap-prefix "w")
-  :config
-  (setq persp-nil-name "None")
   :bind
   (;; Switch buffer in current persp.
    ("C-x b"      . persp-switch-to-buffer)
