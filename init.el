@@ -43,10 +43,11 @@
 
 ;;;; ####################################################### Open init file
 
-(defun open-my-init-file()
+(defun open-my-init-dir()
   (interactive)
-  (find-file "~/.config/emacs/init.el"))
-(global-set-key (kbd "<f2>") 'open-my-init-file)
+  (let ((default-directory "~/.config/emacs"))
+    (projectile-dired)))
+(global-set-key (kbd "<f2>") 'open-my-init-dir)
 ;; End of open init.el
 
 
