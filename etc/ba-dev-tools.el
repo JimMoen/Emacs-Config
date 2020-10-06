@@ -32,6 +32,7 @@
   :ensure nil
   :load-path "site-lisp/persp-mode-projectile-bridge"
   :config
+  (setq persp-mode-projectile-bridge-persp-name-prefix "[P] ")
   (defun persp-mode-projectile-bridge-add-new-persp-save-to-file (name)
     (let ((persp (persp-get-by-name name *persp-hash* :nil)))
       (if (eq :nil persp)

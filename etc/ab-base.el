@@ -216,6 +216,8 @@
                                 (switch-to-buffer "*scratch*")))
   :custom
   (persp-keymap-prefix "w")
+  :config
+  (setq persp-nil-name "None")
   :bind
   (;; Switch buffer in current persp.
    ("C-x b"      . persp-switch-to-buffer)
