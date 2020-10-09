@@ -6,6 +6,16 @@
 ;;;; ####################################################### Git
 ;;;;                                              ========== Magit (None Built-in)
 (use-package magit
+  :config
+  (setq magit-status-margin            '(t age-abbreviated   magit-log-margin-width t 18)
+        magit-refs-margin              '(t age-abbreviated   magit-log-margin-width t 18)
+        magit-reflog-margin            '(t "%Y-%m-%d %H:%M " magit-log-margin-width t 18)
+        magit-log-section-commit-count 50)
+  (setq magit-status-initial-section
+        '(((unpulled . "..@{upstream}") (status))
+          ((untracked) (status))
+          ((unstaged) (status))
+          1))
   :bind
   (("C-x g" . magit-status)))
 ;; TODO
