@@ -29,6 +29,8 @@
 (use-package projectile
   :hook
   ('prog-mode    . 'projectile-mode)
+  :config
+  (setq projectile-completion-system 'ivy)
   :bind
   (("C-x C-b" . projectile-ibuffer))                      ;; Working with persp-mode-projectile-bridge-mode
   (:map projectile-command-map
