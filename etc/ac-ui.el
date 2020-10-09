@@ -51,7 +51,7 @@
    doom-modeline-buffer-file-name-style    'truncate-nil
    doom-modeline-github                    t
    doom-modeline-github-interval           (* 30 60)
-   doom-modeline-project-detection         'project
+   doom-modeline-project-detection         'projectile
    all-the-icons-color-icons               nil))
 
 
