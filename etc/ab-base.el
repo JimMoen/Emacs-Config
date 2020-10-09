@@ -234,19 +234,19 @@
 (use-package switch-window
   :config
   (setq switch-window-threshold 2)
-  (which-key-add-key-based-replacements "C-x W" "Switch Window")
+  (which-key-add-key-based-replacements "C-x 4" "Switch Window")
   :bind
   (("C-\" "       . switch-window)
    ("C-x 1"       . switch-window-then-maximize)
-   ("C-x W v"     . switch-window-then-split-vertically)
-   ("C-x W h"     . switch-window-then-split-horizontally)
+   ("C-x 4 v"     . switch-window-then-split-vertically)
+   ("C-x 4 h"     . switch-window-then-split-horizontally)
    ("C-x 0"       . switch-window-then-delete)
-   ("C-x W s"     . switch-window-then-swap-buffer)
-   ("C-x W d"     . switch-window-then-dired)
-   ("C-x W f"     . switch-window-then-find-file)
-   ("C-x W R"     . switch-window-then-find-file-read-only)
-   ("C-x W b"   . switch-window-then-display-buffer)
-   ("C-x W 0"     . switch-window-then-kill-buffer))
+   ("C-x 4 s"     . switch-window-then-swap-buffer)
+   ("C-x 4 d"     . switch-window-then-dired)
+   ("C-x 4 f"     . switch-window-then-find-file)
+   ("C-x 4 R"     . switch-window-then-find-file-read-only)
+   ("C-x 4 b"   . switch-window-then-display-buffer)
+   ("C-x 4 0"     . switch-window-then-kill-buffer))
   (:map switch-window-extra-map
         ("i"     . nil)
         ("p"     . switch-window-mvborder-up)
