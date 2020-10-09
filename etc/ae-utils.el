@@ -9,6 +9,10 @@
   :custom
   (default-input-method "rime")
   :config
+  (setq rime-translate-keybindings
+        '("C-h" "C-g" "C-d" "C-k"
+          "C-f" "C-b" "C-n" "C-p" "C-a" "C-e" "C-v" "M-v" "<tab>" "S-<tab>" "C-`"
+          "<left>" "<right>" "<up>" "<down>" "<prior>" "<next>" "<delete>"))
   (setq rime-user-data-dir "~/.local/share/fcitx5/rime")  ;; Use Fcitx5
   (setq rime-show-candidate 'posframe)
   (setq rime-posframe-properties
