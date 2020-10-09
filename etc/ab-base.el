@@ -170,6 +170,9 @@
                           (mode . org-mode)
                           (mode . markdown)
                           (mode . text-mode)))
+           ("Config"     (or
+                          (mode . yaml-mode)
+                          (mode . conf-mode)))
            ("Program"    (or
                           (mode . emacs-lisp-mode)
                           (mode . haskell-mode)
