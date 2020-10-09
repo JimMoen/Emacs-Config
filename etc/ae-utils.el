@@ -82,13 +82,13 @@
   :load-path "site-lisp/english-teacher"
   :custom
   (english-teacher-backend 'baidu)
-  (english-teacher-show-result-function 'english-teacher-eldoc-show-result-function)
+  (english-teacher-show-result-function 'english-teacher-default-show-result-function)
   :hook
-  (('Info-mode
-    'elfeed-show-mode
-    'eww-mode
-    'Man-mode
-    'Woman-mode). 'english-teacher-follow-mode)
+  (('Info-mode        . 'english-teacher-follow-mode)
+   ('elfeed-show-mode . 'english-teacher-follow-mode)
+   ('eww-mode         . 'english-teacher-follow-mode)
+   ('Man-mode         . 'english-teacher-follow-mode)
+   ('Woman-mode       . 'english-teacher-follow-mode))
   :bind
   (("C-x y f" . english-teacher-follow-mode)))
 
