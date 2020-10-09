@@ -219,6 +219,10 @@
                                 (switch-to-buffer (get-buffer-create "*scratch*"))))
   :custom
   (persp-keymap-prefix "w")
+  :config
+  (setq persp-kill-foreign-buffer-behaviour      nil
+        ;; With Doom-modeline.. See ./etc/ac-ui.el: doom-modeline
+        doom-modeline-display-default-persp-name t)
   :bind
   (;; Switch buffer in current persp.
    ("C-x b"      . persp-switch-to-buffer)
