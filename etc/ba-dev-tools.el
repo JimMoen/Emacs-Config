@@ -10,6 +10,11 @@
   (("C-x g" . magit-status)))
 ;; TODO
 
+(use-package keychain-environment
+  :demand t
+  :config
+  (keychain-refresh-environment))
+
 ;;;;                                              ========== Projectile (None Built-in)
 (use-package projectile
   :hook
