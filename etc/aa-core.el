@@ -63,17 +63,18 @@
            ;; ==============================########## Dev Core packages
            ;; [Built-in] None
            ;; [Site]     persp-mode-projectile-bridge
-           magit projectile counsel-projectile
+           magit keychain-environment projectile counsel-projectile
 
            ;; ==============================########## Dev Completing ;;TODO
            ;; [Built-in] None
            ;; [Site]     None
            company lsp-mode lsp-ui lsp-ivy
+           lsp-python-ms
 
            ;; ==============================########## Program language packages ;;TODO
            ;; [Built-in] None
            ;; [Site]     None
-           yaml-mode lua-mode js2-mode haskell-mode))
+           yaml-mode lua-mode js2-mode haskell-mode python-mode))
 
   ;;;; ########## enable some commands
   (progn (setq enabled-functions '(dired-find-alternate-file
