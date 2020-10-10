@@ -273,7 +273,7 @@
   (shackle-default-alignment 'below)
   (shackle-rules '((magit-status-mode          :select t   :inhibit-window-quit nil :same t)
                    (magit-log-mode             :select t   :inhibit-window-quit nil :same t)
-                   (help-mode                  :select t   :inhibit-window-quit nil :align t :size 0.35)
+                   (help-mode                  :select nil :inhibit-window-quit nil :align right :size 0.40)
                    (comint-mode                :select t   :align t   :size 0.4)
                    (grep-mode                  :select t   :align t)
                    (rg-mode                    :select t   :align t)
@@ -295,7 +295,8 @@
   (("C-<"        . winner-undo)
    ("C->"        . winner-redo))
   :config
-  (setq winner-boring-buffers '("*Completions*"
+  (setq winner-boring-buffers '("*Backtrace*"
+                                "*Completions*"
                                 "*Compile-Log*")))
 
 
