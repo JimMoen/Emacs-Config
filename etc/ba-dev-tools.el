@@ -22,8 +22,8 @@
 
 (use-package keychain-environment
   :demand t
-  :config
-  (keychain-refresh-environment))
+  :hook
+  ('after-init . 'keychain-refresh-environment))
 
 ;;;;                                              ========== Projectile (None Built-in)
 (use-package projectile
