@@ -102,16 +102,15 @@
 ;;;; ####################################################### The Keybindings and Key Hint
 ;;;;                                              ========== #### Personal Settings ####
 ;;;; I use C-h to delete a char and C-w to delete a word just like in terminal.
-;;;; So I use 'C-c C-k' to kill region, 'C-x h' as help-command, and 'C-x w' to mark whole buffer.
-;;;; Use 'M-g g'   avy-goto-char-in-line
+;;;; Use 'C-M-g'   avy-goto-char-in-line
 ;;;; Use 'M-g M-g' avy-goto-char-2
+;;;; See ./etc/ad-editing.el: avy
 (use-package emacs
   :ensure nil
   :bind
-  ;; delete action
   (("C-h"         . backward-delete-char-untabify)
    ("C-w"         . backward-kill-word)
-   ("C-c C-w"     . kill-region)
+   ("C-c M-w"     . kill-region)
    ("C-x h"       . help-command)
    ("C-x w h"     . mark-whole-buffer)
    ("M-g g"       . nil)
@@ -273,7 +272,7 @@
   (shackle-default-alignment 'below)
   (shackle-rules '((magit-status-mode          :select t   :inhibit-window-quit nil :same t)
                    (magit-log-mode             :select t   :inhibit-window-quit nil :same t)
-                   (help-mode                  :select nil :inhibit-window-quit nil :align right :size 0.40)
+                   (help-mode                  :select t   :inhibit-window-quit nil :align right :size 0.40)
                    (comint-mode                :select t   :align t   :size 0.4)
                    (grep-mode                  :select t   :align t)
                    (rg-mode                    :select t   :align t)
