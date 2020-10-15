@@ -18,11 +18,11 @@
     (package-refresh-contents))
   (package-install 'use-package))
 ;;;;                                              ========== use-package default args
-(setq use-package-always-ensure       t                   ;; Always ensure
-      use-package-always-defer        nil                 ;; Never defer
-      use-package-always-demand       t                   ;; Always demand
-      use-package-expand-minimally    t)                  ;; Be Silent
-
+(setq use-package-always-ensure        t                   ;; Always ensure
+      use-package-always-defer         nil                 ;; Never defer
+      use-package-always-demand        t                   ;; Always demand
+      use-package-expand-minimally     t                   ;; Be Silent
+      use-package-enable-imenu-support t)                  ;; Enable imenu for use-package
 
 
 ;;;; ####################################################### Package Management
@@ -75,7 +75,7 @@
            ;; ==============================########## Program language packages ;;TODO
            ;; [Built-in] None
            ;; [Site]     None
-           yaml-mode lua-mode js2-mode haskell-mode python-mode))
+           yaml-mode lua-mode js2-mode haskell-mode))
 
   ;;;; ########## enable some commands
   (progn (setq enabled-functions '(dired-find-alternate-file
