@@ -113,7 +113,8 @@
 ;;;; #######################################################
 ;;;; For Program Language completing.
 ;;;; #################### PACKAGES
-;;;; company lsp(TODO)
+;;;; company
+;;;; lsp lsp-ui lsp-ivy
 
 
 (load custom-file)
