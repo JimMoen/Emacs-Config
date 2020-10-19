@@ -18,13 +18,15 @@
           1))
   :bind
   (("C-x g" . magit-status)))
-;; TODO
 
 (use-package keychain-environment
   :demand t
   :hook
   ('after-init . 'keychain-refresh-environment))
 
+
+
+;;;; ####################################################### Project Management
 ;;;;                                              ========== Projectile (None Built-in)
 (use-package projectile
   :hook
@@ -69,6 +71,14 @@
                                               (persp-mode-projectile-bridge-find-perspectives-for-all-buffers)
                                             (persp-mode-projectile-bridge-mode)
                                             (persp-mode-projectile-bridge-kill-perspectives)))))
+
+
+
+;;;; ####################################################### Code Check
+;;;;                                              ========== flycheck (None Built-in)
+(use-package flycheck
+  :hook
+  ('after-init . 'global-flycheck-mode))
 
 
 

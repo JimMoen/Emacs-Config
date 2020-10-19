@@ -106,6 +106,7 @@
 ;;;; #################### PACKAGES
 ;;;; magit(TODO) projectile counsel-projectile
 ;;;; persp-mode-projectile-bridge(None melpa)
+;;;; flycheck
 
 
 (require 'bb-dev-complete)

@@ -65,6 +65,7 @@
            ;; [Built-in] None
            ;; [Site]     persp-mode-projectile-bridge
            magit keychain-environment projectile counsel-projectile
+           flycheck
 
            ;; ==============================########## Dev Completing ;;TODO
            ;; [Built-in] None
