@@ -16,6 +16,7 @@
           ((untracked) (status))
           ((unstaged) (status))
           1))
+  (set-face-attribute 'magit-diff-file-heading nil :foreground "#f57bae" :weight 'bold)
   :bind
   (("C-x g" . magit-status)))
 
