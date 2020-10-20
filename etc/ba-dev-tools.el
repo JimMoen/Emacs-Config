@@ -67,10 +67,10 @@
   :hook
   (persp-mode . persp-mode-projectile-bridge-mode)
   (persp-mode-projectile-bridge-mode . (lambda ()
-                                          (if persp-mode-projectile-bridge-mode
-                                              (persp-mode-projectile-bridge-find-perspectives-for-all-buffers)
-                                            (persp-mode-projectile-bridge-mode)
-                                            (persp-mode-projectile-bridge-kill-perspectives)))))
+                                         (if persp-mode-projectile-bridge-mode
+                                             (persp-mode-projectile-bridge-find-perspectives-for-all-buffers)
+                                           (persp-mode-projectile-bridge-mode)
+                                           (persp-mode-projectile-bridge-kill-perspectives)))))
 
 
 
