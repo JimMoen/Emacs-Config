@@ -17,7 +17,9 @@
 ;;;;   |       |----- ad-editing.el         ;; Better Editing.
 ;;;;   |       |----- ae-utils.el           ;; Some Useful packages.
 ;;;;   |       |----- ba-dev-tools.el       ;; Developeing Core Tools.
-;;;;   |       `----- bb-dev-complete.el    ;; For Program Language completing.
+;;;;   |       |----- bb-dev-complete.el    ;; For Program Language completing.
+;;;;   |       |----- zz-testing.el         ;; For testing packages.
+;;;;   |       `--[I] custom.el             ;; Custom file.
 ;;;;   |--[I] var/
 ;;;;   |       |---@@ `no-littering.el      ;; Store packages using files.
 ;;;;   |       `----- [DIRS & FILES]        ;; (i.e) 'recentf', 'bookmark' 'projectile'...
@@ -115,6 +117,14 @@
 ;;;; #################### PACKAGES
 ;;;; company
 ;;;; lsp lsp-ui lsp-ivy
+
+
+(require 'zz-testing)
+;;;; #######################################################
+;;;; For testing packages.
+;;;; #################### PACKAGES
+;;;;
+
 
 
 (load custom-file)
