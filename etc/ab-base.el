@@ -7,7 +7,7 @@
 ;;;;                                              ========== ivy (None Built-in)
 (use-package ivy
   :hook
-  ('after-init . 'ivy-mode)
+  (after-init . ivy-mode)
   :config
   (setq ivy-use-virtual-buffers      t
         enable-recursive-minibuffers nil)
@@ -75,7 +75,7 @@
 (use-package autorevert
   :ensure nil
   :hook
-  ('after-init   . 'global-auto-revert-mode)
+  (after-init . global-auto-revert-mode)
   :config
   (setq global-auto-revert-non-file-buffers t
         auto-revert-verbose nil))
@@ -119,7 +119,7 @@
 ;;;;                                              ========== which-key (None Built-in)
 (use-package which-key
   :hook
-  ('after-init . 'which-key-mode)
+  (after-init . which-key-mode)
   :init
   (which-key-setup-side-window-bottom)
   :config
@@ -144,8 +144,8 @@
     (interactive)
     (ibuffer-switch-to-saved-filter-groups "Normal"))
   :hook
-  ('ibuffer-mode . 'ibuffer-switch-to-normal)
-  ('ibuffer-mode . 'ibuffer-auto-mode)
+  ((ibuffer-mode . ibuffer-switch-to-normal)
+   (ibuffer-mode . ibuffer-auto-mode))
   :config
   (setq ibuffer-saved-filter-groups
         '(("Normal"
@@ -212,10 +212,10 @@
 ;;;;                                              ========== persp-mode (None Built-in)
 (use-package persp-mode
   :hook
-  ('after-init   . 'persp-mode)
-  ('server-after-make-frame . (lambda ()
-                                (persp-frame-switch persp-nil-name)
-                                (switch-to-buffer (get-buffer-create "*scratch*"))))
+  (after-init . persp-mode)
+  (server-after-make-frame . (lambda ()
+                               (persp-frame-switch persp-nil-name)
+                               (switch-to-buffer (get-buffer-create "*scratch*"))))
   :custom
   (persp-keymap-prefix "w")
   :config
@@ -268,7 +268,7 @@
 (use-package shackle
   :ensure t
   :hook
-  ('after-init . 'shackle-mode)
+  (after-init . shackle-mode)
   :custom
   (shackle-default-size 0.35)
   (shackle-default-alignment 'below)
@@ -290,7 +290,7 @@
 (use-package winner
   :ensure nil
   :hook
-  ('after-init   . 'winner-mode)
+  (after-init . winner-mode)
   :commands (winner-undo winner-redo)
   :bind
   (("C-<"        . winner-undo)

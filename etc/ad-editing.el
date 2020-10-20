@@ -34,7 +34,7 @@
 (use-package display-line-numbers
   :ensure nil
   :hook
-  ('after-init . 'global-display-line-numbers-mode)
+  (after-init . global-display-line-numbers-mode)
   :custom
   (display-line-numbers-width 3))
 
@@ -42,32 +42,32 @@
 (use-package simple
   :ensure nil
   :hook
-  ('after-init . 'column-number-mode))
+  (after-init . column-number-mode))
 
 ;;;;                                              ========== delsel (Built-in)
 (use-package delsel
   :ensure nil
   :hook
-  ('after-init . 'delete-selection-mode))
+  (after-init . delete-selection-mode))
 
 ;;;;                                              ========== so-long (Built-in)
 (use-package so-long
   :ensure nil
   :hook
-  ('after-init . 'global-so-long-mode))
+  (after-init . global-so-long-mode))
 
 ;;;;                                              ========== subword (Built-in)
 (use-package subword
   :ensure nil
   :hook
-  ('after-init . 'global-subword-mode))
+  (after-init . global-subword-mode))
 
 ;;;;                                              ========== Whitespace Display (Built-in)
 (use-package whitespace
   :ensure nil
   :defer t
   :hook
-  ('after-init . 'global-whitespace-mode)
+  (after-init . global-whitespace-mode)
   :config
   (setq whitespace-style
         '(face tabs                     tab-mark
@@ -112,7 +112,7 @@
   :custom
   (hs-hide-comments-when-hiding-all nil)
   :hook
-  ('prog-mode . 'hs-minor-mode)
+  (prog-mode . hs-minor-mode)
   :config
   (defconst hideshow-folded-face '((t (:inherit 'font-lock-comment-face :weight semi-bold :box (:line-width -1)))))
   (defun hideshow-folded-overlay-fn (ov)
@@ -134,7 +134,7 @@
 ;;;;                                              ========== Rainbow hex color
 (use-package rainbow-mode
   :hook
-  ('prog-mode . 'rainbow-mode))
+  (prog-mode . rainbow-mode))
 
 
 
@@ -142,7 +142,7 @@
 ;;;;                                              ========== smartparens (None Built-in)
 (use-package smartparens
   :hook
-  ('after-init       . 'smartparens-global-mode)
+  (after-init . smartparens-global-mode)
   :config
   (which-key-add-key-based-replacements "C-c s" "Smart Paren")
   (defmacro def-pairs (pairs)
@@ -220,7 +220,7 @@ respectively."
 ;;;;                                              ========== Rainbow parenthesis (None Built-in)
 (use-package rainbow-delimiters
   :hook
-  ('prog-mode . 'rainbow-delimiters-mode)
+  (prog-mode . rainbow-delimiters-mode)
   :config
   (set-face-attribute 'rainbow-delimiters-depth-1-face  nil  :foreground "#7ffe00" :bold "t")
   (set-face-attribute 'rainbow-delimiters-depth-2-face  nil  :foreground "#1e90ff" :bold "t")

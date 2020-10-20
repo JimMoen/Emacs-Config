@@ -22,7 +22,7 @@
 (use-package keychain-environment
   :demand t
   :hook
-  ('after-init . 'keychain-refresh-environment))
+  (after-init . keychain-refresh-environment))
 
 
 
@@ -30,7 +30,7 @@
 ;;;;                                              ========== Projectile (None Built-in)
 (use-package projectile
   :hook
-  ('prog-mode    . 'projectile-mode)
+  (prog-mode . projectile-mode)
   :config
   (setq projectile-completion-system 'ivy)
   :bind
@@ -44,7 +44,7 @@
 (use-package counsel-projectile
   :after counsel projectile
   :hook
-  ('after-init . 'counsel-projectile-mode))
+  (after-init . counsel-projectile-mode))
 
 ;;;;                                              ========== persp-mode-projectile-bridge (None Built-in)
 (use-package persp-mode-projectile-bridge
@@ -65,8 +65,8 @@
         persp)))
   (advice-add 'persp-mode-projectile-bridge-add-new-persp-save-to-file :override #'persp-mode-projectile-bridge-add-new-persp)
   :hook
-  ('persp-mode . 'persp-mode-projectile-bridge-mode)
-  ('persp-mode-projectile-bridge-mode . (lambda ()
+  (persp-mode . persp-mode-projectile-bridge-mode)
+  (persp-mode-projectile-bridge-mode . (lambda ()
                                           (if persp-mode-projectile-bridge-mode
                                               (persp-mode-projectile-bridge-find-perspectives-for-all-buffers)
                                             (persp-mode-projectile-bridge-mode)
@@ -78,7 +78,7 @@
 ;;;;                                              ========== flycheck (None Built-in)
 (use-package flycheck
   :hook
-  ('after-init . 'global-flycheck-mode))
+  (after-init . global-flycheck-mode))
 
 
 

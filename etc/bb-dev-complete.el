@@ -7,7 +7,7 @@
 ;;;;                                              ========== Company (None Built-in)
 (use-package company
   :hook
-  ('after-init . 'global-company-mode)
+  (after-init . global-company-mode)
   :config
   (setq company-idle-delay                0
         company-tooltip-align-annotations t

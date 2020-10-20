@@ -114,7 +114,7 @@
 (use-package disable-mouse                                ;; Disable the mouse action
   :demand t
   :hook
-  ('after-init . 'global-disable-mouse-mode))
+  (after-init . global-disable-mouse-mode))
 
 
 

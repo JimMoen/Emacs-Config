@@ -39,7 +39,7 @@
 ;;;;                                              ========== Doom Modeline (None Built-in)
 (use-package doom-modeline
   :hook
-  ('after-init . 'doom-modeline-mode)
+  (after-init . doom-modeline-mode)
   :init
   (setq doom-modeline-icon nil)                           ;; Do not use icon
   :defer t
