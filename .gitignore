@@ -1,0 +1,20 @@
+# Compiled
+*.elc
+
+# Packaging
+.cask
+
+# Backup files
+*~
+
+# Undo-tree save-files
+*.~undo-tree
+
+# For no-littering persistent data files
+/var/
+
+# Management by package.el
+/elpa/
+
+# Emacs custom files
+/etc/custom.el
