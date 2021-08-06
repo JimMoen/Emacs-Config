@@ -35,6 +35,7 @@
 ;;   |       |----- aa-core.el            ;; For package managent and crucial packages.
 ;;   |       |----- ab-base.el            ;; For better Emacs Framework all the time.
 ;;   |       |----- ac-ui.el              ;; Built-in UI.  Modeline, Color Theme.
+;;   |       |----- ad-editing.el         ;; Better Editing.
 ;;   |       `--[I] custom.el             ;; Custom file.
 ;;   |--[I] var/
 ;;   |       |---@@ `no-littering.el      ;; Store packages using files.
@@ -104,6 +105,13 @@ It will be expanded within `user-emacs-directory'."
 ;; ########## PACKAGES
 ;; doom-modeline
 ;; color-theme-sanityinc-tomorrow
+
+
+(require 'ad-editing)
+;; For Better editing
+
+;; ########## PACKAGES
+;; EMACS-BUILT-IN-INDENT-SETTINGS align
 
 
 (when (file-exists-p custom-file)
