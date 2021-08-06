@@ -65,6 +65,14 @@
   :hook
   (after-init . counsel-projectile-mode))
 
+;; Code Check
+;; flycheck (Melpa)
+(use-package flycheck
+  :hook
+  (after-init . global-flycheck-mode)
+  :init
+  (setq flycheck-emacs-lisp-load-path 'inherit))
+
 
 (provide 'ba-dev-tools)
 
