@@ -63,7 +63,13 @@
           ;; [Built-in] None
           ;; [Site]     None
           use-package use-package-ensure-system-package
-          no-littering restart-emacs disable-mouse))
+          no-littering restart-emacs disable-mouse
+
+          ;; ########## base packages
+          ;; [Built-in] dired autorevert recentf bookmark ibuffer winner
+          ;; [Site]     None
+          ivy counsel swiper which-key
+          dired-single persp-mode switch-window shackle))
 
   ;; ########## enable some commands
   (progn (setq enabled-functions '(dired-find-alternate-file

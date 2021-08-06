@@ -33,6 +33,7 @@
 ;;   |----- init.el                       ;; Some Core Settings required by other elisp file.
 ;;   |----- etc/                          ;; Elisp files.  File loading order is determined by the letter before the file name.
 ;;   |       |----- aa-core.el            ;; For package managent and crucial packages.
+;;   |       |----- ab-base.el            ;; For better Emacs Framework all the time.
 ;;   |       `--[I] custom.el             ;; Custom file.
 ;;   |--[I] var/
 ;;   |       |---@@ `no-littering.el      ;; Store packages using files.
@@ -84,6 +85,16 @@ It will be expanded within `user-emacs-directory'."
 ;; ########## PACKAGES
 ;; use-package-ensure-system-package
 ;; no-littering restart-emacs disable-mouse
+
+
+(require 'ab-base)
+;; For better Emacs Framework all the time.
+
+;; ########## PACKAGES
+;; ivy counsel swiper
+;; dired dired-single autorevert recentf bookmark
+;; PERSONAL-KEYBINDINGS which-key
+;; Ibuffer switch-window shackle winner(Built-in)
 
 
 (when (file-exists-p custom-file)
