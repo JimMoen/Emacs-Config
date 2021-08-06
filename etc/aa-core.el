@@ -74,7 +74,14 @@
           ;; ########## ui packages
           ;; [Built-in] None
           ;; [Site]     None
-          doom-modeline color-theme-sanityinc-tomorrow))
+          doom-modeline color-theme-sanityinc-tomorrow
+
+          ;; ########## base editing
+          ;; [Built-in] align display-line-numbers delsel
+          ;;            so-long subword whitespace hideshow
+          ;; [Site]     None
+          avy rainbow-mode smartparens
+          rainbow-delimiters))
 
   ;; ########## enable some commands
   (progn (setq enabled-functions '(dired-find-alternate-file
