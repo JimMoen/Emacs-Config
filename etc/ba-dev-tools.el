@@ -45,6 +45,26 @@
   :bind
   (("C-x g" . magit-status)))
 
+;; Project Management
+;; projectile (Melpa)
+(use-package projectile
+  :hook
+  (prog-mode . projectile-mode)
+  :config
+  (setq projectile-completion-system 'ivy)
+  :bind
+  (("C-x C-b" . projectile-ibuffer))
+  (:map projectile-command-map
+        ("r"     . nil))
+  :bind-keymap
+  ("C-x p" . projectile-command-map))
+
+;; counsel-projectile (Melpa)
+(use-package counsel-projectile
+  :after counsel projectile
+  :hook
+  (after-init . counsel-projectile-mode))
+
 
 (provide 'ba-dev-tools)
 
