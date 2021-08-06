@@ -36,6 +36,7 @@
 ;;   |       |----- ab-base.el            ;; For better Emacs Framework all the time.
 ;;   |       |----- ac-ui.el              ;; Built-in UI.  Modeline, Color Theme.
 ;;   |       |----- ad-editing.el         ;; Better Editing.
+;;   |       |----- ae-utils.el           ;; Utility packages.
 ;;   |       `--[I] custom.el             ;; Custom file.
 ;;   |--[I] var/
 ;;   |       |---@@ `no-littering.el      ;; Store packages using files.
@@ -115,6 +116,15 @@ It will be expanded within `user-emacs-directory'."
 ;; avy
 ;; hideshow rainbow-mode
 ;; smartparens rainbow-delimiters
+
+
+(require 'ae-utils)
+;; Some Useful packages.
+;; ########## PACKAGES
+;; rime youdao-dictionary english-teacher(Site)
+;; keychain-environment
+;; cal-china-x
+;; speed-type pdf-tools info-colors
 
 
 (when (file-exists-p custom-file)

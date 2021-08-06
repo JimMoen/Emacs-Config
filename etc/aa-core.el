@@ -82,7 +82,15 @@
           ;; [Site]     None
           avy rainbow-mode smartparens
           rainbow-delimiters
-          wgrep))
+          wgrep
+
+          ;; ########## other utils
+          ;; [Built-in] calendar
+          ;; [Site]     english-teacher
+          rime youdao-dictionary
+          keychain-environment
+          cal-china-x
+          speed-type pdf-tools info-colors))
 
   ;; ########## enable some commands
   (progn (setq enabled-functions '(dired-find-alternate-file
