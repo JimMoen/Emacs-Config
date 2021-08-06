@@ -126,6 +126,22 @@
         (append cal-china-x-important-holidays
                 cal-china-x-general-holidays)))
 
+;; Other Useful Applications
+;; speed-type (Melpa)
+(use-package speed-type
+  :defer t)
+
+;; pdf-tools (Melpa)
+(use-package pdf-tools
+  :defer t)
+
+;; info-colors (Melpa)
+;; Add color support for info pages.
+(use-package info-colors
+  :defer t
+  :hook
+  (Info-selection . info-colors-fontify-node))
+
 
 (provide 'ae-utils)
 
