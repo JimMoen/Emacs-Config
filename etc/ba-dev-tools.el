@@ -73,6 +73,13 @@
   :init
   (setq flycheck-emacs-lisp-load-path 'inherit))
 
+;; Code template
+;; yasnippet (Melpa)
+(use-package yasnippet)
+
+;; yasnippet-snippets (Melpa)
+(use-package yasnippet-snippets)
+
 
 (provide 'ba-dev-tools)
 
