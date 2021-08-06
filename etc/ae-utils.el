@@ -82,6 +82,14 @@
   :bind
   (("C-x y f" . english-teacher-follow-mode)))
 
+;; keychain-environment (Melpa)
+;; To use system keychain.
+;; SSH connect required.
+(use-package keychain-environment
+  :demand t
+  :hook
+  (after-init . keychain-refresh-environment))
+
 
 (provide 'ae-utils)
 
