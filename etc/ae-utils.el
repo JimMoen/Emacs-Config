@@ -90,6 +90,42 @@
   :hook
   (after-init . keychain-refresh-environment))
 
+;; Calendar Settings
+;; calendar (Built-in)
+(use-package calendar
+  :ensure nil
+  :config
+  (setq holiday-local-holidays `((holiday-fixed 3 8  "Women's Day")
+                                 (holiday-fixed 3 12 "Arbor Day")
+                                 ,@(cl-loop for i from 1 to 3
+                                            collect `(holiday-fixed 5 ,i "International Workers' Day"))
+                                 (holiday-fixed 5 4  "Chinese Youth Day")
+                                 (holiday-fixed 6 1  "Children's Day")
+                                 (holiday-fixed 9 10 "Teachers' Day")
+                                 ,@(cl-loop for i from 1 to 7
+                                            collect `(holiday-fixed 10 ,i "National Day"))
+                                 (holiday-fixed 10 24 "Programmers' Day")
+                                 (holiday-fixed 11 11 "Singles' Day")))
+  (setq holiday-other-holidays '((holiday-fixed 4 22 "Earth Day")
+                                 (holiday-fixed 4 23 "World Book Day")
+                                 (holiday-sexp '(if (or (zerop (% year 400))
+                                                        (and (% year 100) (zerop (% year 4))))
+                                                    (list 9 12 year)
+                                                  (list 9 13 year))
+                                               "World Programmers' Day")))
+  (setq calendar-chinese-all-holidays-flag t))
+
+;; cal-china-x (Melpa)
+;; For China holidays.
+(use-package cal-china-x
+  :config
+  (setq mark-holidays-in-calendar t)
+  (setq cal-china-x-important-holidays cal-china-x-chinese-holidays)
+  (setq cal-china-x-general-holidays '((holiday-lunar 1 15 "元宵节")))
+  (setq calendar-holidays
+        (append cal-china-x-important-holidays
+                cal-china-x-general-holidays)))
+
 
 (provide 'ae-utils)
 
