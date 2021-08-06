@@ -128,6 +128,45 @@
    ("M-g M-e" . avy-goto-end-of-line)
    ("M-g w"   . avy-goto-word-1)))
 
+;; For Code Editing
+;; hideshow (Built-in)
+(use-package hideshow
+  :ensure nil
+  :custom
+  (hs-hide-comments-when-hiding-all nil)
+  :hook
+  (prog-mode . hs-minor-mode)
+  :config
+  (defconst hideshow-folded-face '((t (:inherit 'font-lock-comment-face :weight semi-bold :box (:line-width -1)))))
+  (defun hideshow-folded-overlay-fn (ov)
+    (when (eq 'code (overlay-get ov 'hs))
+      (let* ((nlines (count-lines (overlay-start ov) (overlay-end ov)))
+             (info (format " ... #%d " nlines)))
+        (overlay-put ov 'display (propertize info 'face hideshow-folded-face)))))
+  (setq hs-set-up-overlay 'hideshow-folded-overlay-fn)
+  (add-to-list 'hs-special-modes-alist
+               '(nxml-mode
+                 "<!--\\|<[^/>]*[^/]>"
+                 "-->\\|</[^/>]*[^/]>"
+                 "<!--"
+                 sgml-skip-tag-forward
+                 nil))
+  :bind
+  (:map hs-minor-mode-map
+        ("C-c t t"     . hs-toggle-hiding)
+        ("C-c t C-M-h" . hs-hide-all)
+        ("C-c t C-h"   . hs-hide-block)
+        ("C-c t C-M-s" . hs-show-all)
+        ("C-c t C-s"   . hs-show-block)
+        ("C-c t l"     . hs-hide-level)
+        ("C-c @ C-a"   . hs-show-all)))
+
+;; rainbow-mode (Melpa)
+;; Rainbow hex color
+(use-package rainbow-mode
+  :hook
+  (prog-mode . rainbow-mode))
+
 
 (provide 'ad-editing)
 
