@@ -48,6 +48,23 @@
               :font "sarasa mono sc-13"
               :internal-border-width 4)))
 
+;; English Translate
+;; youdao-dictionary (Melpa)
+(use-package youdao-dictionary
+  :defer nil
+  :config
+  (setq url-automatic-caching t)
+  (which-key-add-key-based-replacements "C-x y" "Youdao Dic")
+  (defun youdao-search-and-play-voice-at-point ()
+    (interactive)
+    (youdao-dictionary-play-voice-at-point)
+    (youdao-dictionary-search-at-point-tooltip))
+  :bind
+  (("C-x y t" . 'youdao-search-and-play-voice-at-point)
+   ("C-x y v" . 'youdao-dictionary-play-voice-at-point)
+   ("C-x y r" . 'youdao-dictionary-search-and-replace)
+   ("C-x y i" . 'youdao-dictionary-search-from-input)))
+
 
 (provide 'ae-utils)
 
