@@ -167,6 +167,100 @@
   :hook
   (prog-mode . rainbow-mode))
 
+;; Parens Settings
+;; smartparens (Melpa)
+(use-package smartparens
+  :hook
+  (after-init . smartparens-global-mode)
+  :config
+  (which-key-add-key-based-replacements "C-c s" "Smart Paren")
+  (defmacro def-pairs (pairs)
+    "Define functions for pairing. PAIRS is an alist of (NAME . STRING)
+conses, where NAME is the function name that will be created and
+STRING is a single-character string that marks the opening character.
+
+  (def-pairs ((paren . \"(\")
+              (bracket . \"[\"))
+
+defines the functions WRAP-WITH-PAREN and WRAP-WITH-BRACKET,
+respectively."
+    `(progn
+       ,@(cl-loop for (key . val) in pairs
+                  collect
+                  `(defun ,(read (concat
+                                  "my/sp-wrap-with-"
+                                  (prin1-to-string key)
+                                  "s"))
+                       (&optional arg)
+                     (interactive "p")
+                     (sp-wrap-with-pair ,val)))))
+
+  (def-pairs ((paren        . "(")
+              (bracket      . "[")
+              (brace        . "{")
+              (single-quote . "'")
+              (double-quote . "\"")
+              (back-quote   . "`")))
+  :bind-keymap
+  ("C-c s"           . smartparens-mode-map)
+  :bind
+  (:map smartparens-mode-map
+        ("C-c ("   . my/sp-wrap-with-parens)
+        ("C-c ["   . my/sp-wrap-with-brackets)
+        ("C-c {"   . my/sp-wrap-with-braces)
+        ("C-c '"   . my/sp-wrap-with-single-quotes)
+        ("C-c \""  . my/sp-wrap-with-double-quotes)
+        ("C-c _"   . my/sp-wrap-with-underscores)
+        ("C-c `"   . my/sp-wrap-with-back-quotes)
+
+        ("M-["     . sp-backward-unwrap-sexp)
+        ("M-]"     . sp-unwrap-sexp)
+        ("C-c s r" . sp-rewrap-sexp)
+
+        ("C-("     . sp-backward-slurp-sexp)
+        ("C-{"     . sp-backward-barf-sexp)
+        ("C-)"     . sp-forward-slurp-sexp)
+        ("C-}"     . sp-forward-barf-sexp)
+
+        ("C-M-a"   . sp-beginning-of-sexp)
+        ("C-M-e"   . sp-end-of-sexp)
+        ("C-M-n"   . sp-next-sexp)
+        ("C-M-p"   . sp-previous-sexp)
+        ("C-M-f"   . sp-forward-sexp)
+        ("C-M-b"   . sp-backward-sexp)
+        ("C-S-f"   . sp-forward-symbol)
+        ("C-S-b"   . sp-backward-symbol)
+
+        ("C-M-t"   . sp-transpose-sexp)
+        ("C-M-k"   . sp-kill-sexp)
+        ("C-k"     . sp-kill-hybrid-sexp)
+        ("M-k"     . sp-backward-kill-sexp)
+        ("C-M-w"   . sp-copy-sexp)
+
+        ("C-M-u"   . sp-up-sexp)
+        ("C-M-d"   . sp-backward-down-sexp)
+        ("C-M-S-u" . sp-backward-up-sexp)
+        ("C-M-S-d" . sp-down-sexp)
+        ("C-M-S-a" . sp-beginning-of-previous-sexp)
+        ("C-M-S-e" . sp-end-of-next-sexp)
+        ("C-M-S-n" . sp-beginning-of-next-sexp)
+        ("C-M-S-p" . sp-beginning-of-previous-sexp)))
+
+;; Rainbow parenthesis (Melpa)
+(use-package rainbow-delimiters
+  :hook
+  (prog-mode . rainbow-delimiters-mode)
+  :config
+  (set-face-attribute 'rainbow-delimiters-depth-1-face  nil  :foreground "#7ffe00" :bold "t")
+  (set-face-attribute 'rainbow-delimiters-depth-2-face  nil  :foreground "#1e90ff" :bold "t")
+  (set-face-attribute 'rainbow-delimiters-depth-3-face  nil  :foreground "#f5a80f" :bold "t")
+  (set-face-attribute 'rainbow-delimiters-depth-4-face  nil  :foreground "#ff1493" :bold "t")
+  (set-face-attribute 'rainbow-delimiters-depth-5-face  nil  :foreground "#ba55d3" :bold "t")
+  (set-face-attribute 'rainbow-delimiters-depth-6-face  nil  :foreground "#40e0d0" :bold "t")
+  (set-face-attribute 'rainbow-delimiters-depth-7-face  nil  :foreground "#32cd32" :bold "t")
+  (set-face-attribute 'rainbow-delimiters-depth-8-face  nil  :foreground "#ffd700" :bold "t")
+  (set-face-attribute 'rainbow-delimiters-depth-9-face  nil  :foreground "#00ffff" :bold "t"))
+
 
 (provide 'ad-editing)
 

@@ -114,6 +114,7 @@ It will be expanded within `user-emacs-directory'."
 ;; EMACS-BUILT-IN-INDENT-SETTINGS align
 ;; avy
 ;; hideshow rainbow-mode
+;; smartparens rainbow-delimiters
 
 
 (when (file-exists-p custom-file)
