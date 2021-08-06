@@ -110,6 +110,24 @@
    ("C-c t r" . whitespace-report)
    ("C-c t R" . whitespace-report-region)))
 
+;; avy to jump char (Melpa)
+(use-package avy
+  :config
+  (setq avy-timeout-seconds 0.1
+        avy-background      nil)
+  (set-face-attribute 'avy-lead-face       nil :foreground "#1d1f21" :background "#ef9299")
+  (set-face-attribute 'avy-lead-face-0     nil :foreground "#1d1f21" :background "#8898bf")
+  (set-face-attribute 'avy-lead-face-1     nil :foreground "#1d1f21" :background "#9ac1c8")
+  (set-face-attribute 'avy-lead-face-2     nil :foreground "#1d1f21" :background "#f1d8b3")
+  :bind
+  (("C-M-g"   . avy-goto-char-in-line)
+   ("M-g M-c" . avy-goto-char)
+   ("M-g M-g" . avy-goto-char-2)
+   ("M-g s"   . avy-goto-whitespace-end)
+   ("M-g M-a" . avy-goto-line)
+   ("M-g M-e" . avy-goto-end-of-line)
+   ("M-g w"   . avy-goto-word-1)))
+
 
 (provide 'ad-editing)
 

@@ -112,6 +112,7 @@ It will be expanded within `user-emacs-directory'."
 
 ;; ########## PACKAGES
 ;; EMACS-BUILT-IN-INDENT-SETTINGS align
+;; avy
 
 
 (when (file-exists-p custom-file)
