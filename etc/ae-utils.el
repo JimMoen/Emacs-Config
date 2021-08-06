@@ -65,6 +65,23 @@
    ("C-x y r" . 'youdao-dictionary-search-and-replace)
    ("C-x y i" . 'youdao-dictionary-search-from-input)))
 
+;; english-teacher (Site Package)
+;; For English sentence translating.
+;; https://github.com/loyalpartner/english-teacher.el
+(use-package english-teacher
+  :load-path "site-elisp/english-teacher"
+  :custom
+  (english-teacher-backend 'baidu)
+  (english-teacher-show-result-function 'english-teacher-default-show-result-function)
+  :hook
+  ((Info-mode        . english-teacher-follow-mode)
+   (elfeed-show-mode . english-teacher-follow-mode)
+   (eww-mode         . english-teacher-follow-mode)
+   (Man-mode         . english-teacher-follow-mode)
+   (Woman-mode       . english-teacher-follow-mode))
+  :bind
+  (("C-x y f" . english-teacher-follow-mode)))
+
 
 (provide 'ae-utils)
 
