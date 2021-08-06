@@ -49,6 +49,67 @@
   :bind
   (("C-c =" . align-regexp)))
 
+;; Intuitional editing
+;; Display Line numbers (Built-in)
+(use-package display-line-numbers
+  :ensure nil
+  :hook
+  (after-init . global-display-line-numbers-mode)
+  :custom
+  (display-line-numbers-width 3))
+
+;; Display Column numbers (Built-in)
+(use-package simple
+  :ensure nil
+  :hook
+  (after-init . column-number-mode))
+
+;; delsel (Built-in)
+(use-package delsel
+  :ensure nil
+  :hook
+  (after-init . delete-selection-mode))
+
+;; so-long (Built-in)
+(use-package so-long
+  :ensure nil
+  :hook
+  (after-init . global-so-long-mode))
+
+;; subword (Built-in)
+(use-package subword
+  :ensure nil
+  :hook
+  (after-init . global-subword-mode))
+
+;; Whitespace Display (Built-in)
+(use-package whitespace
+  :ensure nil
+  :defer t
+  :hook
+  (after-init . global-whitespace-mode)
+  :config
+  (setq whitespace-style
+        '(face tabs                     tab-mark
+               space-after-tab::space   space-before-tab::space
+               indentation::space
+               trailing                 empty))
+  (setq whitespace-display-mappings
+        '(;; "tab" char.      Display like "|   ".   Or Display like "\   "
+          (tab-mark      9   [124 9]   [92 9])
+          ;; " " char.        Display like "·".      Or Display like "_"
+          (space-mark    32  [183]     [95])
+          ;; "newline" char.  Display like "¬"       Or Display like "¶"
+          (newline-mark  10  [172 10]  [182 10])))
+  (set-face-attribute 'whitespace-tab      nil :foreground "#444444" :background "#686868")
+  (set-face-attribute 'whitespace-empty    nil :foreground "#cd8c95" :background "#8b5f65")
+  (set-face-attribute 'whitespace-trailing nil :foreground "#79cdcd" :background "#668b8b")
+  :bind
+  (("C-c t c" . whitespace-cleanup)
+   ("C-c t C" . whitespace-cleanup-region)
+   ("C-c t r" . whitespace-report)
+   ("C-c t R" . whitespace-report-region)))
+
 
 (provide 'ad-editing)
 
