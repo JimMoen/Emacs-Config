@@ -57,6 +57,30 @@
          (dolist (frame-set-var JimMoen/frame-settings)
            (push frame-set-var default-frame-alist))))
 
+;; Doom Modeline (Melpa)
+(use-package doom-modeline
+  :hook
+  (after-init . doom-modeline-mode)
+  :init
+  (setq doom-modeline-icon nil)            ;; Do not use icon
+  :defer t
+  :config
+  (setq
+   doom-modeline-mode-height               20
+   doom-modeline-bar-width                 3
+   doom-modeline-window-width-limit        fill-column
+   doom-modeline-buffer-file-name-style    'truncate-nil
+   doom-modeline-github                    t
+   doom-modeline-github-interval           (* 30 60)
+   doom-modeline-project-detection         'projectile
+   all-the-icons-color-icons               nil))
+
+;; color-theme-sanityinc-tomorrow (Melpa)
+(use-package color-theme-sanityinc-tomorrow
+  :init
+  (setq custom-safe-themes t)
+  (load-theme 'sanityinc-tomorrow-night))
+
 
 (provide 'ac-ui)
 

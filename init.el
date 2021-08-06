@@ -34,7 +34,7 @@
 ;;   |----- etc/                          ;; Elisp files.  File loading order is determined by the letter before the file name.
 ;;   |       |----- aa-core.el            ;; For package managent and crucial packages.
 ;;   |       |----- ab-base.el            ;; For better Emacs Framework all the time.
-;;   |       |----- ac-ui.el              ;; Built-in UI.
+;;   |       |----- ac-ui.el              ;; Built-in UI.  Modeline, Color Theme.
 ;;   |       `--[I] custom.el             ;; Custom file.
 ;;   |--[I] var/
 ;;   |       |---@@ `no-littering.el      ;; Store packages using files.
@@ -96,6 +96,14 @@ It will be expanded within `user-emacs-directory'."
 ;; dired dired-single autorevert recentf bookmark
 ;; PERSONAL-KEYBINDINGS which-key
 ;; Ibuffer switch-window shackle winner(Built-in)
+
+
+(require 'ac-ui)
+;; For More Beautiful Emacs.
+
+;; ########## PACKAGES
+;; doom-modeline
+;; color-theme-sanityinc-tomorrow
 
 
 (when (file-exists-p custom-file)

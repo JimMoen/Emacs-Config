@@ -69,7 +69,12 @@
           ;; [Built-in] dired autorevert recentf bookmark ibuffer winner
           ;; [Site]     None
           ivy counsel swiper which-key
-          dired-single persp-mode switch-window shackle))
+          dired-single persp-mode switch-window shackle
+
+          ;; ########## ui packages
+          ;; [Built-in] None
+          ;; [Site]     None
+          doom-modeline color-theme-sanityinc-tomorrow))
 
   ;; ########## enable some commands
   (progn (setq enabled-functions '(dired-find-alternate-file
