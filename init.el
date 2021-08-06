@@ -37,6 +37,7 @@
 ;;   |       |----- ac-ui.el              ;; Built-in UI.  Modeline, Color Theme.
 ;;   |       |----- ad-editing.el         ;; Better Editing.
 ;;   |       |----- ae-utils.el           ;; Utility packages.
+;;   |       |----- ba-dev-tools.el       ;; Development Tools.
 ;;   |       `--[I] custom.el             ;; Custom file.
 ;;   |--[I] var/
 ;;   |       |---@@ `no-littering.el      ;; Store packages using files.
@@ -125,6 +126,14 @@ It will be expanded within `user-emacs-directory'."
 ;; keychain-environment
 ;; cal-china-x
 ;; speed-type pdf-tools info-colors
+
+
+(require 'ba-dev-tools)
+;; Development Tools.
+;; ########## PACKAGES
+;; magit projectile counsel-projectile
+;; flycheck
+;; yasnippet yasnippet-snippets
 
 
 (when (file-exists-p custom-file)

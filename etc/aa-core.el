@@ -90,7 +90,14 @@
           rime youdao-dictionary
           keychain-environment
           cal-china-x
-          speed-type pdf-tools info-colors))
+          speed-type pdf-tools info-colors
+
+          ;; ########## Development Tools
+          ;; [Built-in] None
+          ;; [Site]     None
+          magit projectile counsel-projectile
+          flycheck
+          yasnippet yasnippet-snippets))
 
   ;; ########## enable some commands
   (progn (setq enabled-functions '(dired-find-alternate-file
