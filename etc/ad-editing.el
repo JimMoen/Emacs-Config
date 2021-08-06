@@ -261,6 +261,10 @@ respectively."
   (set-face-attribute 'rainbow-delimiters-depth-8-face  nil  :foreground "#ffd700" :bold "t")
   (set-face-attribute 'rainbow-delimiters-depth-9-face  nil  :foreground "#00ffff" :bold "t"))
 
+;; For ivy-occur
+;; wgerp (Melpa)
+(use-package wgrep)
+
 
 (provide 'ad-editing)
 

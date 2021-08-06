@@ -40,6 +40,7 @@
   ;; Use persp-mode to switch/kill buffer in ONE project.
   ;; See ./etc/ab-base.el: persp-mode
   (("C-x B"    . ivy-switch-buffer)
+   ("C-c C-o"  . ivy-occur)
    ("C-c C-r"  . ivy-resume)
    ("C-c v"    . ivy-push-view)
    ("C-c V"    . ivy-pop-view)))
@@ -305,7 +306,9 @@
                    ("*bm-bookmarks*"           :select t   :align t)
                    ("*Backtrace*"              :select t   :align t   :size 15)
                    ("*package update results*" :select nil :align t   :size 10)
-                   ("*Process List*"           :select t   :align t   :size 0.3))))
+                   ("*Process List*"           :select t   :align t   :size 0.3)
+                   ("*Occur*"                  :select t   :align right)
+                   ("\\*ivy-occur .*\\*"       :select t   :regexp t  :align right))))
 ;;TODO
 
 ;; winner (Built-in)

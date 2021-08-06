@@ -81,7 +81,8 @@
           ;;            so-long subword whitespace hideshow
           ;; [Site]     None
           avy rainbow-mode smartparens
-          rainbow-delimiters))
+          rainbow-delimiters
+          wgrep))
 
   ;; ########## enable some commands
   (progn (setq enabled-functions '(dired-find-alternate-file
