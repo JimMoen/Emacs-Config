@@ -65,6 +65,9 @@
   :hook
   (after-init . counsel-projectile-mode))
 
+;; persp-mode to managment projcet buffers (Melpa)
+(require-all-elisp-in-directory "etc/editor-layouts")
+
 ;; Code Check
 ;; flycheck (Melpa)
 (use-package flycheck

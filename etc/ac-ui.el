@@ -66,14 +66,15 @@
   :defer t
   :config
   (setq
-   doom-modeline-mode-height               20
-   doom-modeline-bar-width                 3
-   doom-modeline-window-width-limit        fill-column
-   doom-modeline-buffer-file-name-style    'truncate-nil
-   doom-modeline-github                    t
-   doom-modeline-github-interval           (* 30 60)
-   doom-modeline-project-detection         'projectile
-   all-the-icons-color-icons               nil))
+   doom-modeline-mode-height                20
+   doom-modeline-bar-width                  3
+   doom-modeline-window-width-limit         fill-column
+   doom-modeline-buffer-file-name-style     'truncate-nil
+   doom-modeline-github                     t
+   doom-modeline-github-interval            (* 30 60)
+   doom-modeline-project-detection          'projectile
+   all-the-icons-color-icons                nil
+   doom-modeline-display-default-persp-name t))
 
 ;; color-theme-sanityinc-tomorrow (Melpa)
 (use-package color-theme-sanityinc-tomorrow

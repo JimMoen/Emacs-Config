@@ -235,29 +235,7 @@
   ;; See ./etc/ba-dev-tools.el: projectile
   (("C-x C-S-b"     . ibuffer)))
 
-;; persp-mode (Melpa)
-(use-package persp-mode
-  :hook
-  (after-init . persp-mode)
-  (server-after-make-frame . (lambda ()
-                               (persp-frame-switch persp-nil-name)
-                               (switch-to-buffer (get-buffer-create "*scratch*"))))
-  :custom
-  (persp-keymap-prefix "w")
-  :config
-  (setq persp-kill-foreign-buffer-behaviour      nil
-        ;; With Doom-modeline.. See ./etc/ac-ui.el: doom-modeline
-        doom-modeline-display-default-persp-name t)
-  :bind
-  (;; Switch buffer in current persp.
-   ("C-x b"      . persp-switch-to-buffer)
-   ;; Kill buffer in current persp.
-   ("C-x k"      . persp-kill-buffer)
-   ;; Kill specify buffer global.
-   ("C-x K"      . kill-buffer))
-  (:map persp-mode-map
-        (("C-x w r" . persp-remove-buffer)
-         ("C-x w R" . persp-rename))))
+
 
 ;; switch-window (Melpa)
 (use-package switch-window
