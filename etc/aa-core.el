@@ -69,7 +69,7 @@
           ;; [Built-in] dired autorevert recentf bookmark ibuffer winner
           ;; [Site]     None
           ivy counsel swiper which-key
-          dired-single persp-mode switch-window shackle
+          dired-single switch-window shackle
 
           ;; ########## ui packages
           ;; [Built-in] None
@@ -95,9 +95,9 @@
           ;; ########## Development Tools
           ;; [Built-in] None
           ;; [Site]     None
-          magit projectile counsel-projectile
-          flycheck
-          yasnippet yasnippet-snippets))
+          magit projectile counsel-projectile persp-mode
+          company company-tabnine prescient ivy-prescient company-prescient
+          flycheck yasnippet yasnippet-snippets))
 
   ;; ########## enable some commands
   (progn (setq enabled-functions '(dired-find-alternate-file

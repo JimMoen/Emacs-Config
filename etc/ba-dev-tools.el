@@ -68,6 +68,92 @@
 ;; persp-mode to managment projcet buffers (Melpa)
 (require-all-elisp-in-directory "etc/editor-layouts")
 
+;; company-mode (Melpa)
+;; complete framework
+(use-package company
+  :init
+  (setq company-backends '((company-tabnine
+                            company-dabbrev
+                            company-dabbrev-code
+                            company-keywords
+                            company-files
+                            company-ispell
+                            company-capf)))
+  :hook
+  (after-init . global-company-mode)
+  (emacs-lisp-mode . (lambda ()
+                       (require 'company-elisp)
+                       (push 'company-elisp company-backends)))
+  :config
+  (setq company-idle-delay                0.15
+        company-minimum-prefix-length     1
+        company-require-match             nil
+        company-selection-wrap-around     t
+        company-show-quick-access         t
+        company-tooltip-align-annotations t
+        company-dabbrev-ignore-case       nil
+        company-dabbrev-downcase          nil
+        company-dabbrev-char-regexp       "[A-Za-z-_\\.'/]"
+        company-dabbrev-ignore-buffers    "\\`[ *]\\|\\.pdf\\'"
+        company-dabbrev-other-buffers     t
+        company-show-quick-access         t)
+  (setq company-global-modes '(not erc-mode message-mode help-mode gud-mode eshell-mode shell-mode))
+
+  (with-no-warnings
+    (defvar company-mode/enable-yas t
+      "Enable yasnippet for all backends.")
+
+    (with-eval-after-load 'yasnippet
+      (defun company-backend-with-yas (backend)
+        "Add `yasnippet' to company backend."
+        (if (or (not company-mode/enable-yas) (and (listp backend) (member 'company-yasnippet backend)))
+            backend
+          (append (if (consp backend) backend (list backend))
+                  '(:with company-yasnippet))))
+
+      (setq company-backends (mapcar #'company-backend-with-yas company-backends))
+
+      (defun my-company-yasnippet-disable-inline (fun command &optional arg &rest _ignore)
+        "Enable yasnippet but disable it inline."
+        (if (eq command 'prefix)
+            (when-let ((prefix (funcall fun 'prefix)))
+              (unless (memq (char-before (- (point) (length prefix))) '(?. ?> ?\())
+                prefix))
+          (funcall fun command arg)))
+
+      (advice-add #'company-yasnippet :around #'my-company-yasnippet-disable-inline))
+    (add-to-list 'company-transformers #'delete-dups))
+  :bind
+  (:map company-active-map
+        ("C-h"     . nil)
+        ("C-x h"   . company-show-doc-buffer)
+        ("C-w"     . nil)
+        ("C-x w"   . company-show-location)
+        ([tab]     . company-complete-common-or-cycle)
+        ([backtab] . company-select-previous-or-abort)))
+
+;; company-tabnine (Melpa)
+;; complete with tabnine AI
+(use-package company-tabnine)
+
+;; prescient (Melpa)
+;; sorting and filtering for Emacs.
+(use-package prescient
+  :hook (after-init . prescient-persist-mode)
+  :init
+  ;; for ivy support (Melpa)
+  (use-package ivy-prescient
+    :after counsel
+    :hook (ivy-mode . ivy-prescient-mode)
+    :config
+    (setq ivy-prescient-enable-filtering nil))
+  ;; for company support (Melpa)
+  (use-package company-prescient
+    :hook (company-mode . company-prescient-mode))
+  :config
+  (setq prescient-sort-full-matches-first t
+        prescient-sort-length-enable      nil))
+
 ;; Code Check
 ;; flycheck (Melpa)
 (use-package flycheck
@@ -78,10 +164,18 @@
 
 ;; Code template
 ;; yasnippet (Melpa)
-(use-package yasnippet)
+(use-package yasnippet
+  :hook
+  (after-init . yas-global-mode)
+  :config
+  (setq yas-triggers-in-field t
+        yas-wrap-around-region t)
+  ;; disable yas minor mode map
+  (setq yas-minor-mode-map (make-sparse-keymap)))
 
 ;; yasnippet-snippets (Melpa)
-(use-package yasnippet-snippets)
+(use-package yasnippet-snippets
+  :after yasnippet)
 
 
 (provide 'ba-dev-tools)

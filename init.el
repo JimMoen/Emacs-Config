@@ -131,9 +131,9 @@ It will be expanded within `user-emacs-directory'."
 (require 'ba-dev-tools)
 ;; Development Tools.
 ;; ########## PACKAGES
-;; magit projectile counsel-projectile
-;; flycheck
-;; yasnippet yasnippet-snippets
+;; magit projectile counsel-projectile persp-mode
+;; company company-tabnine prescient ivy-prescient company-prescient
+;; flycheck yasnippet yasnippet-snippets
 
 
 (when (file-exists-p custom-file)
