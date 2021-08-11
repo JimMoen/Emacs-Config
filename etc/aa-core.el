@@ -97,7 +97,8 @@
       ;; [Site]     None
       magit projectile counsel-projectile persp-mode
       company company-tabnine prescient ivy-prescient company-prescient
-      flycheck yasnippet yasnippet-snippets))
+      flycheck yasnippet yasnippet-snippets
+      lsp-mode lsp-ui lsp-ivy))
 
   ;; ########## enable some commands
   (progn (defvar enabled-functions '(dired-find-alternate-file

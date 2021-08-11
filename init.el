@@ -134,6 +134,7 @@ It will be expanded within `user-emacs-directory'."
 ;; magit projectile counsel-projectile persp-mode
 ;; company company-tabnine prescient ivy-prescient company-prescient
 ;; flycheck yasnippet yasnippet-snippets
+;; lsp-mode lsp-ui lsp-ivy
 
 
 (when (file-exists-p custom-file)

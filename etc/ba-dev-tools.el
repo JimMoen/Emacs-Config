@@ -177,6 +177,79 @@
 (use-package yasnippet-snippets
   :after yasnippet)
 
+;; language-server-protocol (Melpa)
+(use-package lsp-mode
+  :commands
+  (lsp)
+  :hook
+  ((prog-mode . (lambda ()
+                  (unless (or
+                           (derived-mode-p 'emacs-lisp-mode 'lisp-mode)
+                           (derived-mode-p 'makefile-gmake-mode))
+                    (lsp-deferred))))
+   (lsp-mode . lsp-enable-which-key-integration))
+  :custom
+  (lsp-keymap-prefix "C-c l")
+  :init
+  (setq lsp-auto-configure                 t
+        lsp-enable-on-type-formatting      t
+        lsp-completion-enable              t
+        lsp-enable-indentation             t
+        lsp-enable-file-watchers           t
+        lsp-enable-imenu                   t
+        lsp-enable-text-document-color     t
+        lsp-enable-links                   t
+        lsp-enable-xref                    t
+        lsp-enable-snippet                 t
+        lsp-enable-folding                 nil
+        lsp-enable-symbol-highlighting     t
+        lsp-semantic-tokens-enable         t
+        lsp-enable-relative-indentation    nil)
+  :config
+  (setq lsp-log-io                         nil
+        lsp-log-max                        t)
+  (setq lsp-keep-workspace-alive           nil
+        lsp-restart                        'interactive
+        lsp-auto-guess-root                t
+        lsp-enable-dap-auto-configure      t
+        lsp-completion-provider            :none
+        lsp-idle-delay                     0.15
+        lsp-eldoc-enable-hover             t
+        lsp-eldoc-render-all               nil
+        lsp-signature-auto-activate        t              ;; show function signature
+        lsp-signature-doc-lines            2              ;; but dont take up more lines
+        lsp-auto-execute-action            t
+        lsp-signature-render-documentation t)
+
+  ;; https://github.com/emacs-lsp/lsp-mode/issues/2932
+  (defun lsp-restart ()
+    (interactive)
+    (lsp-disconnect)
+    (setq lsp--session nil)
+    (lsp)))
+
+;; lsp-ui (Melpa)
+(use-package lsp-ui
+  :hook
+  (lsp-mode . lsp-ui-mode)
+  :config
+  (setq lsp-headerline-breadcrumb-enable   nil
+        lsp-lens-enable                    nil)
+  (setq lsp-ui-doc-delay                   0.15
+        lsp-ui-doc-enable                  nil
+        lsp-ui-doc-show-with-mouse         nil
+        lsp-ui-doc-show-with-cursor        nil
+        lsp-ui-doc-max-height              50)
+  :bind
+  (("C-c l d"         . lsp-ui-doc-show)
+   (:map lsp-mode-map
+         (("C-c l i"  . lsp-ui-imenu)))))
+
+;; lsp-ivy (Melpa)
+(use-package lsp-ivy
+  :commands
+  (lsp-ivy-workspace-symbol))
+
 
 (provide 'ba-dev-tools)
 
