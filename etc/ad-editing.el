@@ -265,6 +265,11 @@ respectively."
 ;; wgerp (Melpa)
 (use-package wgrep)
 
+;; multiple-cursors (Melpa)
+;; Swiper integration.
+(use-package multiple-cursors)
+
+
 
 (provide 'ad-editing)
 

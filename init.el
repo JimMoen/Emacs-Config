@@ -117,6 +117,7 @@ It will be expanded within `user-emacs-directory'."
 ;; avy
 ;; hideshow rainbow-mode
 ;; smartparens rainbow-delimiters
+;; wgrep multiple-cursors
 
 
 (require 'ae-utils)

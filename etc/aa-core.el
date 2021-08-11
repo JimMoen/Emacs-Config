@@ -82,7 +82,7 @@
       ;; [Site]     None
       avy rainbow-mode smartparens
       rainbow-delimiters
-      wgrep
+      wgrep multiple-cursors
 
       ;; ########## other utils
       ;; [Built-in] calendar
