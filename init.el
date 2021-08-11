@@ -102,6 +102,9 @@ It will be expanded within `user-emacs-directory'."
 ;; Development Tools.
 ;; ########## PACKAGES
 
+(require-all-elisp-in-directory "etc/bc-dev-lang")
+;; For Programming languages
+
 
 (when (file-exists-p custom-file)
   (load custom-file))

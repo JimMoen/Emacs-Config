@@ -210,6 +210,7 @@
                           (mode . java-mode)
                           (mode . haskell-mode)
                           (mode . lisp-mode)
+                          (mode . erlang-mode)
                           (mode . prog-mode)))
            ("GNUs"       (or
                           (mode . message-mode)

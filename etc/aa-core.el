@@ -106,7 +106,12 @@
       projectile counsel-projectile persp-mode
       company company-tabnine prescient ivy-prescient company-prescient
       flycheck yasnippet yasnippet-snippets
-      lsp-mode lsp-ui lsp-ivy))
+      lsp-mode lsp-ui lsp-ivy
+
+      ;; ########## Programming Language Support
+      ;; [Built-in] None
+      ;; [Site]     None
+      erlang))
 
   ;; ########## enable some commands
   (progn (defvar enabled-functions '(dired-find-alternate-file
