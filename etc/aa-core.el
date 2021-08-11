@@ -58,52 +58,52 @@
   :ensure nil
   :config
   (setq auth-source-save-behavior nil)
-  (setq my-packages
-        '(;; ########## core packages
-          ;; [Built-in] None
-          ;; [Site]     None
-          use-package use-package-ensure-system-package
-          no-littering restart-emacs disable-mouse
+  (defvar my-packages
+    '(;; ########## core packages
+      ;; [Built-in] None
+      ;; [Site]     None
+      use-package use-package-ensure-system-package
+      no-littering restart-emacs disable-mouse
 
-          ;; ########## base packages
-          ;; [Built-in] dired autorevert recentf bookmark ibuffer winner
-          ;; [Site]     None
-          ivy counsel swiper which-key
-          dired-single switch-window shackle
+      ;; ########## base packages
+      ;; [Built-in] dired autorevert recentf bookmark ibuffer winner
+      ;; [Site]     None
+      ivy counsel swiper which-key
+      dired-single switch-window shackle
 
-          ;; ########## ui packages
-          ;; [Built-in] None
-          ;; [Site]     None
-          doom-modeline color-theme-sanityinc-tomorrow
+      ;; ########## ui packages
+      ;; [Built-in] None
+      ;; [Site]     None
+      doom-modeline color-theme-sanityinc-tomorrow
 
-          ;; ########## base editing
-          ;; [Built-in] align display-line-numbers delsel
-          ;;            so-long subword whitespace hideshow
-          ;; [Site]     None
-          avy rainbow-mode smartparens
-          rainbow-delimiters
-          wgrep
+      ;; ########## base editing
+      ;; [Built-in] align display-line-numbers delsel
+      ;;            so-long subword whitespace hideshow
+      ;; [Site]     None
+      avy rainbow-mode smartparens
+      rainbow-delimiters
+      wgrep
 
-          ;; ########## other utils
-          ;; [Built-in] calendar
-          ;; [Site]     english-teacher
-          rime youdao-dictionary
-          keychain-environment
-          cal-china-x
-          speed-type pdf-tools info-colors
+      ;; ########## other utils
+      ;; [Built-in] calendar
+      ;; [Site]     english-teacher
+      rime youdao-dictionary
+      keychain-environment
+      cal-china-x
+      speed-type pdf-tools info-colors
 
-          ;; ########## Development Tools
-          ;; [Built-in] None
-          ;; [Site]     None
-          magit projectile counsel-projectile persp-mode
-          company company-tabnine prescient ivy-prescient company-prescient
-          flycheck yasnippet yasnippet-snippets))
+      ;; ########## Development Tools
+      ;; [Built-in] None
+      ;; [Site]     None
+      magit projectile counsel-projectile persp-mode
+      company company-tabnine prescient ivy-prescient company-prescient
+      flycheck yasnippet yasnippet-snippets))
 
   ;; ########## enable some commands
-  (progn (setq enabled-functions '(dired-find-alternate-file
-                                   narrow-to-region
-                                   upcase-region
-                                   downcase-region))
+  (progn (defvar enabled-functions '(dired-find-alternate-file
+                                     narrow-to-region
+                                     upcase-region
+                                     downcase-region))
          (dolist (want-enabled-function enabled-functions)
            (put want-enabled-function 'disabled nil)))
   ;; ########## avoid package.el "custom-set-variable" in custom.el
