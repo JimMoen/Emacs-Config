@@ -86,6 +86,8 @@
 (use-package whitespace
   :ensure nil
   :defer t
+  :custom
+  (whitespace-global-modes '(not magit-log-mode))
   :hook
   (after-init . global-whitespace-mode)
   :config

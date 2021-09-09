@@ -36,6 +36,8 @@
         magit-refs-margin              '(t age-abbreviated   magit-log-margin-width t 18)
         magit-reflog-margin            '(t "%Y-%m-%d %H:%M " magit-log-margin-width t 18)
         magit-log-section-commit-count 50)
+  (put 'magit-log-mode 'magit-log-default-arguments
+       '("--graph" "-n256" "--color" "--decorate"))
   (setq magit-status-initial-section
         '(((unpulled . "..@{upstream}") (status))
           ((untracked) (status))
