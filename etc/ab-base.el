@@ -243,33 +243,34 @@
 ;; switch-window (Melpa)
 (use-package switch-window
   :config
-  (setq switch-window-threshold 2)
+  (setq switch-window-threshold 3)
   (which-key-add-key-based-replacements "C-x 4" "Switch Window")
-  :bind
-  (("C-\" "       . switch-window)
-   ("C-x 1"       . switch-window-then-maximize)
-   ("C-x 2"       . switch-window-then-split-below)
-   ("C-x 3"       . switch-window-then-split-right)
-   ("C-x 4 v"     . switch-window-then-split-vertically)
-   ("C-x 4 h"     . switch-window-then-split-horizontally)
-   ("C-x 0"       . switch-window-then-delete)
-   ("C-x 4 s"     . switch-window-then-swap-buffer)
-   ("C-x 4 d"     . switch-window-then-dired)
-   ("C-x 4 f"     . switch-window-then-find-file)
-   ("C-x 4 R"     . switch-window-then-find-file-read-only)
-   ("C-x 4 b"   . switch-window-then-display-buffer)
-   ("C-x 4 0"     . switch-window-then-kill-buffer))
-  (:map switch-window-extra-map
-        ("i"     . nil)
-        ("p"     . switch-window-mvborder-up)
-        ("k"     . nil)
-        ("n"     . switch-window-mvborder-down)
-        ("j"     . nil)
-        ("b"     . switch-window-mvborder-left)
-        ("l"     . nil)
-        ("f"     . switch-window-mvborder-right)
-        ("a"     . balance-windows)
-        ("SPC"   . switch-window-resume-auto-resize-window)))
+  :general
+  ("C-\'" 'switch-window)
+  (:prefix "C-x"
+           "0"    'switch-window-then-delete
+           "1"    'switch-window-then-maximize
+           "2"    'switch-window-then-split-below
+           "3"    'switch-window-then-split-right
+           "4v"   'switch-window-then-split-vertically
+           "4h"   'switch-window-then-split-horizontally
+           "4s"   'switch-window-then-swap-buffer
+           "4d"   'switch-window-then-dired
+           "4f"   'switch-window-then-find-file
+           "4R"   'switch-window-then-find-file-read-only
+           "4b"   'switch-window-then-display-buffer
+           "40"   'switch-window-then-kill-buffer)
+  (:keymaps 'switch-window-extra-map
+            "i"   'nil
+            "p"   'switch-window-mvborder-up
+            "k"   'nil
+            "n"   'switch-window-mvborder-down
+            "j"   'nil
+            "b"   'switch-window-mvborder-left
+            "l"   'nil
+            "f"   'switch-window-mvborder-right
+            "a"   'balance-windows
+            "SPC" 'switch-window-resume-auto-resize-window))
 
 ;; shackle (Melpa)
 (use-package shackle
