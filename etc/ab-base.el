@@ -28,6 +28,9 @@
 
 ;;; Code:
 
+;; general
+(use-package general)
+
 ;; ivy & counsel & swiper
 ;; ivy (Melpa)
 (use-package ivy

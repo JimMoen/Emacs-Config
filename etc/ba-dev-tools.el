@@ -187,7 +187,7 @@
                            (derived-mode-p 'emacs-lisp-mode 'lisp-mode)
                            (derived-mode-p 'makefile-gmake-mode))
                     (lsp-deferred))))
-   (lsp-mode . lsp-enable-which-key-integration))
+   (lsp-mode . my/lsp-enable-which-key-integration))
   :custom
   (lsp-keymap-prefix "C-c l")
   :init
@@ -226,7 +226,28 @@
     (interactive)
     (lsp-disconnect)
     (setq lsp--session nil)
-    (lsp)))
+    (lsp))
+  (defun my/lsp-enable-which-key-integration (&optional all-modes)
+    "Adds descriptions for `lsp-mode-map' to `which-key-mode' for the current
+active `major-mode', or for all major modes when ALL-MODES is t."
+    (cl-flet ((which-key-fn (if all-modes
+                                'which-key-add-key-based-replacements
+                              (apply-partially 'which-key-add-major-mode-key-based-replacements major-mode))))
+      (apply
+       #'which-key-fn
+       (lsp--prepend-prefix
+        (cl-list*
+         ""    "lsp"
+         "w"   "workspaces"
+         "F"   "folders"
+         "="   "formatting"
+         "T"   "toggle"
+         "g"   "LSP Peek" ;; swap G <=> g
+         "h"   "help"
+         "r"   "refactor"
+         "a"   "code actions"
+         "G"   "LSP Goto"
+         lsp--binding-descriptions))))))
 
 ;; lsp-ui (Melpa)
 (use-package lsp-ui
@@ -240,10 +261,27 @@
         lsp-ui-doc-show-with-mouse         nil
         lsp-ui-doc-show-with-cursor        nil
         lsp-ui-doc-max-height              50)
-  :bind
-  (("C-c l d"         . lsp-ui-doc-show)
-   (:map lsp-mode-map
-         (("C-c l i"  . lsp-ui-imenu)))))
+  :general
+  (:prefix
+   lsp-keymap-prefix
+   :keymaps
+   'lsp-mode-map
+   "i"  '(lsp-ui-imenu :wk "lsp-ui-imenu")
+   "d"  '(lsp-ui-doc-show :wk "lsp-ui-doc-show")
+
+   "gg" 'lsp-ui-peek-find-definitions
+   "gi" 'lsp-ui-peek-find-implementation
+   "gr" 'lsp-ui-peek-find-references
+   "gs" 'lsp-ui-peek-find-workspace-symbol
+
+   "Ga" 'xref-find-apropos
+   "Gd" 'lsp-find-declaration
+   "Ge" 'lsp-treemacs-errors-list
+   "Gg" 'lsp-find-definition
+   "Gh" 'lsp-treemacs-call-hierarchy
+   "Gi" 'lsp-find-implementation
+   "Gr" 'lsp-find-references
+   "Gt" 'lsp-find-type-definition))
 
 ;; lsp-ivy (Melpa)
 (use-package lsp-ivy

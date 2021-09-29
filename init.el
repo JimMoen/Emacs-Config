@@ -95,6 +95,7 @@ It will be expanded within `user-emacs-directory'."
 ;; For better Emacs Framework all the time.
 
 ;; ########## PACKAGES
+;; general
 ;; ivy counsel swiper
 ;; dired dired-single autorevert recentf bookmark
 ;; PERSONAL-KEYBINDINGS which-key

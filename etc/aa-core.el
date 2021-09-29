@@ -68,7 +68,7 @@
       ;; ########## base packages
       ;; [Built-in] dired autorevert recentf bookmark ibuffer winner
       ;; [Site]     None
-      ivy counsel swiper which-key
+      general ivy counsel swiper which-key
       dired-single switch-window shackle
 
       ;; ########## ui packages
