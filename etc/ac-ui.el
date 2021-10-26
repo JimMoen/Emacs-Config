@@ -57,6 +57,43 @@
          (dolist (frame-set-var JimMoen/frame-settings)
            (push frame-set-var default-frame-alist))))
 
+;; Dashboard (Melpa)
+(use-package dashboard
+  :init
+  (setq initial-buffer-choice (lambda () (get-buffer dashboard-buffer-name)))
+  (add-to-list 'after-make-frame-functions #'dashboard-in-new-frame)
+  (use-package dashboard-ls)
+  :config
+  (setq dashboard-buffer-name "*Dashboard*")
+  (defun new-dashboard-with-main-persp ()
+    "Jump to the dashboard buffer, if doesn't exists create one."
+    (interactive)
+    (goto-default-persp)
+    (switch-to-buffer dashboard-buffer-name)
+    (delete-other-windows)
+    (dashboard-mode)
+    (dashboard-insert-startupify-lists)
+    (dashboard-refresh-buffer))
+
+  (defun dashboard-in-new-frame (&optional frame)
+    (interactive)
+    (with-selected-frame (or frame (selected-frame))
+      (new-dashboard-with-main-persp)))
+
+  (setq dashboard-set-navigator      t
+        dashboard-set-file-icons     t
+        dashboard-set-heading-icons  t)
+  (setq dashboard-items '((recents        . 10)
+                          (projects       . 10)
+                          (ls-directories . 5)
+                          (ls-files       . 5)))
+  (setq dashboard-projects-switch-function 'ivy-persp-switch-project-action)
+
+  (dashboard-setup-startup-hook)
+  :general
+  ("<f9>"  #'new-dashboard-with-main-persp
+   "C-c d" #'new-dashboard-with-main-persp))
+
 ;; Doom Modeline (Melpa)
 (use-package doom-modeline
   :hook
@@ -91,6 +128,7 @@
   (setq kaolin-themes-git-gutter-solid t)
   ;; (load-theme 'kaolin-dark t)
   (load-theme 'kaolin-galaxy t))
+
 
 (provide 'ac-ui)
 

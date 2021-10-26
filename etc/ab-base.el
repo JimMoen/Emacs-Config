@@ -182,7 +182,8 @@
                           (name . "^\\*Messages\\*$"  )
                           (name . "^\\*Backtrace\\*$" )
                           (name . "^\\*Packages\\*")
-                          (name . "^\\*Calendar\\*")))
+                          (name . "^\\*Calendar\\*")
+                          (mode . dashboard-mode)))
            ("Info Out"   (or
                           (name . "^\\*compilation\\*$")
                           (name . "\\*Compile-Log\\*")

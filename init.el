@@ -106,6 +106,7 @@ It will be expanded within `user-emacs-directory'."
 ;; For More Beautiful Emacs.
 
 ;; ########## PACKAGES
+;; dashboard dashboard-ls
 ;; doom-modeline
 ;; kaolin-themes
 

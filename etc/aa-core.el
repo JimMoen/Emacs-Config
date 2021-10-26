@@ -74,6 +74,7 @@
       ;; ########## ui packages
       ;; [Built-in] None
       ;; [Site]     None
+      dashboard dashboard-ls
       doom-modeline kaolin-themes
 
       ;; ########## base editing
