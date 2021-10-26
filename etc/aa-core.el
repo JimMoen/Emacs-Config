@@ -74,7 +74,7 @@
       ;; ########## ui packages
       ;; [Built-in] None
       ;; [Site]     None
-      doom-modeline color-theme-sanityinc-tomorrow
+      doom-modeline kaolin-themes
 
       ;; ########## base editing
       ;; [Built-in] align display-line-numbers delsel

@@ -52,8 +52,8 @@
   (setq truncate-partial-width-windows t)                 ;; Disable line truncate
   (setq inhibit-compacting-font-caches t)                 ;; Don’t compact font caches during GC.
   (defalias 'yes-or-no-p 'y-or-n-p)                       ;; Use y-or-n instead of yes-or-no
-  (progn (setq JimMoen/frame-settings '((font . "等距更纱黑体 SC-12")
-                                        (alpha . (88 83))))
+  (progn (setq JimMoen/frame-settings '((font . "Sarasa Mono SC-12")
+                                        (alpha . (95 93))))
          (dolist (frame-set-var JimMoen/frame-settings)
            (push frame-set-var default-frame-alist))))
 
@@ -76,12 +76,21 @@
    all-the-icons-color-icons                nil
    doom-modeline-display-default-persp-name t))
 
-;; color-theme-sanityinc-tomorrow (Melpa)
-(use-package color-theme-sanityinc-tomorrow
-  :init
-  (setq custom-safe-themes t)
-  (load-theme 'sanityinc-tomorrow-night))
-
+;; kaolin-themes (Melpa)
+(use-package kaolin-themes
+  :config
+  ;; If t, enable italic style in comments.
+  (setq kaolin-themes-italic-comments t)
+  ;; When t, will display colored hl-line style instead monochrome.
+  (setq kaolin-themes-hl-line-colored t)
+  ;; Enable distinct background for fringe and line numbers.
+  (setq kaolin-themes-distinct-fringe t)
+  ;; Enable distinct colors for company popup scrollbar.
+  (setq kaolin-themes-distinct-company-scrollbar t)
+  ;; Show git-gutter indicators as solid lines
+  (setq kaolin-themes-git-gutter-solid t)
+  ;; (load-theme 'kaolin-dark t)
+  (load-theme 'kaolin-galaxy t))
 
 (provide 'ac-ui)
 

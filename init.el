@@ -106,7 +106,7 @@ It will be expanded within `user-emacs-directory'."
 
 ;; ########## PACKAGES
 ;; doom-modeline
-;; color-theme-sanityinc-tomorrow
+;; kaolin-themes
 
 
 (require 'ad-editing)
