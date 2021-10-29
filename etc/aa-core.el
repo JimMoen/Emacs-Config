@@ -30,9 +30,14 @@
 
 ;; Initialize Package Management System
 ;; Package Archives
-(setq package-archives '(("gnu" . "http://mirrors.ustc.edu.cn/elpa/gnu/")
-                         ("melpa" . "http://mirrors.ustc.edu.cn/elpa/melpa/")
-                         ("org" . "http://mirrors.ustc.edu.cn/elpa/org/")))
+;; (setq package-archives '(("gnu" . "https://elpa.zilongshanren.com/gnu/")
+;;                          ("melpa" . "https://elpa.zilongshanren.com/melpa/")
+;;                          ("org" . "https://elpa.zilongshanren.com/org/")))
+(setq package-archives
+      '(("melpa" . "https://raw.githubusercontent.com/d12frosted/elpa-mirror/master/melpa/")
+        ("org"   . "https://raw.githubusercontent.com/d12frosted/elpa-mirror/master/org/")
+        ("gnu"   . "https://raw.githubusercontent.com/d12frosted/elpa-mirror/master/gnu/")))
+
 
 ;; Initialize packages
 (unless (bound-and-true-p package--initialized)             ;; Avoid warnings in 27
@@ -88,7 +93,7 @@
       ;; ########## other utils
       ;; [Built-in] calendar
       ;; [Site]     english-teacher
-      rime youdao-dictionary
+      rime youdao-dictionary use-proxy
       keychain-environment
       cal-china-x
       speed-type pdf-tools info-colors

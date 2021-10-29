@@ -65,6 +65,13 @@
    ("C-x y r" . 'youdao-dictionary-search-and-replace)
    ("C-x y i" . 'youdao-dictionary-search-from-input)))
 
+;; http(s) and socks proxy
+;; use-praxy (Melpa)
+(use-package use-proxy
+  :config
+  (setq use-proxy-https-proxy "127.0.0.1:18888")
+  (setq use-proxy-http-proxy  "127.0.0.1:18888"))
+
 ;; english-teacher (Site Package)
 ;; For English sentence translating.
 ;; https://github.com/loyalpartner/english-teacher.el
