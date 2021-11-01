@@ -120,6 +120,7 @@ It will be expanded within `user-emacs-directory'."
 ;; hideshow rainbow-mode
 ;; smartparens rainbow-delimiters
 ;; wgrep multiple-cursors
+;; editorconfig
 
 
 (require 'ae-utils)

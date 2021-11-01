@@ -89,6 +89,7 @@
       avy rainbow-mode smartparens
       rainbow-delimiters
       wgrep multiple-cursors
+      editorconfig
 
       ;; ########## other utils
       ;; [Built-in] calendar

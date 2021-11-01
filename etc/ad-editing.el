@@ -270,6 +270,10 @@ respectively."
 ;; Swiper integration.
 (use-package multiple-cursors)
 
+;; editorconfig (Melpa)
+(use-package editorconfig
+  :config
+  (editorconfig-mode))
 
 
 (provide 'ad-editing)
