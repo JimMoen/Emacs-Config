@@ -212,7 +212,6 @@ respectively."
         ("C-c {"   . my/sp-wrap-with-braces)
         ("C-c '"   . my/sp-wrap-with-single-quotes)
         ("C-c \""  . my/sp-wrap-with-double-quotes)
-        ("C-c _"   . my/sp-wrap-with-underscores)
         ("C-c `"   . my/sp-wrap-with-back-quotes)
 
         ("M-["     . sp-backward-unwrap-sexp)
