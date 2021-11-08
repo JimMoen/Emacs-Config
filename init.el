@@ -86,60 +86,21 @@ It will be expanded within `user-emacs-directory'."
 ;; Hack Built-in 'package-selected-packages'
 ;; Enable some disabled features.
 
-;; ########## PACKAGES
-;; use-package-ensure-system-package
-;; no-littering restart-emacs disable-mouse
-
-
 (require 'ab-base)
 ;; For better Emacs Framework all the time.
-
-;; ########## PACKAGES
-;; general
-;; ivy counsel swiper
-;; dired dired-single autorevert recentf bookmark
-;; PERSONAL-KEYBINDINGS which-key
-;; Ibuffer switch-window shackle winner(Built-in)
-
 
 (require 'ac-ui)
 ;; For More Beautiful Emacs.
 
-;; ########## PACKAGES
-;; dashboard dashboard-ls
-;; doom-modeline
-;; kaolin-themes
-
-
 (require 'ad-editing)
 ;; For Better editing
 
-;; ########## PACKAGES
-;; EMACS-BUILT-IN-INDENT-SETTINGS align
-;; avy
-;; hideshow rainbow-mode
-;; smartparens rainbow-delimiters
-;; wgrep multiple-cursors
-;; editorconfig
-
-
 (require 'ae-utils)
 ;; Some Useful packages.
-;; ########## PACKAGES
-;; rime youdao-dictionary english-teacher(Site)
-;; keychain-environment
-;; cal-china-x
-;; speed-type pdf-tools info-colors
-
 
 (require 'ba-dev-tools)
 ;; Development Tools.
 ;; ########## PACKAGES
-;; magit magit-delta diff-hl
-;; projectile counsel-projectile persp-mode
-;; company company-tabnine prescient ivy-prescient company-prescient
-;; flycheck yasnippet yasnippet-snippets
-;; lsp-mode lsp-ui lsp-ivy
 
 
 (when (file-exists-p custom-file)
