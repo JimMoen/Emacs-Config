@@ -102,7 +102,8 @@
       ;; ########## Development Tools
       ;; [Built-in] None
       ;; [Site]     None
-      magit projectile counsel-projectile persp-mode
+      magit magit-delta diff-hl
+      projectile counsel-projectile persp-mode
       company company-tabnine prescient ivy-prescient company-prescient
       flycheck yasnippet yasnippet-snippets
       lsp-mode lsp-ui lsp-ivy))

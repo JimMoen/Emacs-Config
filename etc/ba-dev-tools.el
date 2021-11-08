@@ -31,13 +31,32 @@
 ;; VCS-Git
 ;; Magit (Melpa)
 (use-package magit
+  :init
+  (use-package magit-delta
+    :ensure-system-package
+    (delta . git-delta)
+    ;; (`command-name` . `package-name`)
+    :hook
+    (magit-mode . magit-delta-mode))
   :config
   (setq magit-status-margin            '(t age-abbreviated   magit-log-margin-width t 18)
         magit-refs-margin              '(t age-abbreviated   magit-log-margin-width t 18)
         magit-reflog-margin            '(t "%Y-%m-%d %H:%M " magit-log-margin-width t 18)
         magit-log-section-commit-count 50)
+
+  (setq magit-blame-styles
+        '((margin
+           (margin-format "%C %-15a%f" "  %s" "    %H")
+           (margin-width . 50)
+           (margin-face . magit-blame-margin)
+           (margin-body-face . magit-blame-dimmed)
+           (show-message . t))
+          (headings
+           (heading-format . "  %C %-25a %-65s %H\n"))))
+
   (put 'magit-log-mode 'magit-log-default-arguments
        '("--graph" "-n256" "--color" "--decorate"))
+
   (setq magit-status-initial-section
         '(((unpulled . "..@{upstream}") (status))
           ((untracked) (status))
@@ -62,9 +81,20 @@ on the current line, if any."
                      ""))
        arg)))
   :general
-  ("C-x g" 'magit-status)
+  ("C-x g" 'magit-status
+   "C-x G" 'magit-blame-addition)
+  ;; (:keymaps 'magit-mode-map)
   (:keymaps 'git-rebase-mode-map
             "h" 'my/change-commit-author))
+
+;; diff unstaged
+;; diff-hl (Melpa)
+(use-package diff-hl
+  :hook
+  (after-init . global-diff-hl-mode)
+  :init
+  (setq diff-hl-flydiff-mode t
+        diff-hl-margin-mode  t))
 
 ;; Project Management
 ;; projectile (Melpa)

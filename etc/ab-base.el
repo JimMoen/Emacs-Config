@@ -286,6 +286,8 @@
                    (comint-mode                :select t   :align t   :size 0.4)
                    (grep-mode                  :select t   :align t)
                    (rg-mode                    :select t   :align t)
+                   ("*diff-hl*"                :select nil :align below :size 0.40)
+                   ("*vc-diff*"                :select t   :align below :size 0.40)
                    ("*bm-bookmarks*"           :select t   :align t)
                    ("*Backtrace*"              :select t   :align t   :size 15)
                    ("*package update results*" :select nil :align t   :size 10)

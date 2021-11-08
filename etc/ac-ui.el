@@ -103,6 +103,7 @@
   :defer t
   :config
   (setq
+   doom-modeline-vcs-max-length             30
    doom-modeline-mode-height                20
    doom-modeline-bar-width                  3
    doom-modeline-window-width-limit         fill-column
