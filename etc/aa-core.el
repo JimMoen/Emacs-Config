@@ -111,6 +111,7 @@
       ;; ########## Programming Language Support
       ;; [Built-in] None
       ;; [Site]     None
+      yaml-mode yaml-imenu
       erlang))
 
   ;; ########## enable some commands
