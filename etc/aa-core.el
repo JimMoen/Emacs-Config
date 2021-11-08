@@ -109,10 +109,10 @@
       lsp-mode lsp-ui lsp-ivy
 
       ;; ########## Programming Language Support
-      ;; [Built-in] None
+      ;; [Built-in] python
       ;; [Site]     None
       yaml-mode yaml-imenu
-      erlang))
+      erlang lsp-pyright))
 
   ;; ########## enable some commands
   (progn (defvar enabled-functions '(dired-find-alternate-file
