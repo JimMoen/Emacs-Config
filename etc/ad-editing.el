@@ -127,6 +127,7 @@
    ("M-g M-g" . avy-goto-char-2)
    ("M-g s"   . avy-goto-whitespace-end)
    ("M-g M-a" . avy-goto-line)
+   ("M-g M-l" . goto-line)
    ("M-g M-e" . avy-goto-end-of-line)
    ("M-g w"   . avy-goto-word-1)))
 
