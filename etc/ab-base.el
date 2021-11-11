@@ -70,6 +70,13 @@
   (:map minibuffer-local-map
         ("C-r" . counsel-minibuffer-history)))
 
+;; counsel-tramp (Melpa)
+(use-package counsel-tramp
+  :config
+  (setq tramp-default-method "sshx")
+  :general
+  ("C-c S" 'counsel-tramp))
+
 ;; swiper (Melpa)
 (use-package swiper
   :bind
