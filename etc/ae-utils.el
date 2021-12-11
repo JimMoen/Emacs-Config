@@ -89,13 +89,16 @@
   :bind
   (("C-x y f" . english-teacher-follow-mode)))
 
-;; keychain-environment (Melpa)
-;; To use system keychain.
+;; ssh-agency (Melpa)
+;; To use gnome-keyring.
 ;; SSH connect required.
-(use-package keychain-environment
-  :demand t
-  :hook
-  (after-init . keychain-refresh-environment))
+(use-package ssh-agency
+  :defer t)
+
+;; ssh-config-mode (Melpa)
+;; major mode for ssh config file
+(use-package ssh-config-mode
+  :defer t)
 
 ;; Calendar Settings
 ;; calendar (Built-in)
