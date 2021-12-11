@@ -96,6 +96,10 @@ on the current line, if any."
   (setq diff-hl-flydiff-mode t
         diff-hl-margin-mode  t))
 
+;; git historic version view
+;; git-timemachine (Melpa)
+(use-package git-timemachine)
+
 ;; Project Management
 ;; projectile (Melpa)
 (use-package projectile

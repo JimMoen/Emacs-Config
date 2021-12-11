@@ -101,7 +101,7 @@
       ;; ########## Development Tools
       ;; [Built-in] None
       ;; [Site]     None
-      magit magit-delta diff-hl
+      magit magit-delta diff-hl git-timemachine
       projectile counsel-projectile persp-mode
       company company-tabnine prescient ivy-prescient company-prescient
       flycheck yasnippet yasnippet-snippets
