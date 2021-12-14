@@ -18,3 +18,6 @@
 
 # Emacs custom files
 /etc/custom.el
+
+# ignore emacs native comp files
+/eln-cache/

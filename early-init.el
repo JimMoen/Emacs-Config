@@ -49,4 +49,12 @@
                               (time-subtract after-init-time before-init-time)))
                      gcs-done)))
 
+(when (and
+       (fboundp 'native-comp-available-p)
+       (native-comp-available-p))
+  (progn
+    (setq native-comp-async-report-warnings-errors nil)
+    (setq comp-deferred-compilation t)
+    (add-to-list 'native-comp-eln-load-path (expand-file-name "eln-cache/" user-emacs-directory))
+    (setq package-native-compile t)))
 ;;; early-init.el ends here
