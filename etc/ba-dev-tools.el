@@ -142,7 +142,9 @@ on the current line, if any."
   (after-init . global-company-mode)
   (emacs-lisp-mode . (lambda ()
                        (require 'company-elisp)
-                       (push 'company-elisp company-backends)))
+                       (if (and (listp company-backends) (member 'company-elisp company-backends))
+                           company-backends
+                         (push 'company-elisp company-backends))))
   :config
   (setq company-idle-delay                0.15
         company-minimum-prefix-length     1
