@@ -39,10 +39,14 @@
     :hook
     (magit-mode . magit-delta-mode))
   :config
-  (setq magit-status-margin            '(t age-abbreviated   magit-log-margin-width t 18)
-        magit-refs-margin              '(t age-abbreviated   magit-log-margin-width t 18)
-        magit-reflog-margin            '(t "%Y-%m-%d %H:%M " magit-log-margin-width t 18)
-        magit-log-section-commit-count 50)
+  (setq magit-status-margin                '(t age-abbreviated   magit-log-margin-width t 25)
+        magit-refs-margin                  '(t age-abbreviated   magit-log-margin-width t 25)
+        magit-reflog-margin                '(t "%Y-%m-%d %H:%M " magit-log-margin-width t 25)
+        magit-log-margin                   '(t age-abbreviated   magit-log-margin-width t 25)
+        magit-cherry-margin                '(t age-abbreviated   magit-log-margin-width t 25)
+        magit-section-visibility-indicator '("…" . t)
+        magit-auto-revert-mode             t
+        magit-log-section-commit-count     75)
 
   (setq magit-blame-styles
         '((margin
