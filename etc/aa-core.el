@@ -30,14 +30,10 @@
 
 ;; Initialize Package Management System
 ;; Package Archives
-;; (setq package-archives '(("gnu" . "https://elpa.zilongshanren.com/gnu/")
-;;                          ("melpa" . "https://elpa.zilongshanren.com/melpa/")
-;;                          ("org" . "https://elpa.zilongshanren.com/org/")))
 (setq package-archives
-      '(("melpa" . "https://raw.githubusercontent.com/d12frosted/elpa-mirror/master/melpa/")
-        ("org"   . "https://raw.githubusercontent.com/d12frosted/elpa-mirror/master/org/")
-        ("gnu"   . "https://raw.githubusercontent.com/d12frosted/elpa-mirror/master/gnu/")))
-
+      '(("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+        ("org"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+        ("gnu"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
 
 ;; Initialize packages
 (unless (bound-and-true-p package--initialized)             ;; Avoid warnings in 27
