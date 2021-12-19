@@ -127,6 +127,34 @@ on the current line, if any."
 ;; persp-mode to managment projcet buffers (Melpa)
 (require-all-elisp-in-directory "etc/editor-layouts")
 
+;; file structure tree
+;; treemacs (Melpa)
+(use-package treemacs
+  :config
+  (use-package treemacs-projectile
+    :after (treemacs projectile))
+
+  (use-package treemacs-icons-dired
+    :hook
+    (dired-mode . treemacs-icons-dired-enable-once)
+    (treemacs-icons-dired-mode . (lambda ()
+                                   (treemacs-resize-icons 17))))
+  ;; do not install treemacs-all-the-icons, it may cause indent issues.
+
+  (use-package treemacs-magit
+    :after (treemacs magit))
+
+  ;; treemacs-perspective if you use perspective.el vs. persp-mode
+  (use-package treemacs-persp
+    :after (treemacs persp-mode) ;; persp-mode
+    :config (treemacs-set-scope-type 'Perspectives))
+
+  (setq treemacs-width 40)
+
+  :general
+  (:prefix "C-x"
+           "4t" 'treemacs))
+
 ;; company-mode (Melpa)
 ;; complete framework
 (use-package company
@@ -315,6 +343,8 @@ active `major-mode', or for all major modes when ALL-MODES is t."
   :hook
   (lsp-mode . lsp-ui-mode)
   :config
+  (use-package lsp-treemacs
+    :after (treemacs lsp-mode))
   (setq lsp-headerline-breadcrumb-enable   nil
         lsp-lens-enable                    nil)
   (setq lsp-ui-doc-delay                   0.15

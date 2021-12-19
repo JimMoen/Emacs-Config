@@ -99,9 +99,10 @@
       ;; [Site]     None
       magit magit-delta diff-hl git-timemachine
       projectile counsel-projectile persp-mode
+      treemacs treemacs-projectile treemacs-icons-dired treemacs-magit treemacs-persp
       company company-tabnine prescient ivy-prescient company-prescient
       flycheck yasnippet yasnippet-snippets
-      lsp-mode lsp-ui lsp-ivy
+      lsp-mode lsp-ui lsp-ivy lsp-treemacs
 
       ;; ########## Programming Language Support
       ;; [Built-in] python
