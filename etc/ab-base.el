@@ -145,7 +145,8 @@
   :bind
   (("C-h"     . backward-delete-char-untabify)
    ("C-w"     . backward-kill-word)
-   ("C-c M-w" . kill-region)
+   ("M-w"     . kill-ring-save)
+   ("M-W"     . kill-region)
    ("C-x h"   . help-command)
    ("C-x w h" . mark-whole-buffer)
    ("M-g g"   . nil)
