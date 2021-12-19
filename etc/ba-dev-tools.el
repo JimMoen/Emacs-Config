@@ -267,14 +267,26 @@ on the current line, if any."
   :after yasnippet)
 
 ;; language-server-protocol (Melpa)
+(defvar my/disabled-lsp-major-modes
+  '(emacs-lisp-mode
+    lisp-mode
+    makefile-gmake-mode
+    pkgbuild-mode))
+
+(defun disable-lsp-in-modes (select-major-mode)
+  "Add the `SELECT-MAJOR-MODE' in the `my/disabled-lsp-major-modes' .
+If already in it, do nothing."
+  (if (member major-mode my/disabled-lsp-major-modes)
+      my/disabled-lsp-major-modes
+    (push select-major-mode my/disabled-lsp-major-modes)))
+
 (use-package lsp-mode
   :commands
   (lsp)
   :hook
   ((prog-mode . (lambda ()
-                  (unless (or
-                           (derived-mode-p 'emacs-lisp-mode 'lisp-mode)
-                           (derived-mode-p 'makefile-gmake-mode))
+                  (unless
+                      (apply 'derived-mode-p my/disabled-lsp-major-modes)
                     (lsp-deferred))))
    (lsp-mode . my/lsp-enable-which-key-integration))
   :custom
