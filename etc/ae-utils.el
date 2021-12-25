@@ -141,6 +141,11 @@
 (use-package i3wm-config-mode
   :defer t)
 
+;; systemd (Melpa)
+;; systemd unit editing major mode
+(use-package systemd
+  :defer t)
+
 ;; Other Useful Applications
 ;; speed-type (Melpa)
 (use-package speed-type

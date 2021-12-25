@@ -92,7 +92,8 @@
       ;; [Site]     english-teacher
       rime youdao-dictionary use-proxy
       ssh-agency ssh-config-mode cal-china-x
-      i3wm-config-mode speed-type pdf-tools info-colors
+      i3wm-config-mode systemd
+      speed-type pdf-tools info-colors
 
       ;; ########## Development Tools
       ;; [Built-in] None
