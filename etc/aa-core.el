@@ -69,7 +69,7 @@
       ;; ########## base packages
       ;; [Built-in] dired autorevert recentf bookmark ibuffer winner
       ;; [Site]     None
-      general ivy counsel swiper counsel-tramp
+      general ivy ivy-rich all-the-icons-ivy-rich counsel swiper counsel-tramp
       which-key ivy-dired-history dired-single switch-window shackle
 
       ;; ########## ui packages

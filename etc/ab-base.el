@@ -31,6 +31,24 @@
 ;; general
 (use-package general)
 
+;; The Keybindings and Key Hint
+;; #### Personal Settings ####
+;; I use C-h to delete a char and C-w to delete a word just like in terminal.
+;; Use 'C-M-g'   avy-goto-char-in-line
+;; Use 'M-g M-g' avy-goto-char-2
+;; See ./etc/ad-editing.el: avy
+(use-package emacs
+  :ensure nil
+  :general
+  ("C-h"     'backward-delete-char-untabify
+   "C-w"     'backward-kill-word
+   "M-w"     'kill-ring-save
+   "M-W"     'kill-region
+   "C-x h"   'help-command
+   "C-x w h" 'mark-whole-buffer
+   "M-g g"   'nil
+   "M-g M-g" 'nil))
+
 ;; ivy & counsel & swiper
 ;; ivy (Melpa)
 (use-package ivy
@@ -39,6 +57,19 @@
   :config
   (setq ivy-use-virtual-buffers      t
         enable-recursive-minibuffers nil)
+  (use-package ivy-rich)
+  (use-package all-the-icons-ivy-rich
+    :after (all-the-icons ivy ivy-rich projectile counsel-projectile persp-mode)
+    :hook
+    (persp-mode                  . all-the-icons-ivy-rich-mode)
+    (all-the-icons-ivy-rich-mode . ivy-rich-mode)
+    :config
+    (setq all-the-icons-ivy-rich-icon       t
+          all-the-icons-ivy-rich-color-icon t
+          all-the-icons-ivy-rich-icon-size  0.9
+          all-the-icons-ivy-rich-project    t
+          inhibit-compacting-font-caches    t))
+
   :bind
   ;; Use persp-mode to switch/kill buffer in ONE project.
   ;; See ./etc/ab-base.el: persp-mode
@@ -58,6 +89,13 @@
         (list "rg" "-M" "240" "--with-filename" "--no-heading" "--line-number" "--color" "never" "%s"
               "-g" "!site-lisp" "-g" "!elpa" "-g" "!var"  ;; ignore site-lisp/ elpa/ var/ in user-emacs-directory
               ))
+  (use-package emacs
+    :after (ivy-rich)
+    :general
+    (:prefix "C-x h"
+             "v" 'counsel-describe-variable
+             "f" 'counsel-describe-function
+             "o" 'counsel-describe-symbol))
   :bind
   (("M-x"       . counsel-M-x)
    ("C-x C-f"   . counsel-find-file)
@@ -137,25 +175,6 @@
   :ensure nil
   :config
   (setq bookmark-save-flag     t))
-
-
-;; The Keybindings and Key Hint
-;; #### Personal Settings ####
-;; I use C-h to delete a char and C-w to delete a word just like in terminal.
-;; Use 'C-M-g'   avy-goto-char-in-line
-;; Use 'M-g M-g' avy-goto-char-2
-;; See ./etc/ad-editing.el: avy
-(use-package emacs
-  :ensure nil
-  :bind
-  (("C-h"     . backward-delete-char-untabify)
-   ("C-w"     . backward-kill-word)
-   ("M-w"     . kill-ring-save)
-   ("M-W"     . kill-region)
-   ("C-x h"   . help-command)
-   ("C-x w h" . mark-whole-buffer)
-   ("M-g g"   . nil)
-   ("M-g M-g" . nil)))
 
 ;; which-key (Melpa)
 (use-package which-key
