@@ -146,6 +146,11 @@
 (use-package systemd
   :defer t)
 
+;; pkgbuild-mode (Melpa)
+;; Arch Linux PKGBUILD Scripts major mode
+(use-package pkgbuild-mode
+  :defer t)
+
 ;; Other Useful Applications
 ;; speed-type (Melpa)
 (use-package speed-type
