@@ -57,6 +57,18 @@
          (dolist (frame-set-var JimMoen/frame-settings)
            (push frame-set-var default-frame-alist))))
 
+;; all-the-icons (Melpa)
+(use-package all-the-icons
+  :config
+  (setq all-the-icons-scale-factor            0.95
+        all-the-icons-material-scale-factor   1.00
+        all-the-icons-fileicon-scale-factor   0.80
+        all-the-icons-wicon-scale-factor      0.65
+        all-the-icons-octicon-scale-factor    0.95
+        all-the-icons-faicon-scale-factor     0.95
+        all-the-icons-alltheicon-scale-factor 1.00)
+  (setq all-the-icons-color-icons             t))
+
 ;; Dashboard (Melpa)
 (use-package dashboard
   :init
@@ -98,8 +110,6 @@
 (use-package doom-modeline
   :hook
   (after-init . doom-modeline-mode)
-  :init
-  (setq doom-modeline-icon nil)            ;; Do not use icon
   :defer t
   :config
   (setq
@@ -111,7 +121,6 @@
    doom-modeline-github                     t
    doom-modeline-github-interval            (* 30 60)
    doom-modeline-project-detection          'projectile
-   all-the-icons-color-icons                nil
    doom-modeline-display-default-persp-name t))
 
 ;; kaolin-themes (Melpa)
