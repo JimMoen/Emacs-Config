@@ -70,7 +70,7 @@
       ;; [Built-in] dired autorevert recentf bookmark ibuffer winner
       ;; [Site]     None
       general ivy counsel swiper counsel-tramp
-      which-key dired-single switch-window shackle
+      which-key ivy-dired-history dired-single switch-window shackle
 
       ;; ########## ui packages
       ;; [Built-in] None

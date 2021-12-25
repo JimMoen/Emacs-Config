@@ -90,7 +90,12 @@
   :ensure nil
   :custom
   (dired-auto-revert-buffer t)
-  (dired-listing-switches "-Afhlv"))
+  (dired-listing-switches "-Afhlv")
+  :config
+  (use-package ivy-dired-history
+    :general
+    (:keymaps 'dired-mode-map
+              "," 'dired)))
 
 ;; Dired-Single (Melpa)
 (use-package dired-single
