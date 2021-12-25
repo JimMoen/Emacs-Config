@@ -166,6 +166,8 @@ on the current line, if any."
                             company-files
                             company-ispell
                             company-capf)))
+  (use-package company-box
+    :hook (company-mode . company-box-mode))
   :hook
   (after-init . global-company-mode)
   (emacs-lisp-mode . (lambda ()
