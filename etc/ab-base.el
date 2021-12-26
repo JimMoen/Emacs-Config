@@ -222,18 +222,17 @@
                           (mode . comint)))
            ("Dired"      (or
                           (mode . dired-mode)))
-           ("Magit-main" (or
-                          (name . "^magit:")))
-           ("Magit-etc"  (or
-                          (name . "^magit-")))
            ("Text"       (or
                           (mode . org-mode)
                           (mode . markdown)
                           (mode . text-mode)))
            ("Config"     (or
                           (mode . yaml-mode)
-                          (mode . conf-mode)))
+                          (mode . ssh-config-mode)
+                          (derived-mode . conf-mode)
+                          (derived-mode . conf-space-mode)))
            ("Program"    (or
+                          (derived-mode . prog-mode)
                           (mode . emacs-lisp-mode)
                           (mode . python-mode)
                           (mode . html-mode)
@@ -242,16 +241,7 @@
                           (mode . java-mode)
                           (mode . haskell-mode)
                           (mode . lisp-mode)
-                          (mode . erlang-mode)
-                          (mode . prog-mode)))
-           ("GNUs"       (or
-                          (mode . message-mode)
-                          (mode . bbdb-mode)
-                          (mode . gnus-group-mode)
-                          (mode . gnus-summary-mode)
-                          (mode . gnus-article-mode)
-                          (name . "^\\.bbdb$")
-                          (name . "^\\.newsrc-dribble")))
+                          (mode . erlang-mode)))
            ("Help"       (or
                           (name . "^\\*Help\\*$")
                           (name . "^\\*Apropos\\*$")
@@ -261,6 +251,20 @@
            ("Youdao"     (or
                           (name . "^\\*Youdao Dictionary\\*$")
                           (mode . youdao-dictionary-mode)))
+           ("Magit-main" (and
+                          (name . "^magit:")
+                          (mode . magit-mode)))
+           ("Magit-etc"  (and
+                          (name . "^magit-")
+                          (derived-mode . magit-mode)))
+           ("GNUs"       (or
+                          (mode . message-mode)
+                          (mode . bbdb-mode)
+                          (mode . gnus-group-mode)
+                          (mode . gnus-summary-mode)
+                          (mode . gnus-article-mode)
+                          (name . "^\\.bbdb$")
+                          (name . "^\\.newsrc-dribble")))
            ("Custom"     (or
                           (name . "^\\*Customize")
                           (mode . custom-mode))))))
