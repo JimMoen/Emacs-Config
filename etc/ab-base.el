@@ -266,6 +266,11 @@
                           (mode . custom-mode))))))
   (setq ibuffer-show-empty-filter-groups   nil
         ibuffer-default-sorting-mode       'filename/process)
+  (use-package all-the-icons-ibuffer
+    :after
+    (all-the-icons)
+    :hook
+    (ibuffer-mode . all-the-icons-ibuffer-mode))
   :bind
   ;; This command is for viewing all buffers.
   ;; Viewing specify buffers in current project by "projectile-ibuffer"
