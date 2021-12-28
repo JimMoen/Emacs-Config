@@ -70,7 +70,7 @@
       ;; [Built-in] dired autorevert recentf bookmark ibuffer winner
       ;; [Site]     None
       general ivy ivy-rich all-the-icons-ivy-rich counsel swiper counsel-tramp
-      which-key ivy-dired-history dired-single
+      sudo-edit which-key ivy-dired-history dired-single
       all-the-icons-ibuffer switch-window shackle
 
       ;; ########## ui packages

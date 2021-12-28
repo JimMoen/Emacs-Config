@@ -121,6 +121,10 @@
   (("C-s"       . swiper)
    ("C-r"       . swiper)))
 
+;; avoid call tramp and input path duplicated
+;; sudo-edit (Melpa)
+(use-package sudo-edit
+  :defer t)
 
 ;; Files Management & Auto Save
 ;; Dired (Built-in)
