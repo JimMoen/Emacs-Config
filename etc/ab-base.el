@@ -342,24 +342,29 @@
 (use-package shackle
   :hook
   (after-init . shackle-mode)
-  :custom
-  (shackle-default-size 0.35)
-  (shackle-default-alignment 'below)
-  (shackle-rules '((magit-status-mode          :select t   :inhibit-window-quit nil :same t)
-                   (magit-log-mode             :select t   :inhibit-window-quit nil :same t)
-                   (magit-revision-mode        :select t   :inhibit-window-quit nil :align right :size 0.45)
-                   (help-mode                  :select t   :inhibit-window-quit nil :align right :size 0.40)
-                   (comint-mode                :select t   :align t   :size 0.40)
-                   (grep-mode                  :select t   :align t)
-                   (rg-mode                    :select t   :align t)
-                   (ivy-occur-grep-mode        :select t   :align right :size 0.40)
-                   (youdao-dictionary-mode     :select t   :inhibit-window-quit nil :align right :size 0.30)
-                   ("*diff-hl*"                :select nil :align below :size 0.40)
-                   ("*vc-diff*"                :select t   :align below :size 0.40)
-                   ("*bm-bookmarks*"           :select t   :align t)
-                   ("*Backtrace*"              :select t   :align t   :size 15)
-                   ("*package update results*" :select nil :align t   :size 10)
-                   ("*Process List*"           :select t   :align t   :size 0.30))))
+  :init
+  (setq shackle-default-rule nil
+        shackle-select-reused-windows t
+        shackle-default-size 0.35
+        shackle-default-alignment 'below
+        shackle-rules
+        '((magit-status-mode          :select t   :inhibit-window-quit nil :same t)
+          (magit-log-mode             :select t   :inhibit-window-quit nil :same t)
+          (magit-revision-mode        :select t   :inhibit-window-quit nil :align right :size 0.45)
+          (help-mode                  :select t   :inhibit-window-quit nil :align right :size 0.40)
+          (helpful-mode               :select t   :align right :size 0.40 :autoclose t)
+          (comint-mode                :select t   :align t   :size 0.40)
+          (grep-mode                  :select t   :align t)
+          (rg-mode                    :select t   :align t)
+          (ivy-occur-grep-mode        :select t   :align right :size 0.40)
+          (youdao-dictionary-mode     :select t   :inhibit-window-quit nil :align right :size 0.30)
+          ("*diff-hl*"                :select nil :align below :size 0.40)
+          ("*vc-diff*"                :select t   :align below :size 0.40)
+          ("^\\*vc-.*\\*$"            :regexp t :size 0.3 :align 'below :autoclose t)
+          ("*bm-bookmarks*"           :select t   :align t)
+          ("*Backtrace*"              :select t   :align t   :size 15)
+          ("*package update results*" :select nil :align t   :size 10)
+          ("*Process List*"           :select t   :align t   :size 0.30))))
 ;;TODO
 
 ;; winner (Built-in)
