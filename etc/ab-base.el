@@ -196,7 +196,20 @@
         which-key-prefix-prefix            " ++ "
         which-key-special-keys             '("SPC" "TAB" "RET" "ESC" "DEL")))
 
-
+;; alternative to the built-in help
+;; helpful (Melpa)
+(use-package helpful
+  :after counsel
+  :init
+  (setq counsel-describe-variable-function #'helpful-variable
+        counsel-describe-function-function #'helpful-callable
+        counsel-describe-symbol-function   #'helpful-symbol)
+  :general
+  (:prefix "C-x h"
+           "k" #'helpful-key
+           "F" #'helpful-function
+           "C" #'helpful-command)
+  ("C-c C-d" #'helpful-at-point))
 
 ;; Buffer Management
 ;; ibuffer (Built-in)
@@ -251,7 +264,8 @@
                           (name . "^\\*Apropos\\*$")
                           (name . "^\\*info\\*$")
                           (name . "^\\*helpful")
-                          (name . "^\\*Disabled Command\\*$")))
+                          (name . "^\\*Disabled Command\\*$")
+                          (mode . helpful-mode)))
            ("Youdao"     (or
                           (name . "^\\*Youdao Dictionary\\*$")
                           (mode . youdao-dictionary-mode)))
