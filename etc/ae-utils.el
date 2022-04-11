@@ -175,6 +175,10 @@
   (use-package company-restclient
     :defer t))
 
+;; protobuf-mode (Melpa)
+;; Editing Google protocol buffer file
+(use-package protobuf-mode
+  :defer t)
 
 (provide 'ae-utils)
 

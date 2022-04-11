@@ -96,6 +96,7 @@
       i3wm-config-mode systemd pkgbuild-mode
       speed-type pdf-tools info-colors
       restclient company-restclient
+      protobuf-mode
 
       ;; ########## Development Tools
       ;; [Built-in] None
