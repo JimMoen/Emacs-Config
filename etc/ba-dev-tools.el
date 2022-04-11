@@ -49,14 +49,11 @@
         magit-log-section-commit-count     75)
 
   (setq magit-blame-styles
-        '((margin
-           (margin-format "%C %-15a%f" "  %s" "    %H")
-           (margin-width . 50)
-           (margin-face . magit-blame-margin)
-           (margin-body-face . magit-blame-dimmed)
+        '((headings
+           (heading-format . "  %C %-18a%f %-80s  %H\n")
            (show-message . t))
-          (headings
-           (heading-format . "  %C %-25a %-65s %H\n"))))
+          (highlight
+           (highlight-face . magit-blame-highlight))))
 
   (put 'magit-log-mode 'magit-log-default-arguments
        '("--graph" "-n256" "--color" "--decorate"))
