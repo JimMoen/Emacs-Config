@@ -176,7 +176,7 @@ on the current line, if any."
                            company-backends
                          (push 'company-elisp company-backends))))
   :config
-  (setq company-idle-delay                0.15
+  (setq company-idle-delay                0.5
         company-minimum-prefix-length     1
         company-require-match             nil
         company-selection-wrap-around     t
@@ -316,7 +316,7 @@ If already in it, do nothing."
         lsp-auto-guess-root                t
         lsp-enable-dap-auto-configure      t
         lsp-completion-provider            :none
-        lsp-idle-delay                     0.15
+        lsp-idle-delay                     0.5
         lsp-eldoc-enable-hover             t
         lsp-eldoc-render-all               nil
         lsp-signature-auto-activate        t              ;; show function signature
@@ -361,7 +361,7 @@ active `major-mode', or for all major modes when ALL-MODES is t."
     :after (treemacs lsp-mode))
   (setq lsp-headerline-breadcrumb-enable   nil
         lsp-lens-enable                    nil)
-  (setq lsp-ui-doc-delay                   0.15
+  (setq lsp-ui-doc-delay                   0.5
         lsp-ui-doc-enable                  nil
         lsp-ui-doc-show-with-mouse         nil
         lsp-ui-doc-show-with-cursor        nil
