@@ -112,7 +112,7 @@
       ;; [Built-in] python
       ;; [Site]     None
       yaml-mode yaml-imenu
-      erlang lsp-pyright))
+      erlang lsp-pyright elixir-mode))
 
   ;; ########## enable some commands
   (progn (defvar enabled-functions '(dired-find-alternate-file
