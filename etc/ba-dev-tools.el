@@ -162,7 +162,8 @@ on the current line, if any."
                             company-keywords
                             company-files
                             company-ispell
-                            company-capf)))
+                            company-capf
+                            company-restclient)))
   (use-package company-box
     :hook (company-mode . company-box-mode))
   :hook

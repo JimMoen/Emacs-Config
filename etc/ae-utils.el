@@ -167,6 +167,14 @@
   :hook
   (Info-selection . info-colors-fontify-node))
 
+;; restclient (Melpa)
+;; rest api client and company backend
+(use-package restclient
+  :defer t
+  :config
+  (use-package company-restclient
+    :defer t))
+
 
 (provide 'ae-utils)
 
