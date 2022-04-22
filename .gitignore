@@ -21,3 +21,6 @@
 
 # ignore emacs native comp files
 /eln-cache/
+
+# ignore straight dir
+/straight/

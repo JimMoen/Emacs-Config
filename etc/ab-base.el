@@ -87,7 +87,8 @@
   :config
   (setq counsel-rg-base-command
         (list "rg" "-M" "240" "--with-filename" "--no-heading" "--line-number" "--color" "never" "%s"
-              "-g" "!site-lisp" "-g" "!elpa" "-g" "!var"  ;; ignore site-lisp/ elpa/ var/ in user-emacs-directory
+              "-g" "!site-lisp" "-g" "!elpa" "-g" "!var" "-g" "!straight"
+              ;; ignore site-lisp/ elpa/ var/ in user-emacs-directory
               ))
   (use-package emacs
     :after (ivy-rich)
@@ -325,6 +326,7 @@
            "4f"    'switch-window-then-find-file
            "4R"    'my/switch-window-resize
            "4b"    'switch-window-then-display-buffer
+           "4g"    'my/split-then-magit
            "4 SPC" 'balance-windows)
   (:keymaps 'switch-window-extra-map
             "i"    'nil
