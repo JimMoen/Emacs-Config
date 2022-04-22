@@ -271,7 +271,8 @@ on the current line, if any."
   '(emacs-lisp-mode
     lisp-mode
     makefile-gmake-mode
-    pkgbuild-mode))
+    pkgbuild-mode
+    protobuf-mode))
 
 (defun disable-lsp-in-modes (select-major-mode)
   "Add the `SELECT-MAJOR-MODE' in the `my/disabled-lsp-major-modes' .
