@@ -87,7 +87,7 @@
   :config
   (setq counsel-rg-base-command
         (list "rg" "-M" "240" "--with-filename" "--no-heading" "--line-number" "--color" "never" "%s"
-              "-g" "!site-lisp" "-g" "!elpa" "-g" "!var" "-g" "!straight"
+              "-g" "!site-lisp" "-g" "!elpa" "-g" "!var" "-g" "!straight" "-s"
               ;; ignore site-lisp/ elpa/ var/ in user-emacs-directory
               ))
   (use-package emacs
