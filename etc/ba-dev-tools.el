@@ -111,11 +111,16 @@ on the current line, if any."
   :hook
   (prog-mode . projectile-mode)
   :config
-  (setq projectile-completion-system 'ivy)
+  (setq projectile-completion-system 'ivy
+        projectile-auto-discover nil
+        projectile-track-known-projects-automatically nil)
+  (setq projectile-project-search-path
+        '(("~/WorkSpaces" . 3)))
   :bind
   (("C-x C-b" . projectile-ibuffer))
   (:map projectile-command-map
-        ("r"     . nil))
+        ("r"     . nil)
+        ("P"     . projectile-discover-projects-in-search-path))
   :bind-keymap
   ("C-x p" . projectile-command-map))
 
