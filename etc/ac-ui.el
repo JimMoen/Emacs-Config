@@ -115,8 +115,8 @@
   :config
   (setq
    doom-modeline-vcs-max-length             30
-   doom-modeline-mode-height                20
-   doom-modeline-bar-width                  3
+   doom-modeline-height                     30
+   doom-modeline-bar-width                  7
    doom-modeline-window-width-limit         fill-column
    doom-modeline-buffer-file-name-style     'truncate-nil
    doom-modeline-github                     t
