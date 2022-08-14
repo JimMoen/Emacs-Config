@@ -56,7 +56,8 @@
   (after-init . ivy-mode)
   :config
   (setq ivy-use-virtual-buffers      t
-        enable-recursive-minibuffers nil)
+        enable-recursive-minibuffers nil
+        ivy-height                   15)
   (use-package ivy-rich)
   (use-package all-the-icons-ivy-rich
     :after (all-the-icons ivy ivy-rich projectile counsel-projectile persp-mode)

@@ -137,7 +137,8 @@
   (setq kaolin-themes-distinct-company-scrollbar t)
   ;; Show git-gutter indicators as solid lines
   (setq kaolin-themes-git-gutter-solid t)
-  ;; (load-theme 'kaolin-dark t)
+  ;; modeline border width
+  (setq kaolin-themes-modeline-padded 1)
   (load-theme 'kaolin-galaxy t))
 
 
