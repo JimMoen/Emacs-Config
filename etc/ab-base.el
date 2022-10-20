@@ -88,8 +88,11 @@
   :config
   (setq counsel-rg-base-command
         (list "rg" "-M" "240" "--with-filename" "--no-heading" "--line-number" "--color" "never" "%s"
-              "-g" "!site-lisp" "-g" "!elpa" "-g" "!var" "-g" "!straight" "-s"
+              "-g" "!.git" ;; ignore .git directory
+              "-g" "!site-lisp" "-g" "!elpa" "-g" "!var" "-g" "!straight"
               ;; ignore site-lisp/ elpa/ var/ in user-emacs-directory
+              "--case-sensitive" "--hidden" "--multiline"
+              ;; search hidden directorys
               ))
   (use-package emacs
     :after (ivy-rich)
