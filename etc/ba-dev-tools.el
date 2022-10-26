@@ -232,7 +232,9 @@ on the current line, if any."
 
 ;; company-tabnine (Melpa)
 ;; complete with tabnine AI
-(use-package company-tabnine)
+(use-package company-tabnine
+  ;; TODO: ensure tabnine binary installed
+  )
 
 ;; prescient (Melpa)
 ;; sorting and filtering for Emacs.
