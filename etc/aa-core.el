@@ -97,6 +97,7 @@
       speed-type pdf-tools info-colors
       restclient company-restclient
       protobuf-mode
+      pos-tip ;; required by youdao-dictionary
 
       ;; ########## Development Tools
       ;; [Built-in] None

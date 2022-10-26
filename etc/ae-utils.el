@@ -35,6 +35,7 @@
 (use-package youdao-dictionary
   :defer nil
   :config
+  (use-package pos-tip)
   (setq url-automatic-caching t)
   (which-key-add-key-based-replacements "C-x y" "Youdao Dic")
   (defun youdao-search-and-play-voice-at-point ()
