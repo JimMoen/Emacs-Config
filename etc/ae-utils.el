@@ -163,6 +163,10 @@
 (use-package protobuf-mode
   :defer t)
 
+(use-package direnv
+ :config
+ (direnv-mode))
+
 (provide 'ae-utils)
 
 ;;; ae-utils.el ends here
