@@ -299,7 +299,8 @@ If already in it, do nothing."
   :hook
   ((prog-mode . (lambda ()
                   (unless
-                      (apply 'derived-mode-p my/disabled-lsp-major-modes)
+                      (or (apply 'derived-mode-p my/disabled-lsp-major-modes)
+                          (string-match (rx "_build/") (buffer-file-name)))
                     (lsp-deferred))))
    (lsp-mode . my/lsp-enable-which-key-integration))
   :custom
