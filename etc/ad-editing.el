@@ -200,23 +200,23 @@ respectively."
 
   (def-pairs ((paren                . "(")
               (bracket              . "[")
-              (angle-bracket        . "<")
               (double-angle-bracket . "<<")
+              (binary-bracket       . "<<\"")
               (brace                . "{")
               (single-quote         . "'")
               (double-quote         . "\"")
               (back-quote           . "`")))
   (sp-with-modes '(prog-mode)
-    (sp-local-pair "<"  ">")
-    (sp-local-pair "<<" ">>"))
+    (sp-local-pair "<<" ">>")
+    (sp-local-pair "<<\"" "\">>"))
   :bind-keymap
   ("C-c s"           . smartparens-mode-map)
   :bind
   (:map smartparens-mode-map
         ("C-c ("   . my/sp-wrap-with-parens)
         ("C-c ["   . my/sp-wrap-with-brackets)
-        ("C-c <"   . my/sp-wrap-with-angle-brackets)
         ("C-c ,"   . my/sp-wrap-with-double-angle-brackets)
+        ("C-c ."   . my/sp-wrap-with-binary-brackets)
         ("C-c {"   . my/sp-wrap-with-braces)
         ("C-c '"   . my/sp-wrap-with-single-quotes)
         ("C-c \""  . my/sp-wrap-with-double-quotes)
