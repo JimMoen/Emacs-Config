@@ -95,7 +95,7 @@
         '(face tabs                     tab-mark
                space-after-tab::space   space-before-tab::space
                indentation::space
-               trailing                 empty))
+               trailing))
   (setq whitespace-display-mappings
         '(;; "tab" char.      Display like "|   ".   Or Display like "\   "
           (tab-mark      9   [124 9]   [92 9])

@@ -325,6 +325,7 @@ If already in it, do nothing."
         lsp-log-max                        t)
   (setq lsp-keep-workspace-alive           nil
         lsp-restart                        'interactive
+        lsp-file-watch-threshold           5000
         lsp-auto-guess-root                t
         lsp-enable-dap-auto-configure      t
         lsp-completion-provider            :none
