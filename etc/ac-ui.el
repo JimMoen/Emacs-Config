@@ -39,8 +39,7 @@
           inhibit-startup-echo-area-message t)
     (tool-bar-mode                          -1)
     (menu-bar-mode                          -1)
-    (scroll-bar-mode                        -1)
-    (pixel-scroll-precision-mode            t))
+    (scroll-bar-mode                        -1))
   (setq scroll-step 1                                     ;; Friendly and smoothly scroll
         scroll-margin 5
         hscroll-step 1
