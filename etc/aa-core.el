@@ -40,11 +40,26 @@
   (setq package-check-signature nil)                        ;; Check signature when installing
   (package-initialize))
 
-;; Setup 'use-package'
-(unless (package-installed-p 'use-package)
-  (unless package-archive-contents
-    (package-refresh-contents))
-  (package-install 'use-package))
+;; Setup 'straight.el' and 'use-package'
+;; (unless (package-installed-p 'use-package)
+;;   (unless package-archive-contents
+;;     (package-refresh-contents))
+;;   (package-install 'use-package))
+
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 6))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+
+(straight-use-package 'use-package)
 
 ;; use-package default args
 (setq use-package-always-ensure        t                    ;; Always ensure
