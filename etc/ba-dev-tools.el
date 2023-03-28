@@ -165,13 +165,11 @@ on the current line, if any."
 ;; complete framework
 (use-package company
   :init
-  (setq company-backends '((company-tabnine
-                            company-dabbrev
-                            company-dabbrev-code
-                            company-keywords
+  (setq company-backends '((company-capf company-tabnine)
+                           (company-dabbrev company-dabbrev-code)
+                           (company-keywords
                             company-files
                             company-ispell
-                            company-capf
                             company-restclient)))
   (use-package company-box
     :hook (company-mode . company-box-mode))
@@ -235,6 +233,18 @@ on the current line, if any."
 (use-package company-tabnine
   ;; TODO: ensure tabnine binary installed
   )
+
+(use-package copilot
+  :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
+  :ensure t
+  :hook (prog-mode . copilot-mode)
+  :config
+  (with-eval-after-load 'company
+  ;; disable inline previews
+  (delq 'company-preview-if-just-one-frontend company-frontends))
+
+  (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
+  (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion))
 
 ;; prescient (Melpa)
 ;; sorting and filtering for Emacs.
