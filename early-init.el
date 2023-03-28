@@ -54,7 +54,9 @@
        (native-comp-available-p))
   (progn
     (setq native-comp-async-report-warnings-errors nil)
-    (setq comp-deferred-compilation t)
+    ;; add to $EMACS_INITDIR/early-init.el
+    (defvar native-comp-deferred-compilation-deny-list nil)
+    (setq comp-deferred-compilation nil)
     (add-to-list 'native-comp-eln-load-path (expand-file-name "eln-cache/" user-emacs-directory))
     (setq package-native-compile t)))
 ;;; early-init.el ends here
