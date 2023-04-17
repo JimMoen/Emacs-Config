@@ -128,7 +128,9 @@
       ;; [Built-in] python
       ;; [Site]     None
       yaml-mode yaml-imenu
-      erlang lsp-pyright elixir-mode))
+      erlang lsp-pyright elixir-mode
+      hcl-mode ;; for .hocon files
+      ))
 
   ;; ########## enable some commands
   (progn (defvar enabled-functions '(dired-find-alternate-file
