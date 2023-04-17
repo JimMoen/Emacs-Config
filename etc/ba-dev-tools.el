@@ -159,7 +159,8 @@ on the current line, if any."
 
   :general
   (:prefix "C-x"
-           "4t" 'treemacs))
+           "4t" 'treemacs
+           "t"  'treemacs-select-window))
 
 ;; company-mode (Melpa)
 ;; complete framework
@@ -292,6 +293,7 @@ on the current line, if any."
   '(emacs-lisp-mode
     lisp-mode
     makefile-gmake-mode
+    hcl-mode
     pkgbuild-mode
     protobuf-mode
     direnv-envrc-mode))

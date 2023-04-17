@@ -5,7 +5,6 @@
 ;; Author: JimMoen <LnJimMoen@outlook.com>
 ;; Keywords: yaml
 
-
 ;; This file is not part of GNU Emacs
 
 ;; This program is free software: you can redistribute it and/or modify
@@ -24,7 +23,7 @@
 
 ;;; Commentary:
 
-;; Language Yaml  support.
+;; Language Yaml support.
 
 ;;; Code:
 
