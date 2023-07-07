@@ -130,6 +130,7 @@
       yaml-mode yaml-imenu
       erlang lsp-pyright elixir-mode
       hcl-mode ;; for .hocon files
+      web-mode
       ))
 
   ;; ########## enable some commands
