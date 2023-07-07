@@ -53,7 +53,7 @@
   (setq inhibit-compacting-font-caches t)                 ;; Don’t compact font caches during GC.
   (defalias 'yes-or-no-p 'y-or-n-p)                       ;; Use y-or-n instead of yes-or-no
   (progn (setq JimMoen/frame-settings '((font . "Sarasa Mono SC-12")
-                                        (alpha . (95 93))))
+                                        (alpha . (93 90))))
          (dolist (frame-set-var JimMoen/frame-settings)
            (push frame-set-var default-frame-alist))))
 

@@ -32,7 +32,9 @@
 ;; Package Archives
 (setq package-archives
       '(("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-        ("org"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+        ;; only for package `org-plus-contrib`
+        ;; not required now
+        ;; ("org"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
         ("gnu"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
 
 ;; Initialize packages
@@ -113,6 +115,7 @@
       restclient company-restclient
       protobuf-mode
       pos-tip ;; required by youdao-dictionary
+      direnv
 
       ;; ########## Development Tools
       ;; [Built-in] None
