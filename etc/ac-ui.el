@@ -57,17 +57,13 @@
          (dolist (frame-set-var JimMoen/frame-settings)
            (push frame-set-var default-frame-alist))))
 
-;; all-the-icons (Melpa)
-(use-package all-the-icons
-  :config
-  (setq all-the-icons-scale-factor            0.95
-        all-the-icons-material-scale-factor   1.00
-        all-the-icons-fileicon-scale-factor   0.75
-        all-the-icons-wicon-scale-factor      0.65
-        all-the-icons-octicon-scale-factor    0.80
-        all-the-icons-faicon-scale-factor     0.95
-        all-the-icons-alltheicon-scale-factor 0.80)
-  (setq all-the-icons-color-icons             t))
+;; nerd-icons (Melpa)
+(use-package nerd-icons
+  :custom
+  (nerd-icons-font-family "Iosevka Nerd Font")
+  ;; (nerd-icons-font-family "Symbols Nerd Fonts Mono")
+  )
+
 
 ;; Dashboard (Melpa)
 (use-package dashboard

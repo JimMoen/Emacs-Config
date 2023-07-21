@@ -58,18 +58,16 @@
   (setq ivy-use-virtual-buffers      t
         enable-recursive-minibuffers nil
         ivy-height                   15)
-  (use-package ivy-rich)
-  (use-package all-the-icons-ivy-rich
-    :after (all-the-icons ivy ivy-rich projectile counsel-projectile persp-mode)
-    :hook
-    (persp-mode                  . all-the-icons-ivy-rich-mode)
-    (all-the-icons-ivy-rich-mode . ivy-rich-mode)
-    :config
-    (setq all-the-icons-ivy-rich-icon       t
-          all-the-icons-ivy-rich-color-icon t
-          all-the-icons-ivy-rich-icon-size  0.9
-          all-the-icons-ivy-rich-project    t
-          inhibit-compacting-font-caches    t))
+
+  (use-package nerd-icons-ivy-rich
+    :ensure t
+    :after (counsel-projectile)
+    :init
+    (nerd-icons-ivy-rich-mode 1)
+    (ivy-rich-mode 1))
+
+  (use-package ivy-rich
+    :after (nerd-icons-ivy-rich))
 
   :bind
   ;; Use persp-mode to switch/kill buffer in ONE project.
@@ -101,6 +99,13 @@
              "v" 'counsel-describe-variable
              "f" 'counsel-describe-function
              "o" 'counsel-describe-symbol))
+
+  ;; counsel-projectile (Melpa)
+  (use-package counsel-projectile
+    :after (ivy counsel projectile)
+    :hook
+    (after-init . counsel-projectile-mode))
+
   :bind
   (("M-x"       . counsel-M-x)
    ("C-x C-f"   . counsel-find-file)
@@ -142,7 +147,10 @@
   (use-package ivy-dired-history
     :general
     (:keymaps 'dired-mode-map
-              "," 'dired)))
+              "," 'dired))
+  (use-package nerd-icons-dired
+    :after (dired nerd-icons)
+    :hook (dired-mode . nerd-icons-dired-mode)))
 
 ;; Dired-Single (Melpa)
 (use-package dired-single
@@ -293,11 +301,9 @@
                           (mode . custom-mode))))))
   (setq ibuffer-show-empty-filter-groups   nil
         ibuffer-default-sorting-mode       'filename/process)
-  (use-package all-the-icons-ibuffer
-    :after
-    (all-the-icons)
-    :hook
-    (ibuffer-mode . all-the-icons-ibuffer-mode))
+  (use-package nerd-icons-ibuffer
+    :after (ibuffer nerd-icons)
+    :hook ((ibuffer-mode . nerd-icons-ibuffer-mode)))
   :bind
   ;; This command is for viewing all buffers.
   ;; Viewing specify buffers in current project by "projectile-ibuffer"

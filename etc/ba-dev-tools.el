@@ -124,12 +124,6 @@ on the current line, if any."
   :bind-keymap
   ("C-x p" . projectile-command-map))
 
-;; counsel-projectile (Melpa)
-(use-package counsel-projectile
-  :after counsel projectile
-  :hook
-  (after-init . counsel-projectile-mode))
-
 ;; persp-mode to managment projcet buffers (Melpa)
 (require-all-elisp-in-directory "etc/editor-layouts")
 
@@ -140,12 +134,10 @@ on the current line, if any."
   (use-package treemacs-projectile
     :after (treemacs projectile))
 
-  (use-package treemacs-icons-dired
-    :hook
-    (dired-mode . treemacs-icons-dired-enable-once)
-    (treemacs-icons-dired-mode . (lambda ()
-                                   (treemacs-resize-icons 17))))
-  ;; do not install treemacs-all-the-icons, it may cause indent issues.
+  (use-package treemacs-nerd-icons
+    :after (treemacs nerd-icons))
+    :config
+    (treemacs-load-theme "nerd-icons")
 
   (use-package treemacs-magit
     :after (treemacs magit))

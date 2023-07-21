@@ -86,11 +86,10 @@
 (use-package whitespace
   :ensure nil
   :defer t
-  :custom
-  (whitespace-global-modes '(not magit-mode))
   :hook
   (after-init . global-whitespace-mode)
   :config
+  (setq whitespace-global-modes '(not magit-mode dired-mode))
   (setq whitespace-style
         '(face tabs                     tab-mark
                space-after-tab::space   space-before-tab::space

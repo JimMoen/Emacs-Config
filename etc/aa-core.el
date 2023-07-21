@@ -86,14 +86,15 @@
       ;; ########## base packages
       ;; [Built-in] dired autorevert recentf bookmark ibuffer winner
       ;; [Site]     None
-      general ivy ivy-rich all-the-icons-ivy-rich counsel swiper counsel-tramp
+      general ivy ivy-rich nerd-icons-ivy-rich counsel swiper counsel-tramp
       sudo-edit helpful which-key ivy-dired-history dired-single
-      all-the-icons-ibuffer switch-window shackle
+      nerd-icons-ibuffer switch-window shackle
 
       ;; ########## ui packages
       ;; [Built-in] None
       ;; [Site]     None
-      dashboard dashboard-ls all-the-icons
+      dashboard dashboard-ls nerd-icons-dired
+      nerd-icons
       doom-modeline kaolin-themes
 
       ;; ########## base editing
@@ -122,7 +123,7 @@
       ;; [Site]     None
       magit magit-delta diff-hl git-timemachine
       projectile counsel-projectile persp-mode
-      treemacs treemacs-projectile treemacs-icons-dired treemacs-magit treemacs-persp
+      treemacs treemacs-projectile treemacs-nerd-icons treemacs-magit treemacs-persp
       company company-box company-tabnine prescient ivy-prescient company-prescient
       flycheck yasnippet yasnippet-snippets
       lsp-mode lsp-ui lsp-ivy lsp-treemacs
