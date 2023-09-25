@@ -86,7 +86,7 @@
       ;; ########## base packages
       ;; [Built-in] dired autorevert recentf bookmark ibuffer winner
       ;; [Site]     None
-      general ivy ivy-rich nerd-icons-ivy-rich counsel swiper counsel-tramp
+      general ivy ivy-rich nerd-icons-ivy-rich counsel swiper ivy-avy counsel-tramp
       sudo-edit helpful which-key ivy-dired-history dired-single
       nerd-icons-ibuffer switch-window shackle
 
@@ -133,6 +133,9 @@
       ;; [Site]     None
       yaml-mode yaml-imenu
       erlang lsp-pyright elixir-mode
+      haskell-mode rust-mode go-mode python-mode
+      php-mode js2-mode dart-mode jq-mode
+      protobuf-ts-mode ;; proto3 only
       hcl-mode ;; for .hocon files
       web-mode
       ))
