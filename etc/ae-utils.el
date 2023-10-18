@@ -164,8 +164,10 @@
   :defer t)
 
 (use-package direnv
- :config
- (direnv-mode))
+  :init
+  (setq direnv-always-show-summary nil)
+  :config
+  (direnv-mode))
 
 (provide 'ae-utils)
 
