@@ -72,7 +72,18 @@
   (add-to-list 'after-make-frame-functions #'dashboard-in-new-frame)
   (use-package dashboard-ls)
   :config
+  (setq dashboard-display-icons-p t ;; display icons on both GUI and terminal
+        dashboard-icon-type 'nerd-icons) ;; use `nerd-icons' package
   (setq dashboard-buffer-name "*Dashboard*")
+  (setq dashboard-set-navigator      t
+        dashboard-set-file-icons     t
+        dashboard-set-heading-icons  nil)
+  (setq dashboard-items '((recents        . 10)
+                          (projects       . 10)
+                          (ls-directories . 5)
+                          (ls-files       . 5)))
+  (setq dashboard-projects-switch-function 'ivy-persp-switch-project-action)
+
   (defun new-dashboard-with-main-persp ()
     "Jump to the dashboard buffer, if doesn't exists create one."
     (interactive)
@@ -87,15 +98,6 @@
     (interactive)
     (with-selected-frame (or frame (selected-frame))
       (new-dashboard-with-main-persp)))
-
-  (setq dashboard-set-navigator      t
-        dashboard-set-file-icons     t
-        dashboard-set-heading-icons  t)
-  (setq dashboard-items '((recents        . 10)
-                          (projects       . 10)
-                          (ls-directories . 5)
-                          (ls-files       . 5)))
-  (setq dashboard-projects-switch-function 'ivy-persp-switch-project-action)
 
   (dashboard-setup-startup-hook)
   :general
