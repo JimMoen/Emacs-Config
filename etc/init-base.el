@@ -1,4 +1,4 @@
-;;; ab-base.el --- Personal Basic Feature -*- lexical-binding: t -*-
+;;; init-base.el --- Personal Basic Feature -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2021  JimMoen
 
@@ -36,7 +36,7 @@
 ;; I use C-h to delete a char and C-w to delete a word just like in terminal.
 ;; Use 'C-M-g'   avy-goto-char-in-line
 ;; Use 'M-g M-g' avy-goto-char-2
-;; See ./etc/ad-editing.el: avy
+;; See ./etc/init-editing.el: avy
 (use-package emacs
   :ensure nil
   :general
@@ -71,7 +71,7 @@
 
   :bind
   ;; Use persp-mode to switch/kill buffer in ONE project.
-  ;; See ./etc/ab-base.el: persp-mode
+  ;; See ./etc/init-base.el: persp-mode
   (("C-x B"    . ivy-switch-buffer)
    ("C-c C-o"  . ivy-occur)
    ("C-c C-r"  . ivy-resume)
@@ -307,7 +307,7 @@
   :bind
   ;; This command is for viewing all buffers.
   ;; Viewing specify buffers in current project by "projectile-ibuffer"
-  ;; See ./etc/ba-dev-tools.el: projectile
+  ;; See ./etc/init-dev-tools.el: projectile
   (("C-x C-S-b"     . ibuffer)))
 
 
@@ -394,6 +394,6 @@
                                 "*Compile-Log*")))
 
 
-(provide 'ab-base)
+(provide 'init-base)
 
-;;; ab-base.el ends here
+;;; init-base.el ends here

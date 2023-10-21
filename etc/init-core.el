@@ -1,4 +1,4 @@
-;;; init.el --- Emacs Core Configuration. -*- mode: emacs-lisp; lexical-binding: t; -*-
+;;; init-core.el --- Emacs Core Configuration. -*- mode: emacs-lisp; lexical-binding: t; -*-
 
 ;; Copyright (C) 2021  JimMoen
 
@@ -183,6 +183,6 @@
   (after-init . global-disable-mouse-mode))
 
 
-(provide 'aa-core)
+(provide 'init-core)
 
-;;; aa-core.el ends here
+;;; init-core.el ends here

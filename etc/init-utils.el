@@ -1,4 +1,4 @@
-;;; ae-utils.el --- Useful Apps -*- lexical-binding: t -*-
+;;; init-utils.el --- Useful Apps -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2021  JimMoen
 
@@ -169,6 +169,6 @@
   :config
   (direnv-mode))
 
-(provide 'ae-utils)
+(provide 'init-utils)
 
-;;; ae-utils.el ends here
+;;; init-utils.el ends here

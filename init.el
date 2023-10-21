@@ -32,12 +32,12 @@
 ;;   |----- early-init.el                 ;; Coding System.  Garbage Collection.  Startup timer.
 ;;   |----- init.el                       ;; Some Core Settings required by other elisp file.
 ;;   |----- etc/                          ;; Elisp files.  File loading order is determined by the letter before the file name.
-;;   |       |----- aa-core.el            ;; For package managent and crucial packages.
-;;   |       |----- ab-base.el            ;; For better Emacs Framework all the time.
-;;   |       |----- ac-ui.el              ;; Built-in UI.  Modeline, Color Theme.
-;;   |       |----- ad-editing.el         ;; Better Editing.
-;;   |       |----- ae-utils.el           ;; Utility packages.
-;;   |       |----- ba-dev-tools.el       ;; Development Tools.
+;;   |       |----- init-core.el          ;; For package managent and crucial packages.
+;;   |       |----- init-base.el          ;; For better Emacs Framework all the time.
+;;   |       |----- init-ui.el            ;; Built-in UI.  Modeline, Color Theme.
+;;   |       |----- init-editing.el       ;; Better Editing.
+;;   |       |----- init-utils.el         ;; Utility packages.
+;;   |       |----- init-dev-tools.el     ;; Development Tools.
 ;;   |       `--[I] custom.el             ;; Custom file.
 ;;   |--[I] var/
 ;;   |       |---@@ `no-littering.el      ;; Store packages using files.
@@ -80,29 +80,29 @@ It will be expanded within `user-emacs-directory'."
 
 
 ;; ########## require files.
-(require 'aa-core)
+(require 'init-core)
 ;; For package managent and crucial packages.
 ;; Set Package-Archive. Initialize use-package.
 ;; Hack Built-in 'package-selected-packages'
 ;; Enable some disabled features.
 
-(require 'ab-base)
+(require 'init-base)
 ;; For better Emacs Framework all the time.
 
-(require 'ac-ui)
+(require 'init-ui)
 ;; For More Beautiful Emacs.
 
-(require 'ad-editing)
+(require 'init-editing)
 ;; For Better editing
 
-(require 'ae-utils)
+(require 'init-utils)
 ;; Some Useful packages.
 
-(require 'ba-dev-tools)
+(require 'init-dev-tools)
 ;; Development Tools.
 ;; ########## PACKAGES
 
-(require-all-elisp-in-directory "etc/bc-dev-lang")
+(require-all-elisp-in-directory "etc/init-dev-lang")
 ;; For Programming languages
 
 

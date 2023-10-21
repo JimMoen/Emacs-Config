@@ -1,4 +1,4 @@
-;;; ac-ui.el --- UI, Color, Theme. -*- lexical-binding: t -*-
+;;; init-ui.el --- UI, Color, Theme. -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2021  JimMoen
 
@@ -140,6 +140,6 @@
   (load-theme 'kaolin-galaxy t))
 
 
-(provide 'ac-ui)
+(provide 'init-ui)
 
-;;; ac-ui.el ends here
+;;; init-ui.el ends here

@@ -1,4 +1,4 @@
-;;; ad-editing.el --- Easy Editing. -*- lexical-binding: t -*-
+;;; init-editing.el --- Easy Editing. -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2021  JimMoen
 
@@ -283,6 +283,6 @@ respectively."
   (editorconfig-mode))
 
 
-(provide 'ad-editing)
+(provide 'init-editing)
 
-;;; ad-editing.el ends here
+;;; init-editing.el ends here

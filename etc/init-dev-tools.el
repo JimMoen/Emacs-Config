@@ -1,4 +1,4 @@
-;;; ba-dev-tools.el --- Development Tools. -*- lexical-binding: t -*-
+;;; init-dev-tools.el --- Development Tools. -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2021  JimMoen
 
@@ -411,6 +411,6 @@ active `major-mode', or for all major modes when ALL-MODES is t."
   (lsp-ivy-workspace-symbol))
 
 
-(provide 'ba-dev-tools)
+(provide 'init-dev-tools)
 
-;;; ba-dev-tools.el ends here
+;;; init-dev-tools.el ends here
