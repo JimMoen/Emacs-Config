@@ -35,8 +35,8 @@
 (set-default-coding-systems 'utf-8-emacs)
 
 ;; Defer garbage collection futher back in the startup process
-;; Garbage collection threshold set to 20MiB. Which use 2GiB `DATA`.
-(setq gc-cons-threshold (* 20 1024 1024)
+;; Garbage collection threshold set to 100MiB.
+(setq gc-cons-threshold (* 100 1024 1024)
       gc-cons-percentage 0.1)
 
 ;; Prevent initializing twice
