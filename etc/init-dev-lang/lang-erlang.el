@@ -37,6 +37,15 @@
     (put 'bitsyntax-open-outer 'syntax-table nil)
     (put 'bitsyntax-close-outer 'syntax-table nil)
   )
+  (with-eval-after-load 'smartparens
+    (sp-with-modes '(erlang-mode)
+      (sp-local-pair "<<" ">>")
+      (sp-local-pair "case" "end")
+      (sp-local-pair "receive" "end")
+      (sp-local-pair "if" "end")
+      (sp-local-pair "try" "end")
+      (sp-local-pair "fun(" "end")
+      (sp-local-pair "begin" "end")))
   (advice-add #'erlang-electric-init :after 'my/modified-syntax-table))
 
 (provide 'lang-erlang)
