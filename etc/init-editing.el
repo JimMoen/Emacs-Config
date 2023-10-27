@@ -38,6 +38,14 @@
   (tab-width                 4)                         ;; Tab width set to 4
   (standard-indent           4)                         ;; Default indent sets 4
   :config
+  ;; Fix stucking when editing extremely large files.
+  ;; See also https://emacs-china.org/t/topic/25811/9
+  (setq-default bidi-display-reordering 'left-to-right
+                bidi-paragraph-direction 'left-to-right)
+  (setq bidi-inhibit-bpa t
+        long-line-threshold 1000
+        large-hscroll-threshold 1000
+        syntax-wholeline-max 1000)
   (blink-cursor-mode -1)
   :bind
   (("RET"                    .  newline-and-indent)
