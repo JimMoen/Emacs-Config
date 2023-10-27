@@ -46,7 +46,9 @@
         long-line-threshold 1000
         large-hscroll-threshold 1000
         syntax-wholeline-max 1000)
-  (blink-cursor-mode -1)
+  (progn
+    (blink-cursor-mode t)
+    (setq blink-cursor-blinks 5))
   :bind
   (("RET"                    .  newline-and-indent)
    ("S-<return>"             .  comment-indent-new-line)))
