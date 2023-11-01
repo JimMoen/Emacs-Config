@@ -24,3 +24,7 @@
 
 # ignore straight dir
 /straight/
+
+# asd
+# anything-sync-daemon
+.flagged
