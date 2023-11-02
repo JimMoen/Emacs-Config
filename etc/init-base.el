@@ -315,7 +315,7 @@
 ;; switch-window (Melpa)
 (use-package switch-window
   :config
-  (setq switch-window-threshold 4)
+  (setq switch-window-threshold 3)
   (which-key-add-key-based-replacements "C-x 4" "Switch Window")
   (defun my/switch-window-resize ()
     (interactive)
