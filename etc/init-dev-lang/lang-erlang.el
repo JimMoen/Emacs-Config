@@ -35,8 +35,19 @@
   :config
   (defun my/modified-syntax-table ()
     (put 'bitsyntax-open-outer 'syntax-table nil)
-    (put 'bitsyntax-close-outer 'syntax-table nil)
-  )
+    (put 'bitsyntax-close-outer 'syntax-table nil))
+  (setq erlang-indent-level      5
+        erlang-icr-indent        4
+        erlang-indent-guard      0
+        erlang-argument-indent   4
+        erlang-tab-always-indent t)
+
+  (with-eval-after-load 'apheleia
+    (setf (alist-get 'erlang-mode apheleia-mode-alist)
+          '(erlfmt))
+    (setf (alist-get 'erlfmt apheleia-formatters)
+          '("erlfmt" "-")))
+
   (with-eval-after-load 'smartparens
     (sp-with-modes '(erlang-mode)
       (sp-local-pair "<<" ">>")

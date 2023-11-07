@@ -127,6 +127,7 @@
       company company-box company-tabnine prescient ivy-prescient company-prescient
       flycheck yasnippet yasnippet-snippets
       lsp-mode lsp-ui lsp-ivy lsp-treemacs
+      apheleia
 
       ;; ########## Programming Language Support
       ;; [Built-in] python

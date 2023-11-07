@@ -410,6 +410,11 @@ active `major-mode', or for all major modes when ALL-MODES is t."
   :commands
   (lsp-ivy-workspace-symbol))
 
+;; apheleia (Melpa)
+(use-package apheleia
+  :config
+  (apheleia-global-mode t))
+
 
 (provide 'init-dev-tools)
 
