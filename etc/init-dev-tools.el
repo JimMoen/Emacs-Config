@@ -135,9 +135,9 @@ on the current line, if any."
     :after (treemacs projectile))
 
   (use-package treemacs-nerd-icons
-    :after (treemacs nerd-icons))
+    :after (treemacs nerd-icons)
     :config
-    (treemacs-load-theme "nerd-icons")
+    (treemacs-load-theme "nerd-icons"))
 
   (use-package treemacs-magit
     :after (treemacs magit))
@@ -233,8 +233,8 @@ on the current line, if any."
   :hook (prog-mode . copilot-mode)
   :config
   (with-eval-after-load 'company
-  ;; disable inline previews
-  (delq 'company-preview-if-just-one-frontend company-frontends))
+    ;; disable inline previews
+    (delq 'company-preview-if-just-one-frontend company-frontends))
 
   (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
   (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion))

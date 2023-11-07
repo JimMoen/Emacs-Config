@@ -31,7 +31,7 @@
 (use-package erlang
   :general
   (:keymaps 'erlang-mode-map
-   "C-c C-l" nil)
+            "C-c C-l" nil)
   :config
   (defun my/modified-syntax-table ()
     (put 'bitsyntax-open-outer 'syntax-table nil)
