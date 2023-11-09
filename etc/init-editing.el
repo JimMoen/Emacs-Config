@@ -191,13 +191,13 @@
 conses, where NAME is the function name that will be created and
 STRING is a single-character string that marks the opening character.
 
-  (def-pairs ((paren . \"(\")
-              (bracket . \"[\"))
+  (def-pairs ('(paren . \"(\")
+              '(bracket . \"[\"))
 
 defines the functions WRAP-WITH-PAREN and WRAP-WITH-BRACKET,
 respectively."
     `(progn
-       ,@(cl-loop for (key . val) in pairs
+       ,@(cl-loop for '(key . val) in pairs
                   collect
                   `(defun ,(read (concat
                                   "my/sp-wrap-with-"
@@ -207,20 +207,19 @@ respectively."
                      (interactive "p")
                      (sp-wrap-with-pair ,val)))))
 
-  (def-pairs ((paren                . "(")
-              (bracket              . "[")
-              (double-angle-bracket . "<<")
-              (brace                . "{")
-              (single-quote         . "'")
-              (double-quote         . "\"")
-              (back-quote           . "`")))
+  (def-pairs ('(paren                . "(")
+              '(bracket              . "[")
+              '(brace                . "{")
+              '(single-quote         . "'")
+              '(double-quote         . "\"")
+              '(back-quote           . "`")))
+
   :bind-keymap
   ("C-c s"           . smartparens-mode-map)
   :bind
   (:map smartparens-mode-map
         ("C-c ("   . my/sp-wrap-with-parens)
         ("C-c ["   . my/sp-wrap-with-brackets)
-        ("C-c ,"   . my/sp-wrap-with-double-angle-brackets)
         ("C-c {"   . my/sp-wrap-with-braces)
         ("C-c '"   . my/sp-wrap-with-single-quotes)
         ("C-c \""  . my/sp-wrap-with-double-quotes)
