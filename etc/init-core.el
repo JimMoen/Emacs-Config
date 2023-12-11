@@ -86,15 +86,15 @@
       ;; ########## base packages
       ;; [Built-in] dired autorevert recentf bookmark ibuffer winner
       ;; [Site]     None
-      general ivy ivy-rich nerd-icons-ivy-rich counsel swiper ivy-avy counsel-tramp
+      nerd-icons nerd-icons-ibuffer nerd-icons-dired
+      general ivy ivy-rich counsel swiper ivy-avy counsel-tramp nerd-icons-ivy-rich
       sudo-edit helpful which-key ivy-dired-history dired-single
-      nerd-icons-ibuffer switch-window shackle
+      switch-window shackle
 
       ;; ########## ui packages
       ;; [Built-in] None
       ;; [Site]     None
-      dashboard dashboard-ls nerd-icons-dired
-      nerd-icons
+      dashboard dashboard-ls
       doom-modeline kaolin-themes
 
       ;; ########## base editing

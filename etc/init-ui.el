@@ -52,18 +52,17 @@
   (setq truncate-partial-width-windows t)                 ;; Disable line truncate
   (setq inhibit-compacting-font-caches t)                 ;; Don’t compact font caches during GC.
   (defalias 'yes-or-no-p 'y-or-n-p)                       ;; Use y-or-n instead of yes-or-no
-  (progn (setq JimMoen/frame-settings '((font . "Sarasa Mono SC-12")
+  (progn (setq JimMoen/frame-settings '((font . "Sarasa Mono SC Nerd Font-12")
                                         (alpha . (93 90))))
          (dolist (frame-set-var JimMoen/frame-settings)
            (push frame-set-var default-frame-alist))))
 
 ;; nerd-icons (Melpa)
 (use-package nerd-icons
-  :custom
-  (nerd-icons-font-family "Iosevka Nerd Font")
-  ;; (nerd-icons-font-family "Symbols Nerd Fonts Mono")
-  )
-
+  :config
+  (set-fontset-font t 'symbol "Noto Color Emoji")
+  (setq nerd-icons-font-family "Sarasa Gothic SC Nerd Font"
+        nerd-icons-scale-factor 1.0))
 
 ;; Dashboard (Melpa)
 (use-package dashboard
@@ -109,6 +108,7 @@
 (use-package doom-modeline
   :hook
   (after-init . doom-modeline-mode)
+  :after (nerd-icons)
   :defer t
   :config
   (setq

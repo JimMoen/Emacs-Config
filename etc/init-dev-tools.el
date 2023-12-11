@@ -135,7 +135,9 @@ on the current line, if any."
     :after (treemacs projectile))
 
   (use-package treemacs-nerd-icons
-    :after (treemacs nerd-icons)
+    ;; MUST after lsp-treemacs, otherwise treemacs icons would be theme "Default"
+    ;; https://github.com/rainstormstudio/treemacs-nerd-icons/issues/1
+    :after (treemacs lsp-treemacs nerd-icons)
     :config
     (treemacs-load-theme "nerd-icons"))
 
