@@ -111,16 +111,16 @@
   :after (nerd-icons)
   :defer t
   :config
-  (setq
-   doom-modeline-vcs-max-length             30
-   doom-modeline-height                     30
-   doom-modeline-bar-width                  7
-   doom-modeline-window-width-limit         fill-column
-   doom-modeline-buffer-file-name-style     'truncate-nil
-   doom-modeline-github                     t
-   doom-modeline-github-interval            (* 30 60)
-   doom-modeline-project-detection          'projectile
-   doom-modeline-display-default-persp-name t))
+  (setq doom-modeline-vcs-max-length             40
+        doom-modeline-height                     25
+        doom-modeline-bar-width                  7
+        doom-modeline-total-line-number          t
+        doom-modeline-buffer-file-name-style     'truncate-nil
+        doom-modeline-github                     t
+        doom-modeline-indent-info                t
+        doom-modeline-github-interval            (* 30 60)
+        doom-modeline-project-detection          'projectile
+        doom-modeline-display-default-persp-name t))
 
 ;; kaolin-themes (Melpa)
 (use-package kaolin-themes
