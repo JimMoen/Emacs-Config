@@ -46,7 +46,9 @@
         magit-cherry-margin                '(t age-abbreviated   magit-log-margin-width t 25)
         magit-section-visibility-indicator '("…" . t)
         magit-auto-revert-mode             t
-        magit-log-section-commit-count     75)
+        magit-log-color-graph-limit        1024
+        magit-log-section-commit-count     75
+        magit-section-disable-line-numbers nil)
 
   (setq magit-blame-styles
         '((headings
