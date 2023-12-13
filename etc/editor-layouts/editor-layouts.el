@@ -63,11 +63,6 @@
     (posframe-delete-all))
   (advice-add 'persp-load-state-from-file :after #'persp-load-state-from-file@after)
 
-  (defun restart-emacs-resume-layouts (&optional args)
-    "Restart emacs and resume layouts."
-    (interactive)
-    (restart-emacs (cons "--persp-r" args)))
-
   (defun current-persp-name ()
     "Get name of the current perspective."
     (safe-persp-name (get-frame-persp)))

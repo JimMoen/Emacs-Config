@@ -81,7 +81,7 @@
       ;; [Built-in] None
       ;; [Site]     None
       use-package use-package-ensure-system-package
-      no-littering restart-emacs disable-mouse
+      no-littering disable-mouse
 
       ;; ########## base packages
       ;; [Built-in] dired autorevert recentf bookmark ibuffer winner
@@ -169,11 +169,6 @@
 ;; Help for keeping Emacs Configuration Dir clean.
 ;; Built-in packags "recentf" needed
 (use-package no-littering
-  :demand t)
-
-;; restart-emacs (Melpa)
-;; Easy to Restart Emacs
-(use-package restart-emacs
   :demand t)
 
 ;; disable-mouse (Melpa)
