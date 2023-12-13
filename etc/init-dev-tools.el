@@ -83,10 +83,6 @@ on the current line, if any."
                        (format "git commit --amend --author='%s'" author)
                      ""))
        arg)))
-  (defun my/split-then-magit ()
-    (interactive)
-    (switch-window-then-split-horizontally 0)
-    (magit-status))
   :general
   ("C-x g" 'magit-status
    "C-x G" 'magit-blame-addition)

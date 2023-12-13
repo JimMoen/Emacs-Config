@@ -89,7 +89,7 @@
       nerd-icons nerd-icons-ibuffer nerd-icons-dired
       general ivy ivy-rich counsel swiper ivy-avy counsel-tramp nerd-icons-ivy-rich
       sudo-edit helpful which-key ivy-dired-history dired-single
-      switch-window shackle
+      ace-window shackle
 
       ;; ########## ui packages
       ;; [Built-in] None

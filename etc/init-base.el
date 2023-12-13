@@ -310,45 +310,46 @@
   ;; See ./etc/init-dev-tools.el: projectile
   (("C-x C-S-b"     . ibuffer)))
 
-
-
-;; switch-window (Melpa)
-(use-package switch-window
+;; ace-window (Melpa)
+(use-package ace-window
   :config
-  (setq switch-window-threshold 3)
-  (which-key-add-key-based-replacements "C-x 4" "Switch Window")
-  (defun my/switch-window-resize ()
-    (interactive)
-    "To resize window base on switch-window."
-    (let ((switch-window-threshold 1))
-      (switch-window)))
+  (setq aw-keys       '(?1 ?2 ?3 ?4 ?5 ?6 ?7 ?8 ?9 ?0)
+        aw-scope      'frame
+        aw-background t)
+  (setq aw-ignore-current          t
+        aw-dispatch-always         nil
+        aw-dispatch-when-more-than 3)
+  (setq aw-dispatch-alist
+        '((?x aw-delete-window              " Ace - Delete Window")
+          (?m aw-swap-window                " Ace - Swap Window")
+          (?M aw-move-window                " Ace - Move Window")
+          (?j aw-switch-buffer-in-window    " Ace - Select Buffer")
+          (?n aw-flip-window                " Ace - Move Window")
+          (?u aw-switch-buffer-other-window " Ace - Switch Buffer Other Window")
+          (?c aw-split-window-fair          " Ace - Split Fair Window")
+          (?v aw-split-window-vert          " Ace - Split Vert Window")
+          (?b aw-split-window-horz          " Ace - Split Horz Window")
+          (?o delete-other-windows          " Ace - Maximize Window")
+          (?? aw-show-dispatch-help)))
+  (with-eval-after-load 'magit
+    (defun my/split-then-magit ()
+      (interactive)
+      (split-window-horizontally)
+      (magit-status)))
   :general
-  ("C-M-\'" 'switch-window)
-  ;; ("C-M-\"" 'my/switch-window-resize)
+  ("C-M-\'" 'ace-window)
   (:prefix "C-x"
            "1"     'delete-other-windows
-           "40"    'switch-window-then-delete
-           "41"    'switch-window-then-maximize
-           "4v"    'switch-window-then-split-vertically
-           "4h"    'switch-window-then-split-horizontally
-           "4s"    'switch-window-then-swap-buffer
-           "4d"    'switch-window-then-dired
-           "4f"    'switch-window-then-find-file
-           "4R"    'my/switch-window-resize
-           "4b"    'switch-window-then-display-buffer
+           "40"    'ace-window
+           "41"    'ace-swap-window
+           "4v"    'split-window-vertically
+           "4h"    'split-window-horizontally
+           "4s"    'ace-swap-window
+           "4d"    'ace-delete-window
+           "4f"    'find-file-other-window
+           "4b"    'switch-to-buffer-other-window
            "4g"    'my/split-then-magit
-           "4 SPC" 'balance-windows)
-  (:keymaps 'switch-window-extra-map
-            "i"    'nil
-            "p"    'switch-window-mvborder-up
-            "k"    'nil
-            "n"    'switch-window-mvborder-down
-            "j"    'nil
-            "b"    'switch-window-mvborder-left
-            "l"    'nil
-            "f"    'switch-window-mvborder-right
-            "SPC"  'balance-windows
-            "a"    'switch-window-resume-auto-resize-window))
+           "4 SPC" 'balance-windows))
 
 ;; shackle (Melpa)
 (use-package shackle
