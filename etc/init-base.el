@@ -313,23 +313,49 @@
 ;; ace-window (Melpa)
 (use-package ace-window
   :config
+  (defun graphic-p ()
+    "Determine whether the current environment is a graphical environment."
+    (if (display-graphic-p)
+        t))
+
+  (setq graphic-only-plugins-setting ())
+  (push '(ace-window-posframe-mode t)
+        graphic-only-plugins-setting)
+
+  (if (not (graphic-p))
+      (add-hook 'after-make-frame-functions
+                (lambda (new-frame)
+                  (select-frame new-frame)
+                  (dolist (elisp-code graphic-only-plugins-setting)
+                    (eval elisp-code))))
+    (dolist (elisp-code graphic-only-plugins-setting)
+      (eval elisp-code)))
+
+  (custom-set-faces
+   '(aw-leading-char-face
+     ((t (:inherit ace-jump-face-foreground
+                   :height 5.0
+                   :weight ultra-bold
+                   )))))
   (setq aw-keys       '(?1 ?2 ?3 ?4 ?5 ?6 ?7 ?8 ?9 ?0)
         aw-scope      'frame
         aw-background t)
-  (setq aw-ignore-current          t
+  (setq aw-ignore-current          nil
         aw-dispatch-always         nil
-        aw-dispatch-when-more-than 3)
+        aw-minibuffer-flag         t
+        ;; aw-char-position           'top-left
+        aw-dispatch-when-more-than 4)
   (setq aw-dispatch-alist
-        '((?x aw-delete-window              " Ace - Delete Window")
-          (?m aw-swap-window                " Ace - Swap Window")
-          (?M aw-move-window                " Ace - Move Window")
-          (?j aw-switch-buffer-in-window    " Ace - Select Buffer")
-          (?n aw-flip-window                " Ace - Move Window")
-          (?u aw-switch-buffer-other-window " Ace - Switch Buffer Other Window")
-          (?c aw-split-window-fair          " Ace - Split Fair Window")
-          (?v aw-split-window-vert          " Ace - Split Vert Window")
-          (?b aw-split-window-horz          " Ace - Split Horz Window")
-          (?o delete-other-windows          " Ace - Maximize Window")
+        '((?x aw-delete-window              "  Ace - Delete Window")
+          (?m aw-swap-window                "  Ace - Swap Window")
+          (?M aw-move-window                "  Ace - Move Window")
+          (?j aw-switch-buffer-in-window    "  Ace - Select Buffer")
+          (?n aw-flip-window                "  Ace - Move Window")
+          (?u aw-switch-buffer-other-window "  Ace - Switch Buffer Other Window")
+          (?c aw-split-window-fair          "  Ace - Split Fair Window")
+          (?v aw-split-window-vert          "  Ace - Split Vert Window")
+          (?b aw-split-window-horz          "  Ace - Split Horz Window")
+          (?o delete-other-windows          "  Ace - Maximize Window")
           (?? aw-show-dispatch-help)))
   (with-eval-after-load 'magit
     (defun my/split-then-magit ()
