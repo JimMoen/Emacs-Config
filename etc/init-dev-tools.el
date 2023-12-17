@@ -415,6 +415,12 @@ active `major-mode', or for all major modes when ALL-MODES is t."
   :config
   (apheleia-global-mode t))
 
+;; tree-sitter (Melpa)
+(use-package tree-sitter
+  :hook
+  (prog-mode . tree-sitter-mode)
+  :config
+  (use-package tree-sitter-langs))
 
 (provide 'init-dev-tools)
 
