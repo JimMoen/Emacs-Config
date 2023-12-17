@@ -39,6 +39,8 @@
 ;; See ./etc/init-editing.el: avy
 (use-package emacs
   :ensure nil
+  :config
+  (setq ad-redefinition-action 'accept)
   :general
   ("C-h"     'backward-delete-char-untabify
    "C-w"     'backward-kill-word
@@ -90,7 +92,7 @@
               "-g" "!site-lisp" "-g" "!elpa" "-g" "!var" "-g" "!straight"
               ;; ignore site-lisp/ elpa/ var/ in user-emacs-directory
               "--case-sensitive" "--hidden" "--multiline"
-              ;; search hidden directorys
+              ;; search hidden directories
               ))
   (use-package emacs
     :after (ivy-rich)
