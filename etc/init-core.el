@@ -90,6 +90,7 @@
       general ivy ivy-rich counsel swiper ivy-avy counsel-tramp nerd-icons-ivy-rich
       sudo-edit helpful which-key ivy-dired-history dired-single
       ace-window shackle
+      edit-server
 
       ;; ########## ui packages
       ;; [Built-in] None
