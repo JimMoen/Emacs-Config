@@ -158,60 +158,78 @@ on the current line, if any."
 ;; complete framework
 (use-package company
   :init
-  (setq company-backends '((company-capf company-tabnine)
-                           (company-dabbrev company-dabbrev-code)
-                           (company-keywords
-                            company-files
-                            company-ispell
+  (setq company-backends '((company-capf
+                            company-files    ;; files & directory
+                            company-keywords ;; keywords
+                            company-yasnippet)
+                           (company-abbrev
+                            company-dabbrev
+                            company-dabbrev-code)
+                           (company-ispell
                             company-restclient)))
   (use-package company-box
     :hook (company-mode . company-box-mode))
+
   :hook
   (after-init . global-company-mode)
-  (emacs-lisp-mode . (lambda ()
-                       (require 'company-elisp)
-                       (if (and (listp company-backends) (member 'company-elisp company-backends))
-                           company-backends
-                         (push 'company-elisp company-backends))))
+
+  :custom
+  (company-dabbrev-ignore-case    nil)
+  (company-dabbrev-downcase       nil)
+  (company-dabbrev-char-regexp    "[A-Za-z-_\\.'/]")
+  (company-dabbrev-ignore-buffers "\\`[ *]\\|\\.PDF\\'")
+  (company-dabbrev-other-buffers  t)
+
   :config
-  (setq company-idle-delay                0.5
-        company-minimum-prefix-length     1
-        company-require-match             nil
-        company-selection-wrap-around     t
-        company-show-quick-access         t
-        company-tooltip-align-annotations t
-        company-dabbrev-ignore-case       nil
-        company-dabbrev-downcase          nil
-        company-dabbrev-char-regexp       "[A-Za-z-_\\.'/]"
-        company-dabbrev-ignore-buffers    "\\`[ *]\\|\\.pdf\\'"
-        company-dabbrev-other-buffers     t
-        company-show-quick-access         t)
-  (setq company-global-modes '(not erc-mode message-mode help-mode gud-mode eshell-mode shell-mode))
+  (setq company-idle-delay            0.5
+        company-minimum-prefix-length 1
+        company-require-match         nil
+        company-selection-wrap-around t
+        company-show-quick-access     t)
 
-  (with-no-warnings
-    (defvar company-mode/enable-yas t
-      "Enable yasnippet for all backends.")
+  (use-package company-tabnine
+    :after company
+    :init
+    (defvar company-mode/enable-tabnine t
+      "Enable tabnine for all backends.")
 
-    (with-eval-after-load 'yasnippet
-      (defun company-backend-with-yas (backend)
-        "Add `yasnippet' to company backend."
-        (if (or (not company-mode/enable-yas) (and (listp backend) (member 'company-yasnippet backend)))
+    (defvar company-backend/elisp '(company-elisp :with company-tabnine) ;; Do not add `:with company-tabnine` in company-backends alist
+      "Company backend for `elisp'.")
+
+    (defvar company-mode/disable-tabnine-backends-alist (cons company-backend/elisp '())
+      "Disable tabnine for specific backends.")
+
+    :hook
+    (emacs-lisp-mode . (lambda ()
+                         (require 'company-elisp)
+                         (if (and (listp company-backends)
+                                  (member company-backend/elisp company-backends))
+                             company-backends
+                           (push company-backend/elisp company-backends))))
+
+    :config
+    (with-eval-after-load 'company-tabnine
+      (defun company-backend-with-tabnine (backend)
+        "Add with `tabnine' to company backend."
+        (if (or (not company-mode/enable-tabnine)
+                (member backend company-mode/disable-tabnine-backends-alist)
+                (and (listp backend)
+                     (member 'company-tabnine (member ':with backend))))
             backend
-          (append (if (consp backend) backend (list backend))
-                  '(:with company-yasnippet))))
+          (progn
+            (dolist (delq--var '(:with company-tabnine))
+              (delq delq--var (if (consp backend) backend (list backend))))
+            (append backend '(:with company-tabnine)))))
+      (setq company-backends (mapcar #'company-backend-with-tabnine company-backends))))
 
-      (setq company-backends (mapcar #'company-backend-with-yas company-backends))
+  (setq company-global-modes '(not erc-mode message-mode help-mode gud-mode eshell-mode shell-mode))
+  (add-to-list 'company-transformers #'delete-dups)
 
-      (defun my-company-yasnippet-disable-inline (fun command &optional arg &rest _ignore)
-        "Enable yasnippet but disable it inline."
-        (if (eq command 'prefix)
-            (when-let ((prefix (funcall fun 'prefix)))
-              (unless (memq (char-before (- (point) (length prefix))) '(?. ?> ?\())
-                prefix))
-          (funcall fun command arg)))
+  (use-package yasnippet-capf
+    :after yasnippet
+    :config
+    (add-to-list 'completion-at-point-functions #'yasnippet-capf))
 
-      (advice-add #'company-yasnippet :around #'my-company-yasnippet-disable-inline))
-    (add-to-list 'company-transformers #'delete-dups))
   :bind
   (:map company-active-map
         ("C-h"     . nil)
@@ -220,12 +238,6 @@ on the current line, if any."
         ("C-x w"   . company-show-location)
         ([tab]     . company-complete-common-or-cycle)
         ([backtab] . company-select-previous-or-abort)))
-
-;; company-tabnine (Melpa)
-;; complete with tabnine AI
-(use-package company-tabnine
-  ;; TODO: ensure tabnine binary installed
-  )
 
 (use-package copilot
   :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
