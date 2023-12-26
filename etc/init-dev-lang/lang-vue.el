@@ -28,15 +28,10 @@
 
 ;;; Code:
 
-(use-package web-mode
+(use-package typescript-mode
   :init
-  (add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode))
-  (add-to-list 'auto-mode-alist '("\\.ts\\'" . web-mode))
-)
-
-(straight-use-package
- '(lsp-volar :type git :host github :repo "jadestrong/lsp-volar"))
-
+  (add-to-list 'auto-mode-alist '("\\.vue\\'" . typescript-mode))
+  (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode)))
 
 (provide 'lang-vue)
 

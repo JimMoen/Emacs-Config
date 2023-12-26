@@ -144,7 +144,7 @@
       php-mode js2-mode dart-mode jq-mode
       protobuf-ts-mode ;; proto3 only
       hcl-mode ;; for .hocon files
-      web-mode
+      typescript-mode ;; Vue && typescript && JavaScript
       ))
 
   ;; ########## enable some commands
@@ -173,7 +173,7 @@
 
 ;; no-littering (Melpa)
 ;; Help for keeping Emacs Configuration Dir clean.
-;; Built-in packags "recentf" needed
+;; Built-in packages `recentf` needed
 (use-package no-littering
   :demand t)
 
