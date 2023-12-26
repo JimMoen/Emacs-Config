@@ -110,6 +110,7 @@
       rainbow-delimiters
       wgrep multiple-cursors
       editorconfig
+      flycheck-aspell
 
       ;; ########## other utils
       ;; [Built-in] calendar
