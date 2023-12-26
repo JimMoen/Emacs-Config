@@ -242,7 +242,10 @@ on the current line, if any."
 (use-package copilot
   :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
   :ensure t
-  :hook (prog-mode . copilot-mode)
+  :hook
+  (prog-mode . copilot-mode)
+  (copilot-mode . (lambda ()
+                    (setq-local copilot--indent-warning-printed-p t)))
   :config
   (with-eval-after-load 'company
     ;; disable inline previews
