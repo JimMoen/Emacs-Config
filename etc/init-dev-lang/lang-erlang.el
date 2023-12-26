@@ -36,7 +36,7 @@
   (defun my/modified-syntax-table ()
     (put 'bitsyntax-open-outer 'syntax-table nil)
     (put 'bitsyntax-close-outer 'syntax-table nil))
-  (setq erlang-indent-level      5
+  (setq erlang-indent-level      4
         erlang-icr-indent        4
         erlang-indent-guard      0
         erlang-argument-indent   4
