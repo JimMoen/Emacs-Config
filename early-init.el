@@ -41,6 +41,8 @@
 
 ;; Prevent initializing twice
 (setq package-enable-at-startup nil)
+(setq server-auth-dir "/run/user/1000/emacs/")
+(setq server-socket-dir "/run/user/1000/emacs/")
 (add-hook 'emacs-startup-hook
           (lambda ()
             (message "Emacs ready in %s with %d garbage collections."
