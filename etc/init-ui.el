@@ -32,30 +32,33 @@
 (use-package emacs
   :ensure nil
   :config
-  (progn                                                  ;; Disable GUI Features
-    (setq use-file-dialog                   nil
-          use-dialog-box                    nil
-          inhibit-startup-screen            t
-          inhibit-startup-echo-area-message t)
-    (tool-bar-mode                          -1)
-    (menu-bar-mode                          -1)
-    (scroll-bar-mode                        -1))
-  (setq scroll-step 1                                     ;; Friendly and smoothly scroll
-        scroll-margin 5
-        hscroll-step 1
-        hscroll-margin 5
-        scroll-conservatively 101
-        scroll-up-aggressively 0.01
-        scroll-down-aggressively 0.01
-        scroll-preserve-screen-position 'always)
-  (setq auto-window-vscroll            nil)               ;; Disable auto height of line
-  (setq truncate-partial-width-windows t)                 ;; Disable line truncate
-  (setq inhibit-compacting-font-caches t)                 ;; Don’t compact font caches during GC.
-  (defalias 'yes-or-no-p 'y-or-n-p)                       ;; Use y-or-n instead of yes-or-no
-  (progn (setq JimMoen/frame-settings '((font . "Sarasa Mono SC Nerd Font-12")
-                                        (alpha . (93 90))))
-         (dolist (frame-set-var JimMoen/frame-settings)
-           (push frame-set-var default-frame-alist))))
+  ;; Disable GUI Features
+  (tool-bar-mode   -1)
+  (menu-bar-mode   -1)
+  (scroll-bar-mode -1)
+  (setq use-file-dialog                   nil
+        use-dialog-box                    nil)
+  ;; Scroll
+  (setq scroll-step                       1                 ;; Friendly and smoothly scroll
+        scroll-margin                     5
+        scroll-conservatively             101
+        scroll-up-aggressively            0.01
+        scroll-down-aggressively          0.01
+        scroll-preserve-screen-position   'always
+        hscroll-step                      1
+        hscroll-margin                    5
+        auto-window-vscroll               nil               ;; Disable auto height of line
+        truncate-partial-width-windows    t)                ;; Disable line truncate
+  ;; Inhibit
+  (setq inhibit-startup-screen            t
+        inhibit-startup-echo-area-message t
+        inhibit-compacting-font-caches    t)                ;; Don’t compact font caches during GC.
+  (defalias 'yes-or-no-p 'y-or-n-p)                         ;; Use y-or-n instead of yes-or-no
+  ;; Frame
+  (dolist (frame-setting--var
+           '((font . "Sarasa Mono SC Nerd Font-12")
+             (alpha . (88 80))))
+    (add-to-list 'default-frame-alist frame-setting--var)))
 
 ;; nerd-icons (Melpa)
 (use-package nerd-icons
