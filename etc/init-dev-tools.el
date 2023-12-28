@@ -225,11 +225,6 @@ on the current line, if any."
   (setq company-global-modes '(not erc-mode message-mode help-mode gud-mode eshell-mode shell-mode))
   (add-to-list 'company-transformers #'delete-dups)
 
-  (use-package yasnippet-capf
-    :after yasnippet
-    :config
-    (add-to-list 'completion-at-point-functions #'yasnippet-capf))
-
   :bind
   (:map company-active-map
         ("C-h"     . nil)
