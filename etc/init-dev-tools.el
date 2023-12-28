@@ -247,6 +247,7 @@ on the current line, if any."
   (copilot-mode . (lambda ()
                     (setq-local copilot--indent-warning-printed-p t)))
   :config
+  (setq copilot-max-char -1)
   (with-eval-after-load 'company
     ;; disable inline previews
     (delq 'company-preview-if-just-one-frontend company-frontends))
