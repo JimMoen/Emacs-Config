@@ -91,7 +91,7 @@
       ;; [Built-in] dired autorevert recentf bookmark ibuffer winner
       ;; [Site]     None
       nerd-icons nerd-icons-ibuffer nerd-icons-dired
-      general ivy ivy-rich counsel swiper ivy-avy counsel-tramp nerd-icons-ivy-rich
+      general ivy ivy-rich counsel swiper ivy-hydra ivy-avy counsel-tramp nerd-icons-ivy-rich
       sudo-edit helpful which-key ivy-dired-history dired-single
       ace-window shackle
       edit-server

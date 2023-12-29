@@ -71,6 +71,9 @@
   (use-package ivy-rich
     :after (nerd-icons-ivy-rich))
 
+  (use-package ivy-hydra
+    :after (ivy hydra))
+
   :bind
   ;; Use persp-mode to switch/kill buffer in ONE project.
   ;; See ./etc/init-base.el: persp-mode
