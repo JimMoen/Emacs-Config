@@ -50,7 +50,8 @@
         auto-window-vscroll               nil               ;; Disable auto height of line
         truncate-partial-width-windows    t)                ;; Disable line truncate
   ;; Inhibit
-  (setq inhibit-startup-screen            t
+  (setq frame-resize-pixelwise            t                 ;; Don't restricting the frame size to an integer multiple of the font size in the frame.
+        inhibit-startup-screen            t
         inhibit-startup-echo-area-message t
         inhibit-compacting-font-caches    t)                ;; Don’t compact font caches during GC.
   (defalias 'yes-or-no-p 'y-or-n-p)                         ;; Use y-or-n instead of yes-or-no
