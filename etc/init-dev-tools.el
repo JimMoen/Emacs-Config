@@ -113,7 +113,7 @@ on the current line, if any."
         projectile-auto-discover nil
         projectile-track-known-projects-automatically nil)
   (setq projectile-project-search-path
-        '(("~/WorkSpaces" . 3)))
+        '(("~/Workspace" . 3)))
   :bind
   (("C-x C-b" . projectile-ibuffer))
   (:map projectile-command-map
