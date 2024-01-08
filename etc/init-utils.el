@@ -72,12 +72,6 @@
   :bind
   (("C-x y f" . english-teacher-follow-mode)))
 
-;; ssh-agency (Melpa)
-;; To use gnome-keyring.
-;; SSH connect required.
-(use-package ssh-agency
-  :defer t)
-
 ;; ssh-config-mode (Melpa)
 ;; major mode for ssh config file
 (use-package ssh-config-mode

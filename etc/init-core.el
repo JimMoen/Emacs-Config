@@ -116,7 +116,7 @@
       ;; [Built-in] calendar
       ;; [Site]     english-teacher
       youdao-dictionary use-proxy
-      ssh-agency ssh-config-mode cal-china-x
+      ssh-config-mode cal-china-x
       i3wm-config-mode systemd pkgbuild-mode
       speed-type pdf-tools info-colors
       restclient company-restclient
