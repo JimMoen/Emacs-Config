@@ -121,6 +121,13 @@
    ("C-c t r" . whitespace-report)
    ("C-c t R" . whitespace-report-region)))
 
+;; vundo (Melpa)
+(use-package vundo
+  :config
+  (setq vundo-glyph-alist vundo-ascii-symbols)
+  :bind
+  (("C-c u" . vundo)))
+
 ;; avy to jump char (Melpa)
 (use-package avy
   :config
