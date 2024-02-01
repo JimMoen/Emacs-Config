@@ -58,7 +58,7 @@
   (persp-keymap-prefix "w")
   :config
   (setq persp-kill-foreign-buffer-behaviour nil)
-  ;; fix persp and ivy-posframe conflit
+  ;; fix persp and ivy-posframe conflict
   (defun persp-load-state-from-file@after (&optional _ _ _)
     (posframe-delete-all))
   (advice-add 'persp-load-state-from-file :after #'persp-load-state-from-file@after)

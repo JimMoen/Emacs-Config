@@ -82,8 +82,8 @@
         dashboard-set-navigator     t
         dashboard-set-file-icons    t
         dashboard-set-heading-icons nil)
-  (setq dashboard-items '((recents        . 10)
-                          (projects       . 10)
+  (setq dashboard-items '((recents        . 15)
+                          (bookmarks      . 15)
                           (ls-directories . 5)
                           (ls-files       . 5)))
   (setq dashboard-projects-switch-function 'ivy-persp-switch-project-action)
