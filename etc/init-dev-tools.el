@@ -239,10 +239,9 @@ on the current line, if any."
   :ensure t
   :hook
   (prog-mode . copilot-mode)
-  (copilot-mode . (lambda ()
-                    (setq-local copilot--indent-warning-printed-p t)))
   :config
-  (setq copilot-max-char -1)
+  (setq copilot-max-char                      -1
+        copilot-indent-offset-warning-disable t)
   (with-eval-after-load 'company
     ;; disable inline previews
     (delq 'company-preview-if-just-one-frontend company-frontends))
