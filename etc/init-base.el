@@ -187,10 +187,32 @@
   (make-backup-files nil)
   ;; never make backup files like "init.el~"
   :init
-  (setq recentf-max-saved-items 100
-        recentf-exclude         '("/tmp/" "/ssh:"))
-  :config
-  (add-to-list 'recentf-exclude no-littering-var-directory))
+  (setq recentf-max-saved-items 100)
+  (setq  recentf-exclude '("/tmp/"
+                           "/ssh:"
+                           "/sudo:"
+                           ;; ctags
+                           "/TAGS$"
+                           ;; global
+                           "/GTAGS$"
+                           "/GRAGS$"
+                           "/GPATH$"
+                           ;; binary
+                           "\\.mkv$"
+                           "\\.mp[34]$"
+                           "\\.avi$"
+                           "\\.pdf$"
+                           "\\.docx?$"
+                           "\\.xlsx?$"
+                           ;; sub-titles
+                           "\\.sub$"
+                           "\\.srt$"
+                           "\\.ass$"
+                           ;; no-littering-var-directory
+                           ;; `no-littering-var-directory` used absolute path expanded from `user-emacs-directory`
+                           ;; But `recentf-list` will save paths with prefix `~/`.
+                           ;; So use literal directory here.
+                           "~/.config/emacs/var/")))
 
 ;; bookmark (Built-in)
 (use-package bookmark
