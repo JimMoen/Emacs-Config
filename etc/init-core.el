@@ -107,7 +107,7 @@
       ;;            so-long subword whitespace hideshow
       ;; [Site]     None
       avy rainbow-mode smartparens
-      vundo
+      vundo ligature
       rainbow-delimiters
       wgrep multiple-cursors
       editorconfig
