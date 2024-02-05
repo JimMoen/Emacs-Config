@@ -219,8 +219,9 @@
     (require 'counsel-projectile)
     (ivy-read "Switch to Project Perspective: "
               (if (projectile-project-p)
-                  (cons (abbreviate-file-name (projectile-project-root))
-                        (projectile-relevant-known-projects))
+                  (delete (concat (abbreviate-file-name (getenv "HOME")) "/")
+                          (cons (abbreviate-file-name (projectile-project-root))
+                                (projectile-relevant-known-projects)))
                 projectile-known-projects)
               :action #'ivy-persp-switch-project-action
               :caller #'ivy-persp-switch-project))
