@@ -51,12 +51,7 @@
   (with-eval-after-load 'smartparens
     (sp-with-modes '(erlang-mode)
       (sp-local-pair "<<" ">>")
-      (sp-local-pair "case" "end")
-      (sp-local-pair "receive" "end")
-      (sp-local-pair "if" "end")
-      (sp-local-pair "try" "end")
-      (sp-local-pair "fun(" "end")
-      (sp-local-pair "begin" "end"))
+      (sp-local-pair "#{" "}"))
     (def-pairs ('(double-angle-bracket . "<<")))
     (define-key smartparens-mode-map (kbd "C-c ,") 'my/sp-wrap-with-double-angle-brackets))
 
