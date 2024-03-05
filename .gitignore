@@ -28,3 +28,6 @@
 # asd
 # anything-sync-daemon
 .flagged
+
+# direnv
+.envrc
