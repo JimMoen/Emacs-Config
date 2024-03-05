@@ -31,11 +31,12 @@
 ;; Initialize Package Management System
 ;; Package Archives
 (setq package-archives
-      '(("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-        ;; only for package `org-plus-contrib`
+      '(;; only for package `org-plus-contrib`
         ;; not required now
         ;; ("org"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
-        ("gnu"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
+        ("gnu"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+        ("nongnu" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")
+        ("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 
 ;; Initialize packages
 (unless (bound-and-true-p package--initialized)             ;; Avoid warnings in 27
