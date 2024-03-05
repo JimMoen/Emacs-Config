@@ -202,14 +202,6 @@ on the current line, if any."
     (defvar company-mode/disable-tabnine-backends-alist (cons company-backend/elisp '())
       "Disable tabnine for specific backends.")
 
-    :hook
-    (emacs-lisp-mode . (lambda ()
-                         (require 'company-elisp)
-                         (if (and (listp company-backends)
-                                  (member company-backend/elisp company-backends))
-                             company-backends
-                           (push company-backend/elisp company-backends))))
-
     :config
     (with-eval-after-load 'company-tabnine
       (defun company-backend-with-tabnine (backend)
