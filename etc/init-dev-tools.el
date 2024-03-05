@@ -129,6 +129,9 @@ on the current line, if any."
 ;; treemacs (Melpa)
 (use-package treemacs
   :config
+  (treemacs-follow-mode)
+  (treemacs-project-follow-mode)
+
   (use-package treemacs-projectile
     :after (treemacs projectile))
 
@@ -147,7 +150,7 @@ on the current line, if any."
     :after (treemacs persp-mode) ;; persp-mode
     :config (treemacs-set-scope-type 'Perspectives))
 
-  (setq treemacs-width 40)
+  (setq treemacs-width 45)
 
   :general
   (:prefix "C-x"
