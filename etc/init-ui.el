@@ -126,22 +126,10 @@
         doom-modeline-project-detection          'projectile
         doom-modeline-display-default-persp-name t))
 
-;; kaolin-themes (Melpa)
-(use-package kaolin-themes
+;; doom-themes (Melpa)
+(use-package doom-themes
   :config
-  ;; If t, enable italic style in comments.
-  (setq kaolin-themes-italic-comments t)
-  ;; When t, will display colored hl-line style instead monochrome.
-  (setq kaolin-themes-hl-line-colored t)
-  ;; Enable distinct background for fringe and line numbers.
-  (setq kaolin-themes-distinct-fringe t)
-  ;; Enable distinct colors for company popup scrollbar.
-  (setq kaolin-themes-distinct-company-scrollbar t)
-  ;; Show git-gutter indicators as solid lines
-  (setq kaolin-themes-git-gutter-solid t)
-  ;; modeline border width
-  (setq kaolin-themes-modeline-padded 1)
-  (load-theme 'kaolin-galaxy t))
+  (load-theme 'doom-snazzy t))
 
 
 (provide 'init-ui)

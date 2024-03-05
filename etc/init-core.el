@@ -101,7 +101,7 @@
       ;; [Built-in] None
       ;; [Site]     None
       dashboard dashboard-ls
-      doom-modeline kaolin-themes
+      doom-modeline doom-themes
 
       ;; ########## base editing
       ;; [Built-in] align display-line-numbers delsel
