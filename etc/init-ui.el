@@ -58,7 +58,9 @@
   ;; Frame
   (dolist (frame-setting--var
            '((font . "Sarasa Mono SC Nerd Font-12")
-             (alpha . (88 80))))
+             (alpha . (95 92))
+             ;; (alpha-background . 98)
+             ))
     (add-to-list 'default-frame-alist frame-setting--var)))
 
 ;; nerd-icons (Melpa)
