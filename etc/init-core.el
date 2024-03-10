@@ -143,7 +143,9 @@
       ;; [Site]     None
       yaml-mode yaml-imenu
       erlang lsp-pyright elixir-mode
-      haskell-mode rust-mode go-mode python-mode
+      haskell-mode
+      rust-mode cargo-mode
+      go-mode python-mode
       php-mode js2-mode dart-mode jq-mode
       protobuf-ts-mode ;; proto3 only
       hcl-mode ;; for .hocon files
