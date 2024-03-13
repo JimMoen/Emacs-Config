@@ -28,7 +28,8 @@
 
 ;;; Code:
 
-;; yaml-mode (Melpa)
+;; hcl-mode (Melpa)
+;; for hocon and hcl
 (use-package hcl-mode
   :init
   (add-to-list 'auto-mode-alist '("\\.hocon$" . hcl-mode)))
