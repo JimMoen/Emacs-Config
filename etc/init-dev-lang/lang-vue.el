@@ -31,7 +31,9 @@
 (use-package typescript-mode
   :init
   (add-to-list 'auto-mode-alist '("\\.vue\\'" . typescript-mode))
-  (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode)))
+  (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
+  :config
+  (setq typescript-indent-level 2))
 
 (provide 'lang-vue)
 
