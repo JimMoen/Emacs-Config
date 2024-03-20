@@ -293,6 +293,7 @@ on the current line, if any."
     hcl-mode
     pkgbuild-mode
     protobuf-mode
+    pkgbuild-mode
     direnv-envrc-mode))
 
 (defun disable-lsp-in-modes (select-major-mode)
@@ -422,10 +423,9 @@ active `major-mode', or for all major modes when ALL-MODES is t."
 
 ;; tree-sitter (Melpa)
 (use-package tree-sitter
-  :hook
-  (prog-mode . tree-sitter-mode)
   :config
-  (use-package tree-sitter-langs))
+  (use-package tree-sitter-langs)
+  (global-tree-sitter-mode))
 
 (provide 'init-dev-tools)
 
