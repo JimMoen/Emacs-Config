@@ -293,7 +293,7 @@ on the current line, if any."
     hcl-mode
     pkgbuild-mode
     protobuf-mode
-    pkgbuild-mode
+    qml-mode
     direnv-envrc-mode))
 
 (defun disable-lsp-in-modes (select-major-mode)
