@@ -128,6 +128,17 @@
   :bind
   (("C-c u" . vundo)))
 
+;; region-occurrences-highlighter (Melpa)
+(use-package region-occurrences-highlighter
+  :hook
+  (prog-mode . region-occurrences-highlighter-mode)
+  (org-mode . region-occurrences-highlighter-mode)
+  (text-mode . region-occurrences-highlighter-mode)
+  :bind
+  (:map region-occurrences-highlighter-nav-mode-map
+        ("M-n" . region-occurrences-highlighter-next)
+        ("M-p" . region-occurrences-highlighter-prev)))
+
 ;; avy to jump char (Melpa)
 (use-package avy
   :config

@@ -110,6 +110,7 @@
       ;; [Site]     None
       avy rainbow-mode smartparens
       vundo ligature
+      region-occurrences-highlighter
       rainbow-delimiters
       wgrep multiple-cursors
       editorconfig
