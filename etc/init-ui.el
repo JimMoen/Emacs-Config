@@ -40,10 +40,10 @@
         use-dialog-box                    nil)
   ;; Scroll
   (setq scroll-step                       1                 ;; Friendly and smoothly scroll
-        scroll-margin                     5
+        scroll-margin                     10
         scroll-conservatively             101
-        scroll-up-aggressively            0.01
-        scroll-down-aggressively          0.01
+        scroll-up-aggressively            0.0
+        scroll-down-aggressively          0.0
         scroll-preserve-screen-position   'always
         hscroll-step                      1
         hscroll-margin                    5
