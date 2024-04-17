@@ -150,6 +150,7 @@
       go-mode python-mode
       php-mode js2-mode dart-mode jq-mode
       qml-mode
+      cmake-mode
       protobuf-ts-mode ;; proto3 only
       hcl-mode ;; for .hocon files
       typescript-mode ;; Vue && typescript && JavaScript
