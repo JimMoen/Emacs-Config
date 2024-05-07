@@ -66,7 +66,7 @@
   :hook
   (after-init . global-display-line-numbers-mode)
   :custom
-  (display-line-numbers-width 3))
+  (display-line-numbers-width 4))
 
 ;; Display Column numbers (Built-in)
 (use-package simple
