@@ -128,6 +128,7 @@
       pos-tip ;; required by youdao-dictionary
       direnv
       x509-mode
+      nginx-mode
 
       ;; ########## Development Tools
       ;; [Built-in] None

@@ -170,6 +170,11 @@
 (use-package x509-mode
   :defer t)
 
+;; nginx-mode (Melpa)
+;; major mode for nginx config files
+(use-package nginx-mode
+  :defer t)
+
 
 (provide 'init-utils)
 
