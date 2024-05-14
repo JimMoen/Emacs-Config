@@ -127,6 +127,7 @@
       protobuf-mode
       pos-tip ;; required by youdao-dictionary
       direnv
+      x509-mode
 
       ;; ########## Development Tools
       ;; [Built-in] None
