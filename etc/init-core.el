@@ -110,7 +110,7 @@
       ;; [Site]     None
       avy rainbow-mode smartparens
       vundo ligature
-      region-occurrences-highlighter
+      region-occurrences-highlighter hl-todo
       rainbow-delimiters
       wgrep multiple-cursors
       editorconfig
@@ -133,7 +133,7 @@
       ;; ########## Development Tools
       ;; [Built-in] None
       ;; [Site]     None
-      magit magit-delta diff-hl git-timemachine
+      magit magit-delta diff-hl git-timemachine magit-todos
       projectile counsel-projectile persp-mode
       treemacs treemacs-projectile treemacs-nerd-icons treemacs-magit treemacs-persp
       company company-box company-tabnine prescient ivy-prescient company-prescient

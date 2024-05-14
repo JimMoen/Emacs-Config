@@ -139,6 +139,19 @@
         ("M-n" . region-occurrences-highlighter-next)
         ("M-p" . region-occurrences-highlighter-prev)))
 
+;; hl-todo (Melpa)
+;; Highlight TODO and similar keywords in comments
+(use-package hl-todo
+  :config
+  (global-hl-todo-mode)
+  (setq hl-todo-keyword-faces
+        '(("XXX"    . "#FFAABB")
+          ("TODO"   . "#FFBB00")
+          ("FIXME"  . "#FF0000")
+          ("DEBUG"  . "#A020F0")
+          ("GOTCHA" . "#FF4500")
+          ("STUB"   . "#1E90FF"))))
+
 ;; avy to jump char (Melpa)
 (use-package avy
   :config

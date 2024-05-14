@@ -33,11 +33,18 @@
 (use-package magit
   :init
   (use-package magit-delta
+    :after magit
     :ensure-system-package
     (delta . git-delta)
     ;; (`command-name` . `package-name`)
     :hook
     (magit-mode . magit-delta-mode))
+  (use-package magit-todos
+    :after magit
+    :config
+    (magit-todos-mode 1)
+    (setq magit-todos-keywords-list
+          '("XXX" "TODO" "FIXME" "DEBUG" "GOTCHA" "STUB")))
   :config
   (setq magit-status-margin                '(t age-abbreviated   magit-log-margin-width t 25)
         magit-refs-margin                  '(t age-abbreviated   magit-log-margin-width t 25)
