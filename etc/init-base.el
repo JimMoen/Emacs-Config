@@ -47,7 +47,7 @@
    "M-w"     'kill-ring-save
    "M-W"     'kill-region
    "C-x h"   'help-command
-   "C-x w h" 'mark-whole-buffer
+   "C-x H"   'mark-whole-buffer
    "M-g g"   'nil
    "M-g M-g" 'nil))
 
