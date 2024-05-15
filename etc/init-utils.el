@@ -175,6 +175,11 @@
 (use-package nginx-mode
   :defer t)
 
+;; conf-mode (Built-in)
+;; major mode for conf files
+(use-package conf-mode
+  :init
+  (add-to-list 'auto-mode-alist '("\\.tool-versions$" . conf-mode)))
 
 (provide 'init-utils)
 
