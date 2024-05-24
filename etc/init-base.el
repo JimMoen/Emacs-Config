@@ -388,7 +388,7 @@
         aw-dispatch-always         nil
         aw-minibuffer-flag         t
         ;; aw-char-position           'top-left
-        aw-dispatch-when-more-than 4)
+        aw-dispatch-when-more-than 3)
   (setq aw-dispatch-alist
         '((?x aw-delete-window              "  Ace - Delete Window")
           (?m aw-swap-window                "  Ace - Swap Window")
