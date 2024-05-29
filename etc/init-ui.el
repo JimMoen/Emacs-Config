@@ -66,9 +66,54 @@
 ;; nerd-icons (Melpa)
 (use-package nerd-icons
   :config
-  (set-fontset-font t 'symbol "Noto Color Emoji")
+  (defun update-alist (origin-alist rep-alist)
+    "Update ORIGIN-ALIST with the key-value pairs from REP-ALIST.
+If a key from REP-ALIST is found in ORIGIN-ALIST, its value is replaced.
+If a key from REP-ALIST is not found, the key-value pair is added to ORIGIN-ALIST."
+    (dolist (rep-pair rep-alist origin-alist)
+      (let ((key (car rep-pair))
+            (new-value (cdr rep-pair))
+            (found nil))
+        (dolist (orig-pair origin-alist)
+          (when (equal (car orig-pair) key)
+            (setcdr orig-pair new-value)
+            (setq found t)))
+        (unless found
+          (setq origin-alist (cons rep-pair origin-alist)))))
+    origin-alist)
+
+  (update-alist nerd-icons-extension-icon-alist
+                '(
+                  ("ini"        nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-yellow)
+                  ("properties" nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-yellow)
+
+                  ("json"       nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-yellow)
+                  ("jsonl"      nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-yellow)
+                  ("cson"       nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-yellow)
+                  ("yml"        nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-dyellow)
+                  ("yaml"       nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-dyellow)
+                  ("toml"       nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-orange)
+                  ("conf"       nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-dorange)
+
+                  ("tscn"       nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-orange)
+                  ("tres"       nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-orange)
+                  ))
+  (update-alist nerd-icons-mode-icon-alist
+                '(
+                  (Custom-mode  nerd-icons-sucicon "nf-seti-settings")
+
+                  (conf-mode    nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-lyellow)
+                  (json-mode    nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-yellow)
+                  (json-ts-mode nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-yellow)
+                  (jsonian-mode nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-yellow)
+                  (yaml-mode    nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-dyellow)
+                  (yaml-ts-mode nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-dyellow)
+                  (toml-mode    nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-orange)
+                  (toml-ts-mode nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-orange)
+                  ))
+
   (setq nerd-icons-font-family "Sarasa Gothic SC Nerd Font"
-        nerd-icons-scale-factor 1.0))
+        nerd-icons-scale-factor 0.8))
 
 ;; Dashboard (Melpa)
 (use-package dashboard

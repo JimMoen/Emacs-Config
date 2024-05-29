@@ -68,7 +68,7 @@
     (nerd-icons-ivy-rich-mode 1)
     (ivy-rich-mode 1)
     :config
-    (setq nerd-icons-ivy-rich-icon-size 0.8))
+    (setq nerd-icons-ivy-rich-icon-size 1.0))
 
   (use-package ivy-rich
     :after (nerd-icons-ivy-rich))
