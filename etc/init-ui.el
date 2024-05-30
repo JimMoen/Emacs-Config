@@ -110,12 +110,19 @@ its value will be updated. If the key is not present, the entry will be added."
                   (toml-mode    nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-orange)
                   (toml-ts-mode nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-orange)
                   ))
-  (update-alist 'nerd-icons-regexp-icon-alist
-                '(
-                  ("^rebar3.crashdump$" nerd-icons-devicon "nf-dev-erlang" :face nerd-icons-lred)
-                  ("^security"          nerd-icons-faicon  "nf-fa-lock"    :face nerd-icons-lcyan)
-                  ("^rebar3$"           nerd-icons-devicon "nf-dev-erlang" :face nerd-icons-orange)
-                  ))
+  (update-alist
+   'nerd-icons-regexp-icon-alist
+   '(
+     ("^rebar3.crashdump$"          nerd-icons-devicon "nf-dev-erlang"        :face nerd-icons-lred)
+     ("^rebar.lock$"                nerd-icons-devicon "nf-dev-erlang"        :face nerd-icons-red)
+     ("^rebar.config$"              nerd-icons-devicon "nf-dev-erlang"        :face nerd-icons-green)
+     ("^security"                   nerd-icons-faicon  "nf-fa-lock"           :face nerd-icons-lcyan)
+     ("^rebar3$"                    nerd-icons-devicon "nf-dev-erlang"        :face nerd-icons-orange)
+     ("^PKGBUILD$"                  nerd-icons-flicon  "nf-linux-archcraft"   :face nerd-icons-lblue)
+     ("^\\.?gitignore"              nerd-icons-sucicon "nf-seti-git_ignore"   :face nerd-icons-lred)
+     ("^\\.?git-blame-ignore-revs$" nerd-icons-sucicon "nf-seti-git"          :face nerd-icons-lcyan)
+     ("^\\.editorconfig$"           nerd-icons-sucicon "nf-seti-editorconfig" :face nerd-icons-silver)
+     ))
   (setq nerd-icons-font-family "Sarasa Gothic SC Nerd Font"
         nerd-icons-scale-factor 0.8))
 
