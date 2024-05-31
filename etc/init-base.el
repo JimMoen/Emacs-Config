@@ -466,6 +466,7 @@
 
 
 (use-package flycheck-aspell
+  :after (flycheck)
   :hook
   (prog-mode . flyspell-prog-mode)
   :config
