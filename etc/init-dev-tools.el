@@ -47,7 +47,7 @@
           '("XXX" "TODO" "FIXME" "DEBUG" "GOTCHA" "STUB")))
   (use-package magit-file-icons
     :ensure t
-    :after magit
+    :after (magit nerd-icons)
     :init
     (magit-file-icons-mode 1)
     :custom
