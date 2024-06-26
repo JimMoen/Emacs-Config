@@ -126,6 +126,21 @@
   :config
   (load-theme 'doom-snazzy t))
 
+;; minimap (GNU)
+(use-package minimap
+  :hook
+  (after-init . minimap-mode)
+  :config
+  (add-to-list 'aw-ignored-buffers " *MINIMAP*")
+  (setq minimap-window-location 'right
+        minimap-hide-scroll-bar t
+        minimap-update-delay 0.01
+        minimap-width-fraction 0.10
+        minimap-minimum-width 20
+        minimap-automatically-delete-window 'visible)
+  :general
+  ("<f8>" #'minimap-mode))
+
 
 (provide 'init-ui)
 

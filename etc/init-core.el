@@ -102,6 +102,7 @@
       ;; [Site]     None
       dashboard dashboard-ls
       doom-modeline doom-themes
+      minimap
 
       ;; ########## base editing
       ;; [Built-in] align display-line-numbers delsel
