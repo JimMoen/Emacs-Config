@@ -93,8 +93,7 @@
       ;; [Site]     None
       nerd-icons nerd-icons-ibuffer nerd-icons-dired
       general ivy ivy-rich counsel swiper ivy-hydra ivy-avy counsel-tramp nerd-icons-ivy-rich
-      fzf
-      sudo-edit helpful which-key ivy-dired-history dired-single
+      fzf sudo-edit helpful which-key ivy-dired-history dired-single
       ace-window shackle
       edit-server
 

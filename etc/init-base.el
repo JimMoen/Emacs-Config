@@ -51,6 +51,69 @@
    "M-g g"   'nil
    "M-g M-g" 'nil))
 
+;; nerd-icons (Melpa)
+(use-package nerd-icons
+  :config
+  (defun update-alist (alist-symbol rep-alist)
+    "Update the alist specified by ALIST-SYMBOL with entries from REP-ALIST.
+If a key from REP-ALIST is present in the alist referred to by ALIST-SYMBOL,
+its value will be updated. If the key is not present, the entry will be added."
+    (let ((alist (symbol-value alist-symbol)))
+      (dolist (rep rep-alist)
+        (let ((key (car rep))
+              (value (cdr rep)))
+          (if (assoc key alist)
+              (setcdr (assoc key alist) value)
+            (setq alist (cons rep alist)))))
+      (set alist-symbol alist)))
+
+  (update-alist 'nerd-icons-extension-icon-alist
+                '(
+                  ("ini"        nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-yellow)
+                  ("properties" nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-yellow)
+
+                  ("json"       nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-yellow)
+                  ("jsonl"      nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-yellow)
+                  ("cson"       nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-yellow)
+                  ("yml"        nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-dyellow)
+                  ("yaml"       nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-dyellow)
+                  ("toml"       nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-orange)
+                  ("conf"       nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-dorange)
+
+                  ("tscn"       nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-orange)
+                  ("tres"       nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-orange)
+
+                  ("config"     nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-dyellow)
+                  ))
+  (update-alist 'nerd-icons-mode-icon-alist
+                '(
+                  (Custom-mode  nerd-icons-sucicon "nf-seti-settings")
+
+                  (conf-mode    nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-lyellow)
+                  (json-mode    nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-yellow)
+                  (json-ts-mode nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-yellow)
+                  (jsonian-mode nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-yellow)
+                  (yaml-mode    nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-dyellow)
+                  (yaml-ts-mode nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-dyellow)
+                  (toml-mode    nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-orange)
+                  (toml-ts-mode nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-orange)
+                  ))
+  (update-alist
+   'nerd-icons-regexp-icon-alist
+   '(
+     ("^rebar3.crashdump$"          nerd-icons-devicon "nf-dev-erlang"        :face nerd-icons-lred)
+     ("^rebar.lock$"                nerd-icons-devicon "nf-dev-erlang"        :face nerd-icons-red)
+     ("^rebar.config$"              nerd-icons-devicon "nf-dev-erlang"        :face nerd-icons-green)
+     ("^security"                   nerd-icons-faicon  "nf-fa-lock"           :face nerd-icons-lcyan)
+     ("^rebar3$"                    nerd-icons-devicon "nf-dev-erlang"        :face nerd-icons-orange)
+     ("^PKGBUILD$"                  nerd-icons-flicon  "nf-linux-archcraft"   :face nerd-icons-lblue)
+     ("^\\.?gitignore"              nerd-icons-sucicon "nf-seti-git_ignore"   :face nerd-icons-lred)
+     ("^\\.?git-blame-ignore-revs$" nerd-icons-sucicon "nf-seti-git"          :face nerd-icons-lcyan)
+     ("^\\.editorconfig$"           nerd-icons-sucicon "nf-seti-editorconfig" :face nerd-icons-silver)
+     ))
+  (setq nerd-icons-font-family "Sarasa Gothic SC Nerd Font"
+        nerd-icons-scale-factor 0.8))
+
 ;; ivy & counsel & swiper
 ;; ivy (Melpa)
 (use-package ivy
