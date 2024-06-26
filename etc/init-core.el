@@ -85,8 +85,7 @@
     '(;; ########## core packages
       ;; [Built-in] None
       ;; [Site]     None
-      use-package use-package-ensure-system-package
-      no-littering disable-mouse
+      use-package use-package-ensure-system-package no-littering
 
       ;; ########## base packages
       ;; [Built-in] dired autorevert recentf bookmark ibuffer winner
@@ -187,13 +186,6 @@
 ;; Built-in packages `recentf` needed
 (use-package no-littering
   :demand t)
-
-;; disable-mouse (Melpa)
-;; Disable the mouse action
-(use-package disable-mouse
-  :demand t
-  :hook
-  (after-init . global-disable-mouse-mode))
 
 
 (provide 'init-core)

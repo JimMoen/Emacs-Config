@@ -39,12 +39,11 @@
   (setq use-file-dialog                   nil
         use-dialog-box                    nil)
   ;; Scroll
-  (setq scroll-step                       1                 ;; Friendly and smoothly scroll
-        scroll-margin                     10
-        scroll-conservatively             101
-        scroll-up-aggressively            0.0
-        scroll-down-aggressively          0.0
-        scroll-preserve-screen-position   'always
+  (setq scroll-step                       0                 ;; Friendly and smoothly scroll
+        scroll-margin                     1
+        scroll-conservatively             500
+        scroll-up-aggressively            0.1
+        scroll-down-aggressively          0.1
         hscroll-step                      1
         hscroll-margin                    5
         auto-window-vscroll               nil               ;; Disable auto height of line
