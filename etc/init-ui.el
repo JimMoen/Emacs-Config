@@ -38,6 +38,8 @@
   (scroll-bar-mode -1)
   (setq use-file-dialog                   nil
         use-dialog-box                    nil)
+  (setopt ring-bell-function              'ignore
+          visible-bell                    nil)
   ;; Scroll
   (setq scroll-step                       0                 ;; Friendly and smoothly scroll
         scroll-margin                     1
