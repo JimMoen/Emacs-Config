@@ -230,10 +230,6 @@ its value will be updated. If the key is not present, the entry will be added."
   (dired-auto-revert-buffer t)
   (dired-listing-switches "-Afhlv")
   :config
-  (use-package ivy-dired-history
-    :general
-    (:keymaps 'dired-mode-map
-              "," 'dired))
   (use-package nerd-icons-dired
     :after (dired nerd-icons)
     :hook (dired-mode . nerd-icons-dired-mode)))
