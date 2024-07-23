@@ -49,7 +49,8 @@
    "C-x h"   'help-command
    "C-x H"   'mark-whole-buffer
    "M-g g"   'nil
-   "M-g M-g" 'nil))
+   "M-g M-g" 'nil
+   "<f12>"   'list-packages))
 
 ;; nerd-icons (Melpa)
 (use-package nerd-icons
