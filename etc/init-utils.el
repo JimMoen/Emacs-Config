@@ -168,7 +168,9 @@
 ;; x509-mode (Melpa)
 ;; major mode to view x509 certificate/key files
 (use-package x509-mode
-  :defer t)
+  :defer t
+  :general
+  ("<f10>" #'x509-mode))
 
 ;; nginx-mode (Melpa)
 ;; major mode for nginx config files
