@@ -248,6 +248,15 @@ its value will be updated. If the key is not present, the entry will be added."
           ("E"   . dired-single-toggle-buffer-name)
           ("M-g" . dired-goto-file)))))
 
+;; Show git info in dired mode (Melpa)
+(use-package dired-git-info
+  :after (dired)
+  :config
+  (setq dgi-auto-hide-details-p nil)
+  :bind
+  (:map dired-mode-map
+        ("i" . dired-git-info-mode)))
+
 ;; autorevert (Built-in)
 (use-package autorevert
   :ensure nil

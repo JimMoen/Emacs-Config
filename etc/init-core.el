@@ -92,7 +92,7 @@
       ;; [Site]     None
       nerd-icons nerd-icons-ibuffer nerd-icons-dired
       general ivy ivy-rich counsel swiper ivy-hydra ivy-avy counsel-tramp nerd-icons-ivy-rich
-      fzf sudo-edit helpful which-key dired-single
+      fzf sudo-edit helpful which-key dired-single dired-git-info
       ace-window shackle
       edit-server
 
