@@ -132,7 +132,7 @@
       ;; ########## Development Tools
       ;; [Built-in] None
       ;; [Site]     None
-      magit magit-delta magit-file-icons diff-hl git-timemachine
+      magit magit-delta magit-file-icons magit-todos diff-hl git-timemachine
       projectile counsel-projectile persp-mode
       treemacs treemacs-projectile treemacs-nerd-icons treemacs-magit treemacs-persp
       company company-box company-tabnine prescient ivy-prescient company-prescient
