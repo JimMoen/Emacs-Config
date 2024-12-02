@@ -94,7 +94,6 @@
       general ivy ivy-rich counsel swiper ivy-hydra ivy-avy counsel-tramp nerd-icons-ivy-rich
       fzf sudo-edit helpful which-key dired-single dired-git-info
       ace-window shackle
-      edit-server
 
       ;; ########## ui packages
       ;; [Built-in] None
