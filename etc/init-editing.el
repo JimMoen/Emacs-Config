@@ -221,15 +221,31 @@
                  "<!--"
                  sgml-skip-tag-forward
                  nil))
+  :bind-keymap
+  ("C-c r"           . hs-minor-mode-map)
   :bind
   (:map hs-minor-mode-map
-        ("C-c t t"     . hs-toggle-hiding)
-        ("C-c t C-M-h" . hs-hide-all)
-        ("C-c t C-h"   . hs-hide-block)
-        ("C-c t C-M-s" . hs-show-all)
-        ("C-c t C-s"   . hs-show-block)
-        ("C-c t l"     . hs-hide-level)
-        ("C-c @ C-a"   . hs-show-all)))
+        ("C-c r t"     . hs-toggle-hiding)
+        ("C-c r C-M-h" . hs-hide-all)
+        ("C-c r C-h"   . hs-hide-block)
+        ("C-c r C-M-s" . hs-show-all)
+        ("C-c r C-s"   . hs-show-block)
+        ("C-c r l"     . hs-hide-level)
+        ("C-c r C-a"   . hs-show-all)))
+
+;; Code folding
+;; ts-fold (GitHub)
+(use-package ts-fold
+  :straight (ts-fold :type git :host github :repo "emacs-tree-sitter/ts-fold")
+  :config
+  (global-ts-fold-mode)
+  :bind
+  (("C-c t t"     . ts-fold-toggle)
+   ("C-c t n"     . ts-fold-open)
+   ("C-c t N"     . ts-fold-close)
+   ("C-c t r"     . ts-fold-open-recursively)
+   ("C-c t m"     . ts-fold-close-all)
+   ("C-c t M"     . ts-fold-open-all)))
 
 ;; rainbow-mode (Melpa)
 ;; Rainbow hex color

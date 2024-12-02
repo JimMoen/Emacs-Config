@@ -107,7 +107,7 @@
       ;;            so-long subword whitespace hideshow
       ;; [Site]     None
       avy rainbow-mode smartparens
-      vundo ligature
+      vundo ligature ts-fold
       region-occurrences-highlighter hl-todo
       rainbow-delimiters
       wgrep multiple-cursors
