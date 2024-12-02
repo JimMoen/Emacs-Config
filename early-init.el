@@ -34,10 +34,22 @@
 (prefer-coding-system 'utf-8-emacs)
 (set-default-coding-systems 'utf-8-emacs)
 
-;; Defer garbage collection futher back in the startup process
-;; Garbage collection threshold set to 500MiB.
-(setq gc-cons-threshold (* 500 1024 1024)
-      gc-cons-percentage 0.1)
+(setq
+ ;; set a high value before initialization, and it should be reduced to a
+ ;; proper value after init
+ gc-cons-threshold most-positive-fixnum
+ gc-cons-percentage 0.3
+ read-process-output-max (* 10 1024 1024))
+
+(defun mk/setup-gc()
+  (setq
+   gc-cons-threshold (* 100 1024 1024)
+   gc-cons-percentage 0.3
+   read-process-output-max (* 10 1024 1024)
+   ;; Don’t compact font caches during GC.
+   inhibit-compacting-font-caches t))
+
+(add-hook 'after-init-hook #'mk/setup-gc)
 
 ;; Prevent initializing twice
 (setq package-enable-at-startup nil)
