@@ -99,7 +99,15 @@
   :hook
   (after-init . global-whitespace-mode)
   :config
-  (setq whitespace-global-modes '(not magit-mode dired-mode))
+  ;; Whitespace color corrections.
+  (setq whitespace-global-modes
+        '(not shell-mode
+              help-mode
+              magit-mode
+              magit-diff-mode
+              ibuffer-mode
+              dired-mode
+              occur-mode))
   (setq whitespace-style
         '(face tabs                     tab-mark
                space-after-tab::space   space-before-tab::space
@@ -114,7 +122,7 @@
           (newline-mark  10  [172 10]  [182 10])))
   (set-face-attribute 'whitespace-tab      nil :foreground "#444444" :background "#686868")
   (set-face-attribute 'whitespace-empty    nil :foreground "#cd8c95" :background "#8b5f65")
-  (set-face-attribute 'whitespace-trailing nil :foreground "#79cdcd" :background "#668b8b")
+  (set-face-attribute 'whitespace-trailing nil :foreground "#555555" :background "#909D89")
   :bind
   (("C-c t c" . whitespace-cleanup)
    ("C-c t C" . whitespace-cleanup-region)
