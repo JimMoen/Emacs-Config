@@ -36,6 +36,8 @@
   (tool-bar-mode   -1)
   (menu-bar-mode   -1)
   (scroll-bar-mode -1)
+  ;; Enable Pixel scroll
+  (pixel-scroll-precision-mode 1)
   (setq use-file-dialog                   nil
         use-dialog-box                    nil)
   (setopt ring-bell-function              'ignore
