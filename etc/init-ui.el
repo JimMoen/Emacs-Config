@@ -113,6 +113,7 @@
   (setq doom-modeline-vcs-max-length             40
         doom-modeline-height                     25
         doom-modeline-bar-width                  7
+        doom-modeline-unicode-fallback           t
         doom-modeline-total-line-number          t
         doom-modeline-buffer-file-name-style     'truncate-nil
         doom-modeline-github                     t
