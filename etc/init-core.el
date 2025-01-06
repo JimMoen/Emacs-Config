@@ -112,6 +112,7 @@
       wgrep multiple-cursors
       editorconfig
       flycheck-aspell
+      highlight-symbol
 
       ;; ########## other utils
       ;; [Built-in] calendar
