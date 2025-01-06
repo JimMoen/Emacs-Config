@@ -253,11 +253,13 @@
    ("C-c t m"     . ts-fold-close-all)
    ("C-c t M"     . ts-fold-open-all)))
 
-;; rainbow-mode (Melpa)
+;; colorful-mode (Melpa)
 ;; Rainbow hex color
-(use-package rainbow-mode
+(use-package colorful-mode
   :hook
-  (prog-mode . rainbow-mode))
+  (prog-mode . colorful-mode)
+  :config
+  (setq colorful-use-prefix t))
 
 ;; Parens Settings
 ;; smartparens (Melpa)

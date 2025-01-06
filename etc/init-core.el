@@ -105,7 +105,7 @@
       ;; [Built-in] align display-line-numbers delsel
       ;;            so-long subword whitespace hideshow
       ;; [Site]     None
-      avy rainbow-mode smartparens
+      avy colorful-mode smartparens
       vundo ligature ts-fold
       region-occurrences-highlighter hl-todo
       rainbow-delimiters
