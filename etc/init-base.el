@@ -234,8 +234,9 @@ its value will be updated. If the key is not present, the entry will be added."
     :after (dired nerd-icons)
     :hook (dired-mode . nerd-icons-dired-mode)))
 
-;; Dired-Single (Melpa)
+;; Dired-Single
 (use-package dired-single
+  :straight (:host github :repo "emacsattic/dired-single" :files ("*.el"))
   :config
   (setq dired-single-magic-buffer-name "*Dired*")
   :bind
