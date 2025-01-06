@@ -85,7 +85,7 @@
     '(;; ########## core packages
       ;; [Built-in] None
       ;; [Site]     None
-      use-package use-package-ensure-system-package no-littering
+      use-package no-littering
 
       ;; ########## base packages
       ;; [Built-in] dired autorevert recentf bookmark ibuffer winner
@@ -172,13 +172,6 @@
              (add-hook 'after-init-hook #'package--save-selected-packages)))
          (advice-add 'package--save-selected-packages :override #'my-save-selected-packages)
          (my-save-selected-packages my-packages)))
-
-
-;; Initialize Crucial Package
-;; use-package-ensure-system-package (Melpa)
-;; For system packages. Such as "ripgrep"
-(use-package use-package-ensure-system-package
-  :demand t)
 
 ;; no-littering (Melpa)
 ;; Help for keeping Emacs Configuration Dir clean.
