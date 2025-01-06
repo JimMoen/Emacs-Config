@@ -51,6 +51,8 @@
 
 (add-hook 'after-init-hook #'mk/setup-gc)
 
+(setenv "LSP_USE_PLISTS" "true")
+
 ;; Prevent initializing twice
 (setq package-enable-at-startup nil)
 (setq server-auth-dir "/run/user/1000/emacs/")

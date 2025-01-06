@@ -333,6 +333,7 @@ If already in it, do nothing."
   :custom
   (lsp-keymap-prefix "C-c l")
   :init
+  (setq lsp-use-plists                     t)
   (setq lsp-auto-configure                 t
         lsp-enable-on-type-formatting      t
         lsp-completion-enable              t
