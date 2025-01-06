@@ -345,7 +345,7 @@ If already in it, do nothing."
         lsp-enable-xref                    t
         lsp-enable-snippet                 t
         lsp-enable-folding                 nil
-        lsp-enable-symbol-highlighting     t
+        lsp-enable-symbol-highlighting     nil
         lsp-semantic-tokens-enable         t
         lsp-enable-relative-indentation    nil)
   :config
@@ -356,6 +356,7 @@ If already in it, do nothing."
         lsp-file-watch-threshold           20000
         lsp-auto-guess-root                t
         lsp-enable-dap-auto-configure      t
+        lsp-diagnostics-provider           :auto
         lsp-completion-provider            :none
         lsp-idle-delay                     0.5
         lsp-eldoc-enable-hover             t
@@ -363,7 +364,7 @@ If already in it, do nothing."
         lsp-signature-auto-activate        t              ;; show function signature
         lsp-signature-doc-lines            2              ;; but dont take up more lines
         lsp-auto-execute-action            t
-        lsp-signature-render-documentation t)
+        lsp-signature-render-documentation nil)
 
   ;; https://github.com/emacs-lsp/lsp-mode/issues/2932
   (defun lsp-restart ()
@@ -406,7 +407,12 @@ active `major-mode', or for all major modes when ALL-MODES is t."
         lsp-ui-doc-enable                  nil
         lsp-ui-doc-show-with-mouse         nil
         lsp-ui-doc-show-with-cursor        nil
-        lsp-ui-doc-max-height              50)
+        lsp-ui-doc-max-height              50
+        lsp-ui-sideline-enable             nil
+        lsp-ui-sideline-show-code-actions  nil
+        lsp-ui-sideline-show-hover         nil
+        lsp-modeline-code-actions-enable   nil
+        lsp-modeline-diagnostics-enable    nil)
   :general
   (:prefix
    lsp-keymap-prefix
