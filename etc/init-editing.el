@@ -142,10 +142,8 @@
   (prog-mode . region-occurrences-highlighter-mode)
   (org-mode . region-occurrences-highlighter-mode)
   (text-mode . region-occurrences-highlighter-mode)
-  :bind
-  (:map region-occurrences-highlighter-nav-mode-map
-        ("M-n" . region-occurrences-highlighter-next)
-        ("M-p" . region-occurrences-highlighter-prev)))
+  :config
+  (setq region-occurrences-highlighter-max 500))
 
 ;; hl-todo (Melpa)
 ;; Highlight TODO and similar keywords in comments
