@@ -60,7 +60,7 @@
   (defalias 'yes-or-no-p 'y-or-n-p)                         ;; Use y-or-n instead of yes-or-no
   ;; Frame
   (dolist (frame-setting--var
-           '((font . "Sarasa Mono SC Nerd Font-12")
+           '((font . "Sarasa Mono SC Nerd Font-11")
              (alpha . (95 92))
              ))
     (add-to-list 'default-frame-alist frame-setting--var)))
