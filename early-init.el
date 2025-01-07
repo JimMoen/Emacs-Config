@@ -43,7 +43,7 @@
 
 (defun mk/setup-gc()
   (setq
-   gc-cons-threshold most-positive-fixnum
+   gc-cons-threshold (* 512 1024 1024)
    gc-cons-percentage 0.3
    read-process-output-max (* 10 1024 1024)
    ;; Don’t compact font caches during GC.
