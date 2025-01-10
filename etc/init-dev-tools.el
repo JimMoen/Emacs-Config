@@ -421,6 +421,7 @@ active `major-mode', or for all major modes when ALL-MODES is t."
   (lsp-keymap-prefix "C-c l")
   :config
   (setq lsp-use-plists                     t)
+  ;; https://emacs-lsp.github.io/lsp-mode/tutorials/how-to-turn-off/
   (setq lsp-auto-configure                 t
         lsp-enable-on-type-formatting      t
         lsp-completion-enable              t
@@ -437,6 +438,8 @@ active `major-mode', or for all major modes when ALL-MODES is t."
         lsp-enable-relative-indentation    nil)
   (setq lsp-log-io                         nil
         lsp-log-max                        t)
+  (setq lsp-headerline-breadcrumb-enable   nil
+        lsp-lens-enable                    nil)
   (setq lsp-keep-workspace-alive           nil
         lsp-restart                        'interactive
         lsp-file-watch-threshold           20000
@@ -445,12 +448,13 @@ active `major-mode', or for all major modes when ALL-MODES is t."
         lsp-diagnostics-provider           :auto
         lsp-completion-provider            :none
         lsp-idle-delay                     0.5
-        lsp-eldoc-enable-hover             t
-        lsp-eldoc-render-all               nil
+        lsp-eldoc-enable-hover             nil
         lsp-signature-auto-activate        t              ;; show function signature
         lsp-signature-doc-lines            2              ;; but dont take up more lines
         lsp-auto-execute-action            t
-        lsp-signature-render-documentation nil))
+        lsp-signature-render-documentation nil)
+  (setq lsp-modeline-code-actions-enable   nil
+        lsp-modeline-diagnostics-enable    nil))
 
 ;; lsp-ui (Melpa)
 (use-package lsp-ui
@@ -459,18 +463,20 @@ active `major-mode', or for all major modes when ALL-MODES is t."
   :config
   (use-package lsp-treemacs
     :after (treemacs lsp-mode))
-  (setq lsp-headerline-breadcrumb-enable   nil
-        lsp-lens-enable                    nil)
+  (use-package sideline-lsp
+    :after (lsp-mode sideline)
+    :hook (lsp-mode . sideline-mode)
+    :init
+    (setq sideline-backends-right '(sideline-lsp)))
   (setq lsp-ui-doc-delay                   0.5
-        lsp-ui-doc-enable                  nil
-        lsp-ui-doc-show-with-mouse         nil
-        lsp-ui-doc-show-with-cursor        nil
+        lsp-ui-doc-enable                  t
+        lsp-ui-doc-show-with-mouse         t
+        lsp-ui-doc-show-with-cursor        t
         lsp-ui-doc-max-height              50
         lsp-ui-sideline-enable             nil
-        lsp-ui-sideline-show-code-actions  nil
-        lsp-ui-sideline-show-hover         nil
-        lsp-modeline-code-actions-enable   nil
-        lsp-modeline-diagnostics-enable    nil)
+        lsp-ui-sideline-show-code-actions  t
+        lsp-ui-sideline-show-hover         t
+        lsp-ui-sideline-show-diagnostics   t)
   :general
   (:prefix
    lsp-keymap-prefix
