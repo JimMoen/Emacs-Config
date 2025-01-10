@@ -33,7 +33,6 @@
 (use-package emacs
   :ensure nil
   :custom
-  (fill-column               80)                        ;; fill column sets to 80
   (indent-tabs-mode          nil)                       ;; Use only spaces and no tabs
   (tab-width                 4)                         ;; Tab width set to 4
   (standard-indent           4)                         ;; Default indent sets 4
@@ -49,6 +48,12 @@
   (progn
     (blink-cursor-mode t)
     (setq blink-cursor-blinks 5))
+  (use-package display-fill-column-indicator
+    :ensure nil
+    :hook (prog-mode . display-fill-column-indicator-mode)
+    :config
+    (setq-default fill-column 100)
+    (set-face-attribute 'fill-column-indicator nil :foreground "grey40"))
   :bind
   (("RET"                    .  newline-and-indent)
    ("S-<return>"             .  comment-indent-new-line)))
