@@ -310,7 +310,14 @@ on the current line, if any."
   :hook
   (after-init . global-flycheck-mode)
   :init
-  (setq flycheck-emacs-lisp-load-path 'inherit))
+  (setq flycheck-emacs-lisp-load-path 'inherit)
+  :config
+  (use-package sideline-flycheck
+    :hook
+    ((flycheck-mode . sideline-flycheck-setup)
+     (flycheck-mode . sideline-mode))
+    :init
+    (add-to-list 'sideline-backends-right 'sideline-flycheck)))
 
 ;; Code template
 ;; yasnippet (Melpa)
@@ -467,7 +474,7 @@ active `major-mode', or for all major modes when ALL-MODES is t."
     :after (lsp-mode sideline)
     :hook (lsp-mode . sideline-mode)
     :init
-    (setq sideline-backends-right '(sideline-lsp)))
+    (add-to-list 'sideline-backends-right 'sideline-lsp))
   (setq lsp-ui-doc-delay                   0.5
         lsp-ui-doc-enable                  t
         lsp-ui-doc-show-with-mouse         t
