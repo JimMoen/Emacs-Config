@@ -496,9 +496,7 @@ active `major-mode', or for all major modes when ALL-MODES is t."
   (lsp-ivy-workspace-symbol))
 
 ;; apheleia (Melpa)
-(use-package apheleia
-  :config
-  (apheleia-global-mode t))
+(use-package apheleia)
 
 ;; tree-sitter (Melpa)
 (use-package tree-sitter
