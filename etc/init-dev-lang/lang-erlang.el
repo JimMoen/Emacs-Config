@@ -33,6 +33,7 @@
   (:keymaps 'erlang-mode-map
             "C-c C-l" nil)
   :config
+  (setq lsp-erlang-server 'erlang-language-platform)
   (defun my/modified-syntax-table ()
     (put 'bitsyntax-open-outer 'syntax-table nil)
     (put 'bitsyntax-close-outer 'syntax-table nil))
