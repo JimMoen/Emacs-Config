@@ -328,35 +328,7 @@ on the current line, if any."
   :after yasnippet)
 
 ;; language-server-protocol (Melpa)
-(defvar my/disabled-lsp-major-modes
-  '(emacs-lisp-mode
-    lisp-mode
-    makefile-gmake-mode
-    hcl-mode
-    pkgbuild-mode
-    protobuf-mode
-    qml-mode
-    direnv-envrc-mode))
-
-(defun disable-lsp-in-modes (select-major-mode)
-  "Add the `SELECT-MAJOR-MODE' in the `my/disabled-lsp-major-modes' .
-If already in it, do nothing."
-  (if (member major-mode my/disabled-lsp-major-modes)
-      my/disabled-lsp-major-modes
-    (push select-major-mode my/disabled-lsp-major-modes)))
-
 (use-package lsp-mode
-  :commands
-  (lsp)
-  :hook
-  ((prog-mode . (lambda ()
-                  (unless
-                      (or (apply 'derived-mode-p my/disabled-lsp-major-modes)
-                          (string-match (rx "_build/") (buffer-file-name)))
-                    (lsp-deferred))))
-   (lsp-mode . my/lsp-enable-which-key-integration))
-  :custom
-  (lsp-keymap-prefix "C-c l")
   :init
   (defun lsp-booster--advice-json-parse (old-fn &rest args)
     "Try to parse bytecode instead of json."
@@ -373,6 +345,7 @@ If already in it, do nothing."
               :around
               #'lsp-booster--advice-json-parse)
 
+  ;; emacs-lsp-booster
   (defun lsp-booster--advice-final-command (old-fn cmd &optional test?)
     "Prepend emacs-lsp-booster command to lsp CMD."
     (let ((orig-result (funcall old-fn cmd test?)))
@@ -388,38 +361,24 @@ If already in it, do nothing."
             (cons "emacs-lsp-booster" orig-result))
         orig-result)))
   (advice-add 'lsp-resolve-final-command :around #'lsp-booster--advice-final-command)
-  (setq lsp-use-plists                     t)
-  (setq lsp-auto-configure                 t
-        lsp-enable-on-type-formatting      t
-        lsp-completion-enable              t
-        lsp-enable-indentation             t
-        lsp-enable-file-watchers           t
-        lsp-enable-imenu                   t
-        lsp-enable-text-document-color     t
-        lsp-enable-links                   t
-        lsp-enable-xref                    t
-        lsp-enable-snippet                 t
-        lsp-enable-folding                 nil
-        lsp-enable-symbol-highlighting     nil
-        lsp-semantic-tokens-enable         t
-        lsp-enable-relative-indentation    nil)
-  :config
-  (setq lsp-log-io                         nil
-        lsp-log-max                        t)
-  (setq lsp-keep-workspace-alive           nil
-        lsp-restart                        'interactive
-        lsp-file-watch-threshold           20000
-        lsp-auto-guess-root                t
-        lsp-enable-dap-auto-configure      t
-        lsp-diagnostics-provider           :auto
-        lsp-completion-provider            :none
-        lsp-idle-delay                     0.5
-        lsp-eldoc-enable-hover             t
-        lsp-eldoc-render-all               nil
-        lsp-signature-auto-activate        t              ;; show function signature
-        lsp-signature-doc-lines            2              ;; but dont take up more lines
-        lsp-auto-execute-action            t
-        lsp-signature-render-documentation nil)
+  ;; end emacs-lsp-booster
+
+  (defvar my/disabled-lsp-major-modes
+    '(emacs-lisp-mode
+      lisp-mode
+      makefile-gmake-mode
+      hcl-mode
+      pkgbuild-mode
+      protobuf-mode
+      qml-mode
+      direnv-envrc-mode))
+
+  (defun disable-lsp-in-modes (select-major-mode)
+    "Add the `SELECT-MAJOR-MODE' in the `my/disabled-lsp-major-modes' .
+If already in it, do nothing."
+    (if (member major-mode my/disabled-lsp-major-modes)
+        my/disabled-lsp-major-modes
+      (push select-major-mode my/disabled-lsp-major-modes)))
 
   ;; https://github.com/emacs-lsp/lsp-mode/issues/2932
   (defun lsp-restart ()
@@ -447,7 +406,51 @@ active `major-mode', or for all major modes when ALL-MODES is t."
          "r"   "refactor"
          "a"   "code actions"
          "G"   "LSP Goto"
-         lsp--binding-descriptions))))))
+         lsp--binding-descriptions)))))
+
+  :commands
+  (lsp)
+  :hook
+  ((prog-mode . (lambda ()
+                  (unless
+                      (or (apply 'derived-mode-p my/disabled-lsp-major-modes)
+                          (string-match (rx "_build/") (buffer-file-name)))
+                    (lsp-deferred))))
+   (lsp-mode . my/lsp-enable-which-key-integration))
+  :custom
+  (lsp-keymap-prefix "C-c l")
+  :config
+  (setq lsp-use-plists                     t)
+  (setq lsp-auto-configure                 t
+        lsp-enable-on-type-formatting      t
+        lsp-completion-enable              t
+        lsp-enable-indentation             t
+        lsp-enable-file-watchers           t
+        lsp-enable-imenu                   t
+        lsp-enable-text-document-color     t
+        lsp-enable-links                   t
+        lsp-enable-xref                    t
+        lsp-enable-snippet                 t
+        lsp-enable-folding                 nil
+        lsp-enable-symbol-highlighting     nil
+        lsp-semantic-tokens-enable         t
+        lsp-enable-relative-indentation    nil)
+  (setq lsp-log-io                         nil
+        lsp-log-max                        t)
+  (setq lsp-keep-workspace-alive           nil
+        lsp-restart                        'interactive
+        lsp-file-watch-threshold           20000
+        lsp-auto-guess-root                t
+        lsp-enable-dap-auto-configure      t
+        lsp-diagnostics-provider           :auto
+        lsp-completion-provider            :none
+        lsp-idle-delay                     0.5
+        lsp-eldoc-enable-hover             t
+        lsp-eldoc-render-all               nil
+        lsp-signature-auto-activate        t              ;; show function signature
+        lsp-signature-doc-lines            2              ;; but dont take up more lines
+        lsp-auto-execute-action            t
+        lsp-signature-render-documentation nil))
 
 ;; lsp-ui (Melpa)
 (use-package lsp-ui
