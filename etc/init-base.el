@@ -537,8 +537,6 @@ its value will be updated. If the key is not present, the entry will be added."
 
 (use-package flycheck-aspell
   :after (flycheck)
-  :hook
-  (prog-mode . flyspell-prog-mode)
   :config
   ;; If you want to check TeX/LaTeX/ConTeXt buffers
   (add-to-list 'flycheck-checkers 'tex-aspell-dynamic)
