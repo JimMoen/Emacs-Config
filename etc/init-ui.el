@@ -126,6 +126,12 @@
 
 ;; doom-themes (Melpa)
 (use-package doom-themes
+  :straight
+  (doom-themes
+   :type git
+   :host github
+   :repo "doomemacs/themes"
+   :commit "e506a8724156da3b1e62cb8136265e9705549d04")
   :config
   (load-theme 'doom-snazzy t))
 
