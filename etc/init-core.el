@@ -136,6 +136,7 @@
       treemacs treemacs-projectile treemacs-nerd-icons treemacs-magit treemacs-persp
       company company-box company-tabnine prescient ivy-prescient company-prescient
       flycheck yasnippet yasnippet-snippets
+      sideline-flycheck sideline-lsp
       lsp-mode lsp-ui lsp-ivy lsp-treemacs
       tree-sitter tree-sitter-langs
       apheleia

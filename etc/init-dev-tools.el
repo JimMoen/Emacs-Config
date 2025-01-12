@@ -313,11 +313,14 @@ on the current line, if any."
   (setq flycheck-emacs-lisp-load-path 'inherit)
   :config
   (use-package sideline-flycheck
+    :init
+    (defvar sideline-backends-right '())
     :hook
     ((flycheck-mode . sideline-flycheck-setup)
      (flycheck-mode . sideline-mode))
-    :init
-    (add-to-list 'sideline-backends-right 'sideline-flycheck)))
+    :config
+    (with-eval-after-load 'flycheck
+      (add-to-list 'sideline-backends-right 'sideline-flycheck))))
 
 ;; Code template
 ;; yasnippet (Melpa)
@@ -362,7 +365,7 @@ on the current line, if any."
                (not (functionp 'json-rpc-connection))  ;; native json-rpc
                (executable-find "emacs-lsp-booster"))
           (progn
-            (when-let ((command-from-exec-path (executable-find (car orig-result))))  ;; resolve command from exec-path (in case not found in $PATH)
+            (when-let* ((command-from-exec-path (executable-find (car orig-result))))  ;; resolve command from exec-path (in case not found in $PATH)
               (setcar orig-result command-from-exec-path))
             (message "Using emacs-lsp-booster for %s!" orig-result)
             (cons "emacs-lsp-booster" orig-result))
@@ -473,8 +476,9 @@ active `major-mode', or for all major modes when ALL-MODES is t."
   (use-package sideline-lsp
     :after (lsp-mode sideline)
     :hook (lsp-mode . sideline-mode)
-    :init
-    (add-to-list 'sideline-backends-right 'sideline-lsp))
+    :config
+    (with-eval-after-load  'lsp-mode
+      (add-to-list 'sideline-backends-right 'sideline-lsp)))
   (setq lsp-ui-doc-delay                   0.5
         lsp-ui-doc-enable                  t
         lsp-ui-doc-show-with-mouse         t
