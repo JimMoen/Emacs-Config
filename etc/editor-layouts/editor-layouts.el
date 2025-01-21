@@ -37,11 +37,13 @@
 (use-package persp-mode
   :init
   (defconst default-persp-name "Main")
-  (setq persp-add-buffer-on-after-change-major-mode 'free
-        persp-nil-name                              default-persp-name
-        persp-auto-resume-time                      1
-        persp-is-ibc-as-f-supported                 nil
-        persp-set-last-persp-for-new-frames         nil)
+  (setq persp-add-buffer-on-after-change-major-mode   'free
+        persp-nil-name                                default-persp-name
+        persp-auto-resume-time                        1
+        persp-is-ibc-as-f-supported                   nil
+        persp-set-last-persp-for-new-frames           nil
+        persp-autokill-persp-when-removed-last-buffer t
+        persp-autokill-buffer-on-remove               t)
 
   (when (member "--persp-r" command-line-args)
     (setq persp-auto-resume-time 1)
