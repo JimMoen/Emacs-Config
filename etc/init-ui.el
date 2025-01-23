@@ -36,21 +36,12 @@
   (tool-bar-mode   -1)
   (menu-bar-mode   -1)
   (scroll-bar-mode -1)
-  ;; Enable Pixel scroll
-  (pixel-scroll-precision-mode 1)
   (setq use-file-dialog                   nil
         use-dialog-box                    nil)
   (setopt ring-bell-function              'ignore
           visible-bell                    nil)
   ;; Scroll
-  (setq scroll-step                       0                 ;; Friendly and smoothly scroll
-        scroll-margin                     1
-        scroll-conservatively             500
-        scroll-up-aggressively            0.1
-        scroll-down-aggressively          0.1
-        hscroll-step                      1
-        hscroll-margin                    5
-        auto-window-vscroll               nil               ;; Disable auto height of line
+  (setq auto-window-vscroll               nil               ;; Disable auto height of line
         truncate-partial-width-windows    t)                ;; Disable line truncate
   ;; Inhibit
   (setq frame-resize-pixelwise            t                 ;; Don't restricting the frame size to an integer multiple of the font size in the frame.
@@ -64,6 +55,20 @@
              (alpha . (95 92))
              ))
     (add-to-list 'default-frame-alist frame-setting--var)))
+
+(use-package ultra-scroll
+  :straight
+  (ultra-scroll
+   :type git
+   :host github
+   :repo "jdtsmith/ultra-scroll")
+  :init
+  (setq scroll-conservatively      101 ; important!
+        scroll-margin              0
+        ultra-scroll-gc-percentage 0.1
+        ultra-scroll-gc-idle-time  0.2)
+  :config
+  (ultra-scroll-mode 1))
 
 ;; Dashboard (Melpa)
 (use-package dashboard
