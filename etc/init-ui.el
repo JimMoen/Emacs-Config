@@ -49,12 +49,57 @@
         inhibit-startup-echo-area-message t
         inhibit-compacting-font-caches    t)                ;; Don’t compact font caches during GC.
   (defalias 'yes-or-no-p 'y-or-n-p)                         ;; Use y-or-n instead of yes-or-no
+
+  (add-to-list 'default-frame-alist '(alpha . (95 92)))
   ;; Frame
-  (dolist (frame-setting--var
-           '((font . "Sarasa Mono SC Nerd Font-11")
-             (alpha . (95 92))
-             ))
-    (add-to-list 'default-frame-alist frame-setting--var)))
+  (set-face-attribute 'default nil :font "Iosevka Nerd Font Mono-11")
+  (defvar user/cjk-font "Sarasa Mono SC Nerd Font"
+    "Default font for CJK characters.")
+
+  (defvar user/latin-font "Iosevka Nerd Font Mono"
+    "Default font for Latin characters.")
+
+  (defvar user/unicode-font "Iosevka Nerd Font Mono"
+    "Default font for Unicode characters, including emojis.")
+
+  (defvar user/font-size 17
+    "Default font size in px.")
+
+  (defvar user/standard-fontset
+    (create-fontset-from-fontset-spec standard-fontset-spec)
+    "Standard fontset for user.")
+
+  ;; Ensure user/standard-fontset gets used for new frames.
+  (add-to-list 'default-frame-alist (cons 'font user/standard-fontset))
+  (add-to-list 'initial-frame-alist (cons 'font user/standard-fontset))
+
+  (defun user/set-font ()
+    "Set Unicode, Latin and CJK font for user/standard-fontset."
+    ;; Unicode font.
+    (set-fontset-font user/standard-fontset 'unicode
+                      (font-spec :family user/unicode-font)
+                      nil 'prepend)
+    ;; Latin font.
+    ;; Only specify size here to allow text-scale-adjust work on other fonts.
+    (set-fontset-font user/standard-fontset 'latin
+                      (font-spec :family user/latin-font :size user/font-size)
+                      nil 'prepend)
+    ;; CJK font.
+    (dolist (charset '(kana han cjk-misc hangul kanbun bopomofo))
+      (set-fontset-font user/standard-fontset charset
+                        (font-spec :family user/cjk-font)
+                        nil 'prepend))
+    ;; Special settings for certain CJK puncuation marks.
+    ;; These are full-width characters but by default uses half-width glyphs.
+    (dolist (charset '((#x2018 . #x2019)    ;; Curly single quotes "‘’"
+                       (#x201c . #x201d)))  ;; Curly double quotes "“”"
+      (set-fontset-font user/standard-fontset charset
+                        (font-spec :family user/cjk-font)
+                        nil 'prepend)))
+  ;; Apply changes.
+  (user/set-font)
+  ;; For emacsclient.
+  (add-hook 'before-make-frame-hook #'user/set-font))
 
 (use-package ultra-scroll
   :straight

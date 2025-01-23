@@ -112,8 +112,8 @@ its value will be updated. If the key is not present, the entry will be added."
      ("^\\.?git-blame-ignore-revs$" nerd-icons-sucicon "nf-seti-git"          :face nerd-icons-lcyan)
      ("^\\.editorconfig$"           nerd-icons-sucicon "nf-seti-editorconfig" :face nerd-icons-silver)
      ))
-  (setq nerd-icons-font-family "Sarasa Gothic SC Nerd Font"
-        nerd-icons-scale-factor 0.8))
+  (setq nerd-icons-font-family "Iosevka Nerd Font Mono"
+        nerd-icons-scale-factor 0.9))
 
 ;; ivy & counsel & swiper
 ;; ivy (Melpa)
