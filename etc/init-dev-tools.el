@@ -45,16 +45,13 @@
     (magit-todos-mode 1)
     (setq magit-todos-keywords-list
           '("XXX" "TODO" "FIXME" "DEBUG" "GOTCHA" "STUB")))
-  (use-package magit-file-icons
-    :ensure t
-    :after (magit nerd-icons)
-    :init
-    (magit-file-icons-mode 1)
-    :custom
-    ;; These are the default values:
-    (magit-file-icons-enable-diff-file-section-icons t)
-    (magit-file-icons-enable-untracked-icons t)
-    (magit-file-icons-enable-diffstat-icons t))
+
+  :after
+  nerd-icons
+
+  :custom
+  (magit-format-file-function #'magit-format-file-nerd-icons)
+
   :config
   (setq magit-status-margin                '(t age-abbreviated   magit-log-margin-width t 25)
         magit-refs-margin                  '(t age-abbreviated   magit-log-margin-width t 25)
