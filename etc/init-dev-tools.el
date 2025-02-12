@@ -151,8 +151,6 @@ on the current line, if any."
   (setq projectile-completion-system 'ivy
         projectile-auto-discover nil
         projectile-track-known-projects-automatically nil)
-  (setq projectile-project-search-path
-        '(("~/Workspace" . 3)))
   :bind
   (("C-x C-b" . projectile-ibuffer))
   (:map projectile-command-map
