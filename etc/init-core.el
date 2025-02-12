@@ -138,7 +138,6 @@
       flycheck yasnippet yasnippet-snippets
       sideline-flycheck sideline-lsp
       lsp-mode lsp-ui lsp-ivy lsp-treemacs
-      tree-sitter tree-sitter-langs
       apheleia
 
       ;; ########## Programming Language Support

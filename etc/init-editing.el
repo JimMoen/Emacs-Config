@@ -244,19 +244,32 @@
         ("C-c r l"     . hs-hide-level)
         ("C-c r C-a"   . hs-show-all)))
 
-;; Code folding
-;; ts-fold (GitHub)
-(use-package ts-fold
-  :straight (ts-fold :type git :host github :repo "emacs-tree-sitter/ts-fold")
+;; treesit.el (Built-in)
+(use-package treesit
+  :ensure nil
   :config
-  (global-ts-fold-mode)
-  :bind
-  (("C-c t t"     . ts-fold-toggle)
-   ("C-c t n"     . ts-fold-open)
-   ("C-c t N"     . ts-fold-close)
-   ("C-c t r"     . ts-fold-open-recursively)
-   ("C-c t m"     . ts-fold-close-all)
-   ("C-c t M"     . ts-fold-open-all)))
+  ;; treesit-langs (GitHub)
+  (use-package treesit-langs
+    :straight
+    (treesit-langs :type git :host github :repo "emacs-tree-sitter/treesit-langs")
+    :config
+    (treesit-langs-major-mode-setup))
+
+  ;; Code folding
+  ;; treesit-fold (GitHub)
+  (use-package treesit-fold
+    :straight
+    (treesit-fold :type git :host github :repo "emacs-tree-sitter/treesit-fold")
+    :config
+    (treesit-fold-mode 1)
+    ;; (global-treesit-fold-mode)
+    :bind
+    (("C-c t t"     . treesit-fold-toggle)
+     ("C-c t n"     . treesit-fold-open)
+     ("C-c t N"     . treesit-fold-close)
+     ("C-c t r"     . treesit-fold-open-recursively)
+     ("C-c t m"     . treesit-fold-close-all)
+     ("C-c t M"     . treesit-fold-open-all))))
 
 ;; colorful-mode (Melpa)
 ;; Rainbow hex color
