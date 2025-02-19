@@ -28,11 +28,12 @@
 
 ;;; Code:
 
-(use-package erlang
+(use-package erlang-ts
   :general
   (:keymaps 'erlang-mode-map
             "C-c C-l" nil)
   :config
+  (add-to-list 'treesit-language-source-alist '(erlang "https://github.com/WhatsApp/tree-sitter-erlang"))
   (setq lsp-erlang-server 'erlang-language-platform)
   (defun my/modified-syntax-table ()
     (put 'bitsyntax-open-outer 'syntax-table nil)
