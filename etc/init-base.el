@@ -502,10 +502,12 @@ its value will be updated. If the key is not present, the entry will be added."
         shackle-default-alignment 'below
         shackle-rules
         '((magit-status-mode          :select t   :inhibit-window-quit nil :same t)
-          (magit-log-mode             :select t   :inhibit-window-quit nil :same t)
+          (magit-log-mode             :select t   :inhibit-window-quit nil :align right :sive 0.45)
           (magit-revision-mode        :select t   :inhibit-window-quit nil :align right :size 0.45)
+          (magit-diff-mode            :select nil :inhibit-window-quit nil :align right :size 0.45)
+          (magit-stash-mode           :select t   :inhibit-window-quit nil :align right :size 0.45)
           (help-mode                  :select t   :inhibit-window-quit nil :align right :size 0.40)
-          (helpful-mode               :select t   :align right :size 0.40 :autoclose t)
+          (helpful-mode               :select t   :align right :size 0.40)
           (comint-mode                :select t   :align t   :size 0.40)
           (grep-mode                  :select t   :align t)
           (rg-mode                    :select t   :align t)
@@ -513,7 +515,7 @@ its value will be updated. If the key is not present, the entry will be added."
           (youdao-dictionary-mode     :select t   :inhibit-window-quit nil :align right :size 0.30)
           ("*diff-hl*"                :select nil :align below :size 0.40)
           ("*vc-diff*"                :select t   :align below :size 0.40)
-          ("^\\*vc-.*\\*$"            :regexp t :size 0.3 :align 'below :autoclose t)
+          ("^\\*vc-.*\\*$"            :regexp t :size 0.3 :align 'below)
           ("*bm-bookmarks*"           :select t   :align t)
           ("*Backtrace*"              :select t   :align t   :size 15)
           ("*package update results*" :select nil :align t   :size 10)
