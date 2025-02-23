@@ -28,8 +28,7 @@
 
 ;;; Code:
 
-(use-package elixir-mode
-  :defer t)
+(use-package elixir-ts-mode)
 
 (provide 'lang-elixir)
 

@@ -144,7 +144,7 @@
       ;; [Built-in] python
       ;; [Site]     None
       yaml-mode yaml-imenu
-      erlang-ts lsp-pyright elixir-mode
+      erlang-ts lsp-pyright elixir-ts-mode
       haskell-mode
       rust-mode cargo-mode
       go-mode python-mode
