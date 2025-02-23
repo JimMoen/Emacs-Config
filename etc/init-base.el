@@ -385,7 +385,7 @@ its value will be updated. If the key is not present, the entry will be added."
                           (mode . java-mode)
                           (mode . haskell-mode)
                           (mode . lisp-mode)
-                          (mode . erlang-mode)))
+                          (mode . erlang-ts-mode)))
            ("Help"       (or
                           (name . "^\\*Help\\*$")
                           (name . "^\\*Apropos\\*$")

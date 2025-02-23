@@ -30,7 +30,7 @@
 
 (use-package erlang-ts
   :general
-  (:keymaps 'erlang-mode-map
+  (:keymaps 'erlang-ts-mode-map
             "C-c C-l" nil)
   :config
   (add-to-list 'treesit-language-source-alist '(erlang "https://github.com/WhatsApp/tree-sitter-erlang"))
@@ -45,13 +45,13 @@
         erlang-tab-always-indent t)
 
   (with-eval-after-load 'apheleia
-    (setf (alist-get 'erlang-mode apheleia-mode-alist)
+    (setf (alist-get 'erlang-ts-mode apheleia-mode-alist)
           '(erlfmt))
     (setf (alist-get 'erlfmt apheleia-formatters)
           '("erlfmt" "-")))
 
   (with-eval-after-load 'smartparens
-    (sp-with-modes '(erlang-mode)
+    (sp-with-modes '(erlang-ts-mode erlang-mode)
       (sp-local-pair "<<" ">>")
       (sp-local-pair "#{" "}"))
     (def-pairs ('(double-angle-bracket . "<<")))
