@@ -111,7 +111,8 @@
   (setq scroll-conservatively      101 ; important!
         scroll-margin              0
         ultra-scroll-gc-percentage 0.1
-        ultra-scroll-gc-idle-time  0.2)
+        ultra-scroll-gc-idle-time  0.2
+        ultra-scroll-hide-cursor   0.5)
   :config
   (ultra-scroll-mode 1))
 
