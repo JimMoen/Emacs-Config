@@ -170,7 +170,7 @@
 (use-package x509-mode
   :defer t
   :general
-  ("<f10>" #'x509-mode))
+  ("<f10>" #'x509-dwim))
 
 ;; nginx-mode (Melpa)
 ;; major mode for nginx config files
