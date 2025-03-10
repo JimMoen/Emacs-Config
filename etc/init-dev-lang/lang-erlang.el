@@ -32,6 +32,8 @@
   :general
   (:keymaps 'erlang-ts-mode-map
             "C-c C-l" nil)
+  (:keymaps 'erlang-mode-map
+            "C-c C-l" nil)
   :config
   (add-to-list 'treesit-language-source-alist '(erlang "https://github.com/WhatsApp/tree-sitter-erlang"))
   (setq lsp-erlang-server 'erlang-language-platform)
