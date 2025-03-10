@@ -54,6 +54,11 @@
 
 ;; nerd-icons (Melpa)
 (use-package nerd-icons
+  :straight
+  (nerd-icons
+   :type git
+   :host github
+   :repo "rainstormstudio/nerd-icons.el")
   :config
   (defun update-alist (alist-symbol rep-alist)
     "Update the alist specified by ALIST-SYMBOL with entries from REP-ALIST.
