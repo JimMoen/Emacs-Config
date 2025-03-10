@@ -143,7 +143,7 @@
       ;; ########## Programming Language Support
       ;; [Built-in] python
       ;; [Site]     None
-      yaml-mode yaml-imenu
+      yaml-pro
       erlang-ts lsp-pyright elixir-ts-mode
       haskell-mode
       rust-mode cargo-mode

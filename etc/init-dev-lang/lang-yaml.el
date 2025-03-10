@@ -27,15 +27,8 @@
 
 ;;; Code:
 
-;; yaml-mode (Melpa)
-(use-package yaml-mode
-  :hook
-  (yaml-mode . lsp-deferred))
-
-;; yaml-imenu (Melpa)
-(use-package yaml-imenu
-  :hook
-  (yaml-mode . yaml-imenu-enable))
+;; yaml-pro (Melpa)
+(use-package yaml-pro)
 
 
 (provide 'lang-yaml)
