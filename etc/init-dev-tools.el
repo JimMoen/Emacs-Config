@@ -39,12 +39,6 @@
     ;; (`command-name` . `package-name`)
     :hook
     (magit-mode . magit-delta-mode))
-  (use-package magit-todos
-    :after magit
-    :config
-    (magit-todos-mode 1)
-    (setq magit-todos-keywords-list
-          '("XXX" "TODO" "FIXME" "DEBUG" "GOTCHA" "STUB")))
 
   :after
   nerd-icons
