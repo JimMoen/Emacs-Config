@@ -37,6 +37,9 @@
 ;; lsp-pyright (Melpa)
 (use-package lsp-pyright)
 
+;; uv-mode (Melpa)
+(use-package uv-mode
+  :hook (python-mode . uv-mode-auto-activate-hook))
 
 (provide 'lang-python)
 
