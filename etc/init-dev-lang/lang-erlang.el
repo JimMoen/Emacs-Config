@@ -36,7 +36,9 @@
             "C-c C-l" nil)
   :config
   (add-to-list 'treesit-language-source-alist '(erlang "https://github.com/WhatsApp/tree-sitter-erlang"))
-  (setq lsp-erlang-server 'erlang-language-platform)
+  (setq lsp-erlang-server             'erlang-language-platform
+        lsp-elp-types-on-hover-enable nil
+        lsp-elp-types-on-hover-delay  0.5)
   (defun my/modified-syntax-table ()
     (put 'bitsyntax-open-outer 'syntax-table nil)
     (put 'bitsyntax-close-outer 'syntax-table nil))
@@ -58,6 +60,8 @@
       (sp-local-pair "#{" "}"))
     (def-pairs ('(double-angle-bracket . "<<")))
     (define-key smartparens-mode-map (kbd "C-c ,") 'my/sp-wrap-with-double-angle-brackets))
+
+  (add-to-list 'major-mode-remap-alist '(erlang-mode . erlang-ts-mode))
 
   (advice-add #'erlang-electric-init :after 'my/modified-syntax-table))
 
