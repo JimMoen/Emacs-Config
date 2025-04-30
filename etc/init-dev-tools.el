@@ -181,7 +181,7 @@ on the current line, if any."
     :after (treemacs persp-mode) ;; persp-mode
     :config (treemacs-set-scope-type 'Perspectives))
 
-  (setq treemacs-width 45)
+  (setq treemacs-width 60)
 
   :general
   (:prefix "C-x"
