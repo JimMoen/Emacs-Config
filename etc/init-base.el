@@ -225,6 +225,8 @@ its value will be updated. If the key is not present, the entry will be added."
 ;; avoid call tramp and input path duplicated
 ;; sudo-edit (Melpa)
 (use-package sudo-edit
+  :init
+  (sudo-edit-indicator-mode)
   :defer t)
 
 ;; Files Management & Auto Save
