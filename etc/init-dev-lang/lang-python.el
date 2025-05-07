@@ -32,7 +32,10 @@
 (use-package python
   :ensure nil
   :hook
-  (python-mode . lsp-deferred))
+  (python-mode . (lambda ()
+                   (setq-local indent-tabs-mode nil)
+                   (setq-local tab-width 4)
+                   (setq-local python-indent-offset 4))))
 
 ;; lsp-pyright (Melpa)
 (use-package lsp-pyright)
