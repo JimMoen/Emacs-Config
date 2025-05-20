@@ -38,7 +38,9 @@
     (delta . git-delta)
     ;; (`command-name` . `package-name`)
     :hook
-    (magit-mode . magit-delta-mode))
+    (magit-mode . magit-delta-mode)
+    (magit-mode . (lambda ()
+                    (display-line-numbers-mode -1))))
 
   :after
   nerd-icons
