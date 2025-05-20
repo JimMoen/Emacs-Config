@@ -35,7 +35,9 @@
   (python-mode . (lambda ()
                    (setq-local indent-tabs-mode nil)
                    (setq-local tab-width 4)
-                   (setq-local python-indent-offset 4))))
+                   (setq-local python-indent-offset 4)))
+  :config
+  (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode)))
 
 ;; lsp-pyright (Melpa)
 (use-package lsp-pyright)
