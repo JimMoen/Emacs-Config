@@ -99,7 +99,6 @@ its value will be updated. If the key is not present, the entry will be added."
                   (json-mode    nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-yellow)
                   (json-ts-mode nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-yellow)
                   (jsonian-mode nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-yellow)
-                  (yaml-mode    nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-dyellow)
                   (yaml-ts-mode nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-dyellow)
                   (toml-mode    nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-orange)
                   (toml-ts-mode nerd-icons-sucicon "nf-seti-settings" :face nerd-icons-orange)

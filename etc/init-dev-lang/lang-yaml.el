@@ -28,7 +28,10 @@
 ;;; Code:
 
 ;; yaml-pro (Melpa)
-(use-package yaml-pro)
+(use-package yaml-pro
+  :init
+  (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-ts-mode))
+  (add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-ts-mode)))
 
 
 (provide 'lang-yaml)
