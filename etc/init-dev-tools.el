@@ -281,15 +281,18 @@ on the current line, if any."
 ;; sorting and filtering for Emacs.
 (use-package prescient
   :hook (after-init . prescient-persist-mode)
+  :straight t
   :init
   ;; for ivy support (Melpa)
   (use-package ivy-prescient
+    :straight t
     :after counsel
     :hook (ivy-mode . ivy-prescient-mode)
     :config
     (setq ivy-prescient-enable-filtering nil))
   ;; for company support (Melpa)
   (use-package company-prescient
+    :straight t
     :hook (company-mode . company-prescient-mode))
   :config
   (setq prescient-sort-full-matches-first t
