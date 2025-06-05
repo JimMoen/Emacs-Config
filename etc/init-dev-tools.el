@@ -144,9 +144,9 @@ on the current line, if any."
   :hook
   (prog-mode . projectile-mode)
   :config
-  (setq projectile-completion-system 'ivy
-        projectile-auto-discover nil
-        projectile-track-known-projects-automatically nil)
+  (setq projectile-completion-system                  'ivy
+        projectile-auto-discover                      nil
+        projectile-track-known-projects-automatically t)
   :bind
   (("C-x C-b" . projectile-ibuffer))
   (:map projectile-command-map
