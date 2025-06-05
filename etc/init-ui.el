@@ -62,7 +62,7 @@
   (defvar user/unicode-font "Iosevka Nerd Font Mono"
     "Default font for Unicode characters, including emojis.")
 
-  (defvar user/font-size 16
+  (defvar user/font-size 18
     "Default font size in px.")
 
   (defvar user/standard-fontset
