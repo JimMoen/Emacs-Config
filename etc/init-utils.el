@@ -183,6 +183,14 @@
   :init
   (add-to-list 'auto-mode-alist '("\\.tool-versions$" . conf-mode)))
 
+;; json-ts-mode (Built-in)
+;; major mode for json files using built-in tree-sitter
+(use-package json-ts-mode
+  :ensure nil
+  :defer t
+  :init
+  (add-to-list 'auto-mode-alist '("\\.json$" . json-ts-mode)))
+
 (provide 'init-utils)
 
 ;;; init-utils.el ends here
