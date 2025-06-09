@@ -146,7 +146,7 @@
       yaml-pro
       erlang-ts lsp-pyright elixir-ts-mode
       haskell-mode
-      rust-mode cargo-mode
+      rust-mode flycheck-rust cargo-mode
       go-mode python-mode uv-mode
       php-mode js2-mode dart-mode jq-mode
       qml-mode

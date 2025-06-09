@@ -29,7 +29,14 @@
 ;;; Code:
 
 ;; rust-mode (Melpa)
-(use-package rust-mode)
+(use-package rust-mode
+  :init
+  (add-to-list 'auto-mode-alist '("\\Cargo.lock\\'" . toml-ts-mode)))
+
+;; flycheck-rest (Melpa)
+(use-package flycheck-rust
+  :after (rust-mode flychcek)
+  :hook (rust-mode . flycheck-rust-setup))
 
 ;; cargo-mode (Melpa)
 (use-package cargo-mode)
