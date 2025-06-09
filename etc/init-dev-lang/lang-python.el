@@ -31,6 +31,8 @@
 ;; python (Built-in)
 (use-package python
   :ensure nil
+  :init
+  (add-to-list 'auto-mode-alist '("\\uv.lock\\'" . toml-ts-mode))
   :hook
   (python-mode . (lambda ()
                    (setq-local indent-tabs-mode nil)
