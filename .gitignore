@@ -29,7 +29,4 @@
 # anything-sync-daemon
 .flagged
 
-# direnv
-.envrc
-
 tree-sitter/

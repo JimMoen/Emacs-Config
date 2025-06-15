@@ -124,7 +124,7 @@
       restclient company-restclient
       protobuf-mode
       pos-tip ;; required by youdao-dictionary
-      direnv
+      mise
       x509-mode
       nginx-mode
 

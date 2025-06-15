@@ -375,8 +375,7 @@ on the current line, if any."
       pkgbuild-mode
       protobuf-mode
       qml-mode
-      sh-mode
-      direnv-envrc-mode))
+      sh-mode))
 
   (defun disable-lsp-in-modes (select-major-mode)
     "Add the `SELECT-MAJOR-MODE' in the `my/disabled-lsp-major-modes' .

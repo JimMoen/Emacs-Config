@@ -157,13 +157,9 @@
 (use-package protobuf-mode
   :defer t)
 
-;; direnv (Melpa)
-;; direnv integration
-(use-package direnv
-  :init
-  (setq direnv-always-show-summary nil)
-  :config
-  (direnv-mode))
+;; mise (Melpa)
+;; mise integration
+(use-package mise)
 
 ;; x509-mode (Melpa)
 ;; major mode to view x509 certificate/key files
