@@ -58,7 +58,8 @@
         magit-auto-revert-mode             t
         magit-log-color-graph-limit        512
         magit-log-section-commit-count     75
-        magit-section-disable-line-numbers nil)
+        magit-section-disable-line-numbers nil
+        magit-status-show-untracked-files  'all)
 
   (setq magit-blame-styles
         '((headings
