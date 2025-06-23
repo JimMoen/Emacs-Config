@@ -185,7 +185,8 @@
   :ensure nil
   :defer t
   :init
-  (add-to-list 'auto-mode-alist '("\\.json$" . json-ts-mode)))
+  (add-to-list 'auto-mode-alist '("\\.json$" . json-ts-mode))
+  (add-to-list 'auto-mode-alist '("\\.avsc$" . json-ts-mode)))
 
 (provide 'init-utils)
 
