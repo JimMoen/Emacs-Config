@@ -52,11 +52,11 @@
 
   (add-to-list 'default-frame-alist '(alpha . (95 92)))
   ;; Frame
-  (set-face-attribute 'default nil :font "Iosevka Nerd Font Mono-11")
+  (set-face-attribute 'default nil :font "Sarasa Mono SC Nerd Font-11")
   (defvar user/cjk-font "Sarasa Mono SC Nerd Font"
     "Default font for CJK characters.")
 
-  (defvar user/latin-font "Iosevka Nerd Font Mono"
+  (defvar user/latin-font "Sarasa Mono SC Nerd Font"
     "Default font for Latin characters.")
 
   (defvar user/unicode-font "Iosevka Nerd Font Mono"
