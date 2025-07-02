@@ -263,9 +263,9 @@ on the current line, if any."
         ([tab]     . company-complete-common-or-cycle)
         ([backtab] . company-select-previous-or-abort)))
 
+;; copilot (Melpa)
+;; AI code completion
 (use-package copilot
-  :straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
-  :ensure t
   :hook
   (prog-mode . copilot-mode)
   :config
@@ -277,6 +277,10 @@ on the current line, if any."
 
   (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
   (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion))
+
+;; copilot-chat (Melpa)
+;; AI chat completion
+(use-package copilot-chat)
 
 ;; prescient (Melpa)
 ;; sorting and filtering for Emacs.
