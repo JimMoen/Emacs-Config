@@ -288,12 +288,9 @@ on the current line, if any."
 (use-package aider
   :config
   (setq aider-args `("--config" ,(expand-file-name "~/.aider.conf.yml")))
-  ;; Optional: Set a key binding for the transient menu
-  (global-set-key (kbd "C-c a") 'aider-transient-menu
-  ;; for wider screen
-  ;; or use aider-transient-menu-2cols / aider-transient-menu-1col, for narrow screen
-  ;; add aider magit function to magit menu
-  (aider-magit-setup-transients))
+  (aider-magit-setup-transients)
+  :bind
+  (("C-c a" . aider-transient-menu)))
 
 ;; prescient (Melpa)
 ;; sorting and filtering for Emacs.
