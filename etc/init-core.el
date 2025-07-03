@@ -113,6 +113,7 @@
       editorconfig
       flycheck-aspell
       highlight-symbol
+      sis
 
       ;; ########## other utils
       ;; [Built-in] calendar

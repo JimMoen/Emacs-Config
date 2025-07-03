@@ -405,6 +405,16 @@ respectively."
   :config
   (editorconfig-mode))
 
+;; sis (Melpa)
+;; Smart Input Source to minimize manual switching input source in Emacs.
+(use-package sis
+  :config
+  (sis-ism-lazyman-config "1" "2" 'fcitx5)
+  (sis-global-cursor-color-mode t)
+  (sis-global-respect-mode t)
+  (sis-global-context-mode t)
+  (sis-global-inline-mode t))
+
 
 (provide 'init-editing)
 
