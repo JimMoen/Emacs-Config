@@ -136,7 +136,7 @@
       projectile counsel-projectile persp-mode
       treemacs treemacs-projectile treemacs-nerd-icons treemacs-magit treemacs-persp
       company company-box company-tabnine prescient ivy-prescient company-prescient
-      copilot copilot-chat
+      copilot copilot-chat aider
       flycheck yasnippet yasnippet-snippets
       sideline-flycheck sideline-lsp
       lsp-mode lsp-ui lsp-ivy lsp-treemacs
