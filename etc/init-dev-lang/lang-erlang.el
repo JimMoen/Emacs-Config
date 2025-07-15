@@ -42,7 +42,13 @@
   (add-to-list 'treesit-language-source-alist '(erlang "https://github.com/WhatsApp/tree-sitter-erlang"))
   (setq lsp-erlang-server             'erlang-language-platform
         lsp-elp-types-on-hover-enable nil
-        lsp-elp-types-on-hover-delay  0.5)
+        lsp-elp-types-on-hover-delay  0.5
+        lsp-elp-diagnostics-disabled  [
+                                       "W0011" ;; Accessing different apps application env
+                                       "W0014" ;; Cross node eval
+                                       "W0051" ;; Binary String sigil syntax
+                                       "L0002"
+                                       ])
   (defun my/modified-syntax-table ()
     (put 'bitsyntax-open-outer 'syntax-table nil)
     (put 'bitsyntax-close-outer 'syntax-table nil))
