@@ -142,19 +142,22 @@ on the current line, if any."
 ;; Project Management
 ;; projectile (Melpa)
 (use-package projectile
+  :init
+  (projectile-mode +1)
+  (projectile-relevant-known-projects)
   :hook
   (prog-mode . projectile-mode)
   :config
   (setq projectile-completion-system                  'ivy
         projectile-auto-discover                      nil
-        projectile-track-known-projects-automatically t)
+        projectile-track-known-projects-automatically nil)
+  :bind-keymap
+  ("C-x p" . projectile-command-map)
   :bind
   (("C-x C-b" . projectile-ibuffer))
   (:map projectile-command-map
         ("r"     . nil)
-        ("P"     . projectile-discover-projects-in-search-path))
-  :bind-keymap
-  ("C-x p" . projectile-command-map))
+        ("P"     . projectile-discover-projects-in-search-path)))
 
 ;; persp-mode to managment projcet buffers (Melpa)
 (require-all-elisp-in-directory "etc/editor-layouts")
