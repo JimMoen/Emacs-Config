@@ -159,7 +159,9 @@
 
 ;; mise (Melpa)
 ;; mise integration
-(use-package mise)
+(use-package mise
+  :hook
+  (after-init . global-mise-mode))
 
 ;; x509-mode (Melpa)
 ;; major mode to view x509 certificate/key files
