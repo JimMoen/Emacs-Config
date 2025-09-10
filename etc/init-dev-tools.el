@@ -452,7 +452,7 @@ active `major-mode', or for all major modes when ALL-MODES is t."
         lsp-enable-xref                    t
         lsp-enable-snippet                 t
         lsp-enable-folding                 nil
-        lsp-enable-symbol-highlighting     nil
+        lsp-enable-symbol-highlighting     t
         lsp-semantic-tokens-enable         t
         lsp-enable-relative-indentation    nil)
   (setq lsp-log-io                         nil

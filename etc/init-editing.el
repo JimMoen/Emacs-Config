@@ -382,16 +382,6 @@ respectively."
   (setq hl-line-range-function (lambda () (cons (line-end-position)
                                                 (line-beginning-position 2)))))
 
-;; highlight-symbol (Melpa)
-(use-package highlight-symbol
-  :hook
-  ((prog-mode . highlight-symbol-mode)
-   (prog-mode . highlight-symbol-nav-mode))
-  :config
-  (set-face-attribute 'highlight-symbol-face nil :foreground "#F55B57" :background "#3F5065" :weight 'ultra-bold)
-  (setq highlight-symbol-idle-delay 0.02
-        highlight-symbol-on-navigation-p t))
-
 ;; For ivy-occur
 ;; wgerp (Melpa)
 (use-package wgrep)

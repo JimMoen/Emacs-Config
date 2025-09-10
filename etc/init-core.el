@@ -112,7 +112,6 @@
       wgrep multiple-cursors
       editorconfig
       flycheck-aspell
-      highlight-symbol
       sis
 
       ;; ########## other utils
