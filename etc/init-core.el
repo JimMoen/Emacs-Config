@@ -145,7 +145,7 @@
       ;; [Built-in] python
       ;; [Site]     None
       yaml-pro
-      erlang-ts lsp-pyright elixir-ts-mode
+      lsp-pyright elixir-ts-mode
       haskell-mode
       rust-mode flycheck-rust cargo-mode
       go-mode python-mode uv-mode
