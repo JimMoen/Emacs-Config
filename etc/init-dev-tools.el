@@ -150,7 +150,8 @@ on the current line, if any."
   :config
   (setq projectile-completion-system                  'ivy
         projectile-auto-discover                      nil
-        projectile-track-known-projects-automatically nil)
+        projectile-track-known-projects-automatically nil
+        projectile-switch-project-action              #'projectile-dired)
   :bind-keymap
   ("C-x p" . projectile-command-map)
   :bind
