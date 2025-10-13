@@ -44,11 +44,6 @@
   (package-initialize))
 
 ;; Setup 'straight.el' and 'use-package'
-;; (unless (package-installed-p 'use-package)
-;;   (unless package-archive-contents
-;;     (package-refresh-contents))
-;;   (package-install 'use-package))
-
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name
@@ -63,18 +58,17 @@
          'silent 'inhibit-cookies)
       (goto-char (point-max))
       (eval-print-last-sexp)))
-  (load bootstrap-file nil 'nomessage)
-  (with-no-warnings
-    (with-eval-after-load 'straight
-      (straight-use-package 'use-package))))
+  (load bootstrap-file nil 'nomessage))
 
 ;; use-package default args
-(setq use-package-always-ensure        t                    ;; Always ensure
-      use-package-always-defer         nil                  ;; Never defer
-      use-package-always-demand        t                    ;; Always demand
-      use-package-expand-minimally     t                    ;; Be Silent
-      use-package-enable-imenu-support t)                   ;; Enable imenu for use-package
-
+;; (Built-in)
+(use-package use-package
+  :custom
+  (use-package-always-ensure        t)
+  (use-package-always-defer         nil)
+  (use-package-always-demand        t)
+  (use-package-expand-minimally     t)
+  (use-package-enable-imenu-support t))
 
 ;; Emacs Basic Hack
 (use-package emacs
