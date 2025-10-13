@@ -54,6 +54,12 @@
     :config
     (setq-default fill-column 100)
     (set-face-attribute 'fill-column-indicator nil :foreground "grey40"))
+
+  (defun clear-all-registers ()
+    "Clear all registers by setting `register-alist' to nil."
+    (interactive)
+    (setq register-alist '()))
+
   :bind
   (("RET"                    .  newline-and-indent)
    ("S-<return>"             .  comment-indent-new-line)))
