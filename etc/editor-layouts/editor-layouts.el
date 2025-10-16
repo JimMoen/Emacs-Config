@@ -87,6 +87,15 @@
     (interactive)
     (persp-kill (current-persp-name)))
 
+  (defun persp-kill-all ()
+    "Kill all perspectives and switch to the `default-persp-name'."
+    (interactive)
+    (when (y-or-n-p "Kill all perspectives? ")
+      (goto-default-persp)
+      (dolist (p (persp-names))
+        (unless (string= p default-persp-name)
+          (persp-kill p)))))
+
   (defun format-persp-name (name pos)
     "Format the perspective name given by NAME for display in mode-line."
     (let* ((persp-name (if (file-directory-p name)
