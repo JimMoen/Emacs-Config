@@ -154,7 +154,7 @@
   (org-mode . region-occurrences-highlighter-mode)
   (text-mode . region-occurrences-highlighter-mode)
   :config
-  (setq region-occurrences-highlighter-max 500))
+  (setq region-occurrences-highlighter-max-size 1000))
 
 ;; hl-todo (Melpa)
 ;; Highlight TODO and similar keywords in comments
