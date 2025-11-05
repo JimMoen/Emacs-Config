@@ -189,6 +189,7 @@ its value will be updated. If the key is not present, the entry will be added."
    ("C-x 8 RET" . counsel-unicode-char)
    ("<f1> j"    . counsel-set-variable)
    ("C-c g"     . counsel-git)
+   ("M-y"       . counsel-yank-pop)
    ("C-c j"     . counsel-git-grep))
   (:map minibuffer-local-map
         ("C-r" . counsel-minibuffer-history)))
