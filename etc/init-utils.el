@@ -147,10 +147,7 @@
 ;; restclient (Melpa)
 ;; rest api client and company backend
 (use-package restclient
-  :defer t
-  :config
-  (use-package company-restclient
-    :defer t))
+  :defer t)
 
 ;; protobuf-mode (Melpa)
 ;; Editing Google protocol buffer file

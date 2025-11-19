@@ -115,7 +115,7 @@
       ssh-config-mode cal-china-x
       i3wm-config-mode systemd pkgbuild-mode
       speed-type pdf-tools info-colors
-      restclient company-restclient
+      restclient
       protobuf-mode
       pos-tip ;; required by youdao-dictionary
       mise

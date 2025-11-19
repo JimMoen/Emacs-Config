@@ -206,8 +206,7 @@ on the current line, if any."
                            (company-abbrev
                             company-dabbrev
                             company-dabbrev-code)
-                           (company-ispell
-                            company-restclient)))
+                           (company-ispell)))
   (use-package company-box
     :hook (company-mode . company-box-mode))
 
