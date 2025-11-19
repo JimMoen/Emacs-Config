@@ -28,6 +28,8 @@
 
 ;;; Code:
 
+(require 'init-lib)
+
 ;; VCS-Git
 ;; Magit (Melpa)
 (use-package magit

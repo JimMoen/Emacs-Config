@@ -58,18 +58,6 @@
 (setq custom-file
       (expand-file-name "./etc/custom.el" user-emacs-directory))
 
-;; ########## Require file(s) in directory func.
-(defun require-all-elisp-in-directory (directory-name)
-  "Require all '.el' files in DIRECTORY-NAME.
-Off course, it will add DIRECTORY-NAME to `load-path' automaticly.\n
-DIRECTORY-NAME must be a relative path like \"etc/dir\".
-It will be expanded within `user-emacs-directory'."
-  (let ((elisp-directory-true-path (expand-file-name directory-name user-emacs-directory)))
-    (push elisp-directory-true-path load-path)
-    (mapc (lambda (name)
-            (require (intern (file-name-sans-extension name))))
-          (directory-files elisp-directory-true-path  nil "\\.el$"))))
-
 ;; ########## Open init file
 (defun open-my-init-dir()
   "To open my init dir faster."
@@ -80,6 +68,8 @@ It will be expanded within `user-emacs-directory'."
 
 
 ;; ########## require files.
+(require 'init-lib)
+
 (require 'init-core)
 ;; For package managent and crucial packages.
 ;; Set Package-Archive. Initialize use-package.
