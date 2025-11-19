@@ -388,6 +388,24 @@ respectively."
   (setq hl-line-range-function (lambda () (cons (line-end-position)
                                                 (line-beginning-position 2)))))
 
+;; Highlight Thing (Melpa)
+(use-package highlight-thing
+  :hook
+  (prog-mode . highlight-thing-mode)
+  :config
+  (setq highlight-thing-delay-seconds 0
+        highlight-thing-excluded-major-modes
+        '(org-mode
+          markdown-mode
+          help-mode
+          eshell-mode
+          shell-mode
+          term-mode
+          vterm-mode
+          dired-mode
+          magit-mode
+          magit-diff-mode)))
+
 ;; For ivy-occur
 ;; wgerp (Melpa)
 (use-package wgrep)

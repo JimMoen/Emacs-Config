@@ -103,6 +103,7 @@
       vundo ligature ts-fold
       region-occurrences-highlighter hl-todo
       rainbow-delimiters
+      highlight-thing
       wgrep multiple-cursors
       editorconfig
       flycheck-aspell
