@@ -180,6 +180,18 @@
    :repo "emacscollective/no-littering")
   :demand t)
 
+(use-package persistent-cached-load-filter
+  :ensure t
+
+  :straight
+  (persistent-cached-load-filter
+   :type git
+   :host github
+   :repo "include-yy/persistent-cached-load-filter")
+
+  :config
+  (persistent-cached-load-filter-easy-setup))
+
 
 (provide 'init-core)
 

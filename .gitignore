@@ -30,3 +30,6 @@
 .flagged
 
 tree-sitter/
+
+# Persistent Cached Load Filter
+load-path-cache.eld
