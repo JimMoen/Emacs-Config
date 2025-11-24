@@ -173,6 +173,11 @@
 ;; Help for keeping Emacs Configuration Dir clean.
 ;; Built-in packages `recentf` needed
 (use-package no-littering
+  :straight
+  (no-littering
+   :type git
+   :host github
+   :repo "emacscollective/no-littering")
   :demand t)
 
 
