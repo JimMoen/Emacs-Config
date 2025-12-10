@@ -99,6 +99,7 @@
       ;; [Built-in] align display-line-numbers delsel
       ;;            so-long subword whitespace hideshow
       ;; [Site]     None
+      indent-bars
       avy colorful-mode smartparens
       vundo ligature ts-fold
       region-occurrences-highlighter hl-todo

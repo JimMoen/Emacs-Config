@@ -64,6 +64,17 @@
   (("RET"                    .  newline-and-indent)
    ("S-<return>"             .  comment-indent-new-line)))
 
+;; indent-bars (Melpa)
+(use-package indent-bars
+  :hook ((python-base-mode yaml-mode erlang-mode) . indent-bars-mode)
+  :custom
+  (indent-bars-no-descend-lists t) ; no extra bars in continued func arg lists
+  (indent-bars-treesit-support t)
+  (indent-bars-treesit-ignore-blank-lines-types '("module"))
+  ;; Add other languages as needed
+  (indent-bars-treesit-scope '((python function_definition class_definition for_statement
+                                       if_statement with_statement while_statement))))
+
 ;; align (Built-in)
 (use-package align
   :ensure nil
