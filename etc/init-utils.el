@@ -126,7 +126,9 @@
 ;; pkgbuild-mode (Melpa)
 ;; Arch Linux PKGBUILD Scripts major mode
 (use-package pkgbuild-mode
-  :defer t)
+  :defer t
+  :config
+  (setq pkgbuild-update-sums-on-save nil))
 
 ;; Other Useful Applications
 ;; speed-type (Melpa)
