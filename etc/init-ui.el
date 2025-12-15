@@ -173,7 +173,8 @@
         doom-modeline-indent-info                t
         doom-modeline-github-interval            (* 30 60)
         doom-modeline-project-detection          'projectile
-        doom-modeline-display-default-persp-name t))
+        doom-modeline-display-default-persp-name t
+        doom-modeline-hud                        t))
 
 ;; doom-themes (Melpa)
 (use-package doom-themes
@@ -184,7 +185,9 @@
    :repo "doomemacs/themes"
    :branch "master")
   :config
-  (load-theme 'doom-molokai t))
+  (load-theme 'doom-peacock t)
+  (custom-set-faces
+   '(font-lock-variable-name-face ((t (:foreground "#ff72a4"))))))
 
 
 (provide 'init-ui)
