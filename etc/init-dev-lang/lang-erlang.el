@@ -47,6 +47,7 @@
                                        "W0011" ;; Accessing different apps application env
                                        "W0014" ;; Cross node eval
                                        "W0051" ;; Binary String sigil syntax
+                                       "W0038" ;; Old EDoc Syntax
                                        "L0002"
                                        ])
   (defun my/modified-syntax-table ()
