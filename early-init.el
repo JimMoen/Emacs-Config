@@ -65,6 +65,18 @@
                               (time-subtract after-init-time before-init-time)))
                      gcs-done)))
 
+(setq system-time-locale "C")
+
+(setenv "LANG" "en_US.UTF-8")
+(setenv "LC_ALL" "en_US.UTF-8")
+(setenv "LANGUAGE" "en_US")
+(setenv "LC_CTYPE" "en_US.UTF-8")
+
+(setq process-environment (mapcar (lambda (x)
+                                    (if (string-match "^LANG=" x) "LANG=en_US.UTF-8"
+                                      (if (string-match "^LC_ALL=" x) "LC_ALL=en_US.UTF-8" x)))
+                                  process-environment))
+
 (when (and
        (fboundp 'native-comp-available-p)
        (native-comp-available-p))

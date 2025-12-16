@@ -222,12 +222,43 @@ its value will be updated. If the key is not present, the entry will be added."
         fzf/position-bottom t
         fzf/window-height 15))
 
+;; Tramp (Built-in)
+(use-package tramp
+  :ensure nil
+  :defer nil
+  :config
+  (unless (assoc "pkexec" tramp-methods)
+    (add-to-list 'tramp-methods
+                 '("pkexec"
+                   (tramp-login-program "pkexec")
+                   (tramp-login-args (("/bin/sh")))
+                   (tramp-remote-shell "/bin/sh")
+                   (tramp-remote-shell-args ("-c"))
+                   (tramp-connection-timeout 30))
+                 ))
+  (with-eval-after-load 'tramp
+    (let ((display-env (getenv "DISPLAY"))
+          (wayland-display-env (getenv "WAYLAND_DISPLAY"))
+          (xauth-env (getenv "XAUTHORITY")))
+      (when display-env
+        (add-to-list 'tramp-remote-process-environment (format "DISPLAY=%s" display-env)))
+      (when wayland-display-env
+        (add-to-list 'tramp-remote-process-environment (format "WAYLAND_DISPLAY=%s" wayland-display-env)))
+      (when xauth-env
+        (add-to-list 'tramp-remote-process-environment (format "XAUTHORITY=%s" xauth-env)))))
+  (add-to-list 'tramp-default-method-alist
+               '("\\`localhost\\'" "\\`root\\'" "pkexec"))
+  (add-to-list 'tramp-default-method-alist
+               '("\\`\\'" "\\`root\\'" "pkexec")))
+
 ;; avoid call tramp and input path duplicated
 ;; sudo-edit (Melpa)
 (use-package sudo-edit
   :init
   (sudo-edit-indicator-mode)
-  :defer t)
+  :defer t
+  :config
+  (setq sudo-edit-local-method "pkexec"))
 
 ;; Files Management & Auto Save
 ;; Dired (Built-in)
