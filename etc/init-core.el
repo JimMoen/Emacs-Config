@@ -93,6 +93,7 @@
       ;; [Built-in] None
       ;; [Site]     None
       dashboard dashboard-ls
+      show-inactive-region
       doom-modeline doom-themes
 
       ;; ########## base editing

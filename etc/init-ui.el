@@ -156,6 +156,16 @@
   ("<f9>"  #'new-dashboard-with-main-persp
    "C-c d" #'new-dashboard-with-main-persp))
 
+;; show-inactive-region (Melpa)
+(use-package show-inactive-region
+  :defer nil
+  :hook
+  (prog-mode . show-inactive-region-mode)
+  :config
+  (setq show-inactive-region-face-dynamic-factor 0.25
+        show-inactive-region-fade-delay 0.3
+        show-inactive-region-fade-out   0.1))
+
 ;; Doom Modeline (Melpa)
 (use-package doom-modeline
   :hook
