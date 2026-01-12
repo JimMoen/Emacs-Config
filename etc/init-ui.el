@@ -195,6 +195,8 @@
    :repo "doomemacs/themes"
    :branch "master")
   :config
+  (setcdr (assoc 'gnus-group-news-low-empty doom-themes-base-faces)
+          '(:inherit 'gnus-group-mail-1-empty :weight 'normal))
   (load-theme 'doom-peacock t)
   (custom-set-faces
    '(font-lock-variable-name-face ((t (:foreground "#ff72a4"))))))
