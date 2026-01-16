@@ -264,6 +264,13 @@
         ("C-c r l"     . hs-hide-level)
         ("C-c r C-a"   . hs-show-all)))
 
+;; expand-region (Melpa)
+;; Expand selected region by semantic units.
+(use-package expand-region
+  :bind
+  (("C-=" . er/expand-region)
+   ("C--" . er/contract-region)))
+
 ;; treesit.el (Built-in)
 (use-package treesit
   :ensure nil

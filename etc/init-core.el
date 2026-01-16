@@ -102,6 +102,7 @@
       ;; [Site]     None
       indent-bars
       avy colorful-mode smartparens
+      expand-region
       vundo ligature ts-fold
       region-occurrences-highlighter hl-todo
       rainbow-delimiters
