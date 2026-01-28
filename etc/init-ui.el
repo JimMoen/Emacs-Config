@@ -162,7 +162,7 @@
   :hook
   (prog-mode . show-inactive-region-mode)
   :config
-  (setq show-inactive-region-face-dynamic-factor 0.25
+  (setq show-inactive-region-face-dynamic-factor 0.05
         show-inactive-region-fade-delay 0.3
         show-inactive-region-fade-out   0.1))
 
@@ -197,7 +197,7 @@
   :config
   (setcdr (assoc 'gnus-group-news-low-empty doom-themes-base-faces)
           '(:inherit 'gnus-group-mail-1-empty :weight 'normal))
-  (load-theme 'doom-peacock t)
+  (load-theme 'doom-dracula t)
   (custom-set-faces
    '(font-lock-variable-name-face ((t (:foreground "#ff72a4"))))))
 
