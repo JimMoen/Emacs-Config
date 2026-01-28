@@ -19,6 +19,17 @@ It will be expanded within `user-emacs-directory'."
           (directory-files elisp-directory-true-path  nil "\\.el$"))))
 
 
+;; ########## Get current file path func.
+(defun my/copy-file-path ()
+  "Copy the current buffer's file path to kill-ring.
+Paths under home directory are abbreviated with ~."
+  (interactive)
+  (if-let ((file-path (buffer-file-name)))
+      (let ((abbreviated-path (abbreviate-file-name file-path)))
+        (kill-new abbreviated-path)
+        (message "Copied: %s" abbreviated-path))
+    (message "Buffer is not visiting a file")))
+
 (provide 'init-lib)
 
 ;;; init-lib.el ends here
