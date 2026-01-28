@@ -50,6 +50,13 @@
   :custom
   (magit-format-file-function #'magit-format-file-nerd-icons)
 
+  :hook
+  (magit-process-mode . (lambda ()
+                          (add-hook 'after-change-functions
+                                    (lambda (beg end len)
+                                      (ansi-color-apply-on-region beg end))
+                                    nil t)))
+
   :config
   (setq magit-status-margin                '(t age-abbreviated   magit-log-margin-width t 25)
         magit-refs-margin                  '(t age-abbreviated   magit-log-margin-width t 25)
