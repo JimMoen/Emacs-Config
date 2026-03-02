@@ -94,7 +94,10 @@
       (goto-default-persp)
       (dolist (p (persp-names))
         (unless (string= p default-persp-name)
-          (persp-kill p)))))
+          (persp-kill p)))
+      (show-persp-hint)
+      (when (fboundp 'new-dashboard-with-main-persp)
+        (new-dashboard-with-main-persp))))
 
   (defun format-persp-name (name pos)
     "Format the perspective name given by NAME for display in mode-line."
