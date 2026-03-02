@@ -1,3 +1,0 @@
-[submodule "site-elisp/english-teacher"]
-	path = site-elisp/english-teacher
-	url = https://github.com/loyalpartner/english-teacher.el.git

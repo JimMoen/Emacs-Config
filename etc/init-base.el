@@ -158,8 +158,8 @@ its value will be updated. If the key is not present, the entry will be added."
   (setq counsel-rg-base-command
         (list "rg" "-M" "240" "--with-filename" "--no-heading" "--line-number" "--color" "never" "%s"
               "-g" "!.git" ;; ignore .git directory
-              "-g" "!site-lisp" "-g" "!elpaca" "-g" "!var"
-              ;; ignore site-lisp/ elpaca/ var/ in user-emacs-directory
+              "-g" "!elpaca" "-g" "!var"
+              ;; ignore elpaca/ var/ in user-emacs-directory
               "--case-sensitive" "--hidden" "--multiline"
               ;; search hidden directories
               ))

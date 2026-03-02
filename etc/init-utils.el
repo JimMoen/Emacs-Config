@@ -57,23 +57,6 @@
   (setq use-proxy-https-proxy "127.0.0.1:18889")
   (setq use-proxy-http-proxy  "127.0.0.1:18889"))
 
-;; english-teacher (Site Package)
-;; For English sentence translating.
-;; https://github.com/loyalpartner/english-teacher.el
-(use-package english-teacher
-  :load-path "site-elisp/english-teacher"
-  :custom
-  (english-teacher-backend 'baidu)
-  (english-teacher-show-result-function 'english-teacher-default-show-result-function)
-  :hook
-  ((Info-mode        . english-teacher-follow-mode)
-   (elfeed-show-mode . english-teacher-follow-mode)
-   (eww-mode         . english-teacher-follow-mode)
-   (Man-mode         . english-teacher-follow-mode)
-   (Woman-mode       . english-teacher-follow-mode))
-  :bind
-  (("C-x y f" . english-teacher-follow-mode)))
-
 ;; ssh-config-mode (Melpa)
 ;; major mode for ssh config file
 (use-package ssh-config-mode

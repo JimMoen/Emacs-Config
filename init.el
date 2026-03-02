@@ -42,12 +42,9 @@
 ;;   |--[I] var/
 ;;   |       |---@@ `no-littering.el      ;; Store packages using files.
 ;;   |       `----- [DIRS & FILES]        ;; (i.e) 'recentf', 'bookmark' 'projectile'...
-;;   |--[I] elpaca/
-;;   |       |---@@ `elpaca               ;; Download from MELPA/GitHub etc...
-;;   |       `----- [DIRS]                ;; Packages directories.
-;;   `--[S] site-lisp/
-;;           |---@@ `GIT-SUBMODULE        ;; Lisp packages not managed by elpaca (directories).  Management by git-submodule.
-;;           `----- [DIRS]                ;; Site Packages directories.
+;;   `--[I] elpaca/
+;;           |---@@ `elpaca               ;; Download from MELPA/GitHub etc...
+;;           `----- [DIRS]                ;; Packages directories.
 
 ;;; Code:
 
