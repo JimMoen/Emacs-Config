@@ -22,9 +22,14 @@ It will be expanded within `user-emacs-directory'."
 ;; ########## Get current file path func.
 (defun my/copy-file-path ()
   "Copy the current buffer's file path to kill-ring.
+In `dired' and `magit' buffers, copy the directory path instead.
 Paths under home directory are abbreviated with ~."
   (interactive)
-  (if-let ((file-path (buffer-file-name)))
+  (if-let ((file-path (or (buffer-file-name)
+                          (and (derived-mode-p 'dired-mode)
+                               default-directory)
+                          (and (derived-mode-p 'magit-mode)
+                               (magit-toplevel)))))
       (let ((abbreviated-path (abbreviate-file-name file-path)))
         (kill-new abbreviated-path)
         (message "Copied: %s" abbreviated-path))
