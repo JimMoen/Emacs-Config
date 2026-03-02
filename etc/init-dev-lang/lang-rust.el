@@ -30,14 +30,17 @@
 
 ;; rust-mode (Melpa)
 (use-package rust-mode
-  :init
-  (add-to-list 'auto-mode-alist '("\\cargo.lock\\'" . toml-ts-mode))
   :config
   (add-to-list 'major-mode-remap-alist '(rust-mode . rust-ts-mode)))
 
-;; flycheck-rest (Melpa)
+;; cargo.lock uses TOML format (Built-in)
+(use-package toml-ts-mode
+  :ensure nil
+  :mode "\\cargo.lock\\'")
+
+;; flycheck-rust (Melpa)
 (use-package flycheck-rust
-  :after (rust-mode flychcek)
+  :after (rust-mode flycheck)
   :hook (rust-mode . flycheck-rust-setup))
 
 ;; cargo-mode (Melpa)

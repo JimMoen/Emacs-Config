@@ -27,13 +27,13 @@
 
 ;;; Code:
 
-;; yaml & yaml-pro (Melpa)
-(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-ts-mode))
-(add-to-list 'auto-mode-alist '("\\.yaml\\'" . yaml-ts-mode))
-(use-package yaml
-  :defer t)
+;; yaml-ts-mode (Built-in)
+(use-package yaml-ts-mode
+  :ensure nil
+  :mode ("\\.yml\\'" "\\.yaml\\'"))
+
+;; yaml-pro (Melpa)
 (use-package yaml-pro
-  :defer t
   :hook (yaml-ts-mode . yaml-pro-ts-mode))
 
 

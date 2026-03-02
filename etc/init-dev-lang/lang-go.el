@@ -29,7 +29,6 @@
 ;;; Code:
 
 (use-package go-mode
-  :ensure t
   :config
   (add-to-list 'treesit-language-source-alist '(go "https://github.com/tree-sitter/tree-sitter-go"))
   (add-to-list 'major-mode-remap-alist '(go-mode . go-ts-mode)))

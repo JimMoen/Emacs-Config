@@ -31,8 +31,6 @@
 ;; python (Built-in)
 (use-package python
   :ensure nil
-  :init
-  (add-to-list 'auto-mode-alist '("\\uv.lock\\'" . toml-ts-mode))
   :hook
   (python-mode . (lambda ()
                    (setq-local indent-tabs-mode nil)
@@ -40,6 +38,11 @@
                    (setq-local python-indent-offset 4)))
   :config
   (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode)))
+
+;; uv.lock uses TOML format (Built-in)
+(use-package toml-ts-mode
+  :ensure nil
+  :mode "\\uv.lock\\'")
 
 ;; lsp-pyright (Melpa)
 (use-package lsp-pyright)
