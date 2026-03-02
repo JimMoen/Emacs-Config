@@ -166,6 +166,17 @@
         show-inactive-region-fade-delay 0.3
         show-inactive-region-fade-out   0.1))
 
+;; beacon (Melpa)
+(use-package beacon
+  :defer nil
+  :config
+  (setq beacon-blink-when-focused                t
+        beacon-blink-when-window-changes         t
+        beacon-blink-when-point-moves-vertically t
+        beacon-blink-duration                    0.3
+        beacon-size                              50)
+  (beacon-mode 1))
+
 ;; Doom Modeline (Melpa)
 (use-package doom-modeline
   :hook
