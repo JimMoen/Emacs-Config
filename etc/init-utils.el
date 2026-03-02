@@ -98,11 +98,6 @@
         (append cal-china-x-important-holidays
                 cal-china-x-general-holidays)))
 
-;; i3wm-config-mode (Melpa)
-;; for i3wm confi files
-(use-package i3wm-config-mode
-  :defer t)
-
 ;; systemd (Melpa)
 ;; systemd unit editing major mode
 (use-package systemd
