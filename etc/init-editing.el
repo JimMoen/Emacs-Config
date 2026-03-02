@@ -420,11 +420,60 @@ respectively."
   :config
   (editorconfig-mode))
 
+;; emacs-rime (GitHub)
+;; Native Rime input method engine in Emacs
+(use-package rime
+  :ensure (:host github :repo "DogLooksGood/emacs-rime"
+           :files ("*.el" "Makefile" "lib.c"))
+  :custom
+  (default-input-method "rime")
+  (rime-show-candidate 'posframe)
+  (rime-posframe-style 'horizontal)
+  ;; Share schemas with fcitx5-rime
+  (rime-share-data-dir "/usr/share/rime-data")
+  ;; Separate user data dir (yaml configs shared via symlinks)
+  (rime-user-data-dir "~/.config/emacs/var/rime")
+  (rime-translate-keybindings '("C-f" "C-b" "C-n" "C-p" "C-g"
+                                "<left>" "<right>" "<up>" "<down>"
+                                "<prior>" "<next>" "<delete>"))
+  (rime-disable-predicates '(rime-predicate-after-alphabet-char-p
+                             rime-predicate-prog-in-code-p
+                             rime-predicate-ace-window-p
+                             rime-predicate-hydra-p
+                             rime-predicate-current-uppercase-letter-p))
+  :bind
+  ("C-`" . rime-force-enable)
+  :config
+  ;; Preload Rime dynamic module at startup for instant switching
+  (activate-input-method "rime")
+  (deactivate-input-method)
+  ;; Translate C-h/C-w to <backspace>/<escape> during Rime composition so they
+  ;; operate on the preedit instead of the buffer. Outside composition, they
+  ;; pass through unchanged to the user's normal bindings.
+  (define-key key-translation-map (kbd "C-h")
+    (lambda (_prompt)
+      (if (bound-and-true-p rime-active-mode)
+          (kbd "<backspace>")
+        (kbd "C-h"))))
+  (define-key key-translation-map (kbd "C-w")
+    (lambda (_prompt)
+      (if (bound-and-true-p rime-active-mode)
+          (kbd "<escape>")
+        (kbd "C-w"))))
+  ;; C-g clears composition (same as <escape>) during Rime input
+  (define-key rime-active-mode-map (kbd "C-g") 'rime--escape)
+  ;; Finalize Rime before Emacs exits to prevent librime atexit segfault
+  (add-hook 'kill-emacs-hook
+            (lambda ()
+              (when (and (fboundp 'rime-lib-finalize) rime--lib-loaded)
+                (ignore-errors (rime-lib-finalize))))))
+
 ;; sis (Melpa)
 ;; Smart Input Source to minimize manual switching input source in Emacs.
 (use-package sis
+  :after rime
   :config
-  (sis-ism-lazyman-config "1" "2" 'fcitx5)
+  (sis-ism-lazyman-config nil "rime" 'native)
   (sis-global-cursor-color-mode t)
   (sis-global-respect-mode t)
   (sis-global-context-mode t)
