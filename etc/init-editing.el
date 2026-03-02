@@ -183,25 +183,6 @@
           ("GOTCHA" . "#FF4500")
           ("STUB"   . "#1E90FF"))))
 
-;; avy to jump char (Melpa)
-(use-package avy
-  :config
-  (setq avy-timeout-seconds 0.1
-        avy-background      nil)
-  (set-face-attribute 'avy-lead-face       nil :foreground "#1d1f21" :background "#ef9299")
-  (set-face-attribute 'avy-lead-face-0     nil :foreground "#1d1f21" :background "#8898bf")
-  (set-face-attribute 'avy-lead-face-1     nil :foreground "#1d1f21" :background "#9ac1c8")
-  (set-face-attribute 'avy-lead-face-2     nil :foreground "#1d1f21" :background "#f1d8b3")
-  :bind
-  (("C-M-g"   . avy-goto-char-in-line)
-   ("M-g M-c" . avy-goto-char)
-   ("M-g M-g" . avy-goto-char-2)
-   ("M-g s"   . avy-goto-whitespace-end)
-   ("M-g M-a" . avy-goto-line)
-   ("M-g M-l" . goto-line)
-   ("M-g M-e" . avy-goto-end-of-line)
-   ("M-g w"   . avy-goto-word-1)))
-
 ;; This assumes you've installed the package via MELPA.
 (use-package ligature
   :config
@@ -277,16 +258,14 @@
   :config
   ;; treesit-langs (GitHub)
   (use-package treesit-langs
-    :straight
-    (treesit-langs :type git :host github :repo "emacs-tree-sitter/treesit-langs")
+    :ensure (:host github :repo "emacs-tree-sitter/treesit-langs")
     :config
     (treesit-langs-major-mode-setup))
 
   ;; Code folding
   ;; treesit-fold (GitHub)
   (use-package treesit-fold
-    :straight
-    (treesit-fold :type git :host github :repo "emacs-tree-sitter/treesit-fold")
+    :ensure (:host github :repo "emacs-tree-sitter/treesit-fold")
     :config
     (treesit-fold-mode 1)
     ;; (global-treesit-fold-mode)
@@ -310,7 +289,7 @@
 ;; smartparens (Melpa)
 (use-package smartparens
   :hook
-  (after-init . smartparens-global-mode)
+  (elpaca-after-init . smartparens-global-mode)
   :config
   (which-key-add-key-based-replacements "C-c s" "Smart Paren")
   (defmacro def-pairs (pairs)
@@ -402,6 +381,7 @@ respectively."
 
 ;; Highlight current line (Built-in)
 (use-package hl-line
+  :ensure nil
   :hook (after-init . global-hl-line-mode)
   :config
   (setq hl-line-sticky-flag t)

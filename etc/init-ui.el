@@ -102,11 +102,7 @@
   (add-hook 'before-make-frame-hook #'user/set-font))
 
 (use-package ultra-scroll
-  :straight
-  (ultra-scroll
-   :type git
-   :host github
-   :repo "jdtsmith/ultra-scroll")
+  :ensure (:host github :repo "jdtsmith/ultra-scroll")
   :init
   (setq scroll-conservatively      101 ; important!
         scroll-margin              0
@@ -118,10 +114,6 @@
 
 ;; Dashboard (Melpa)
 (use-package dashboard
-  :init
-  (setq initial-buffer-choice (lambda () (get-buffer dashboard-buffer-name)))
-  (add-to-list 'after-make-frame-functions #'dashboard-in-new-frame)
-  (use-package dashboard-ls)
   :config
   (setq dashboard-display-icons-p t ;; display icons on both GUI and terminal
         dashboard-icon-type 'nerd-icons) ;; use `nerd-icons' package
@@ -139,7 +131,9 @@
   (defun new-dashboard-with-main-persp ()
     "Jump to the dashboard buffer, if doesn't exists create one."
     (interactive)
-    (goto-default-persp)
+    (when (bound-and-true-p persp-mode)
+      (goto-default-persp))
+    (require 'dashboard-ls nil t)
     (switch-to-buffer dashboard-buffer-name)
     (delete-other-windows)
     (dashboard-mode)
@@ -151,10 +145,26 @@
     (with-selected-frame (or frame (selected-frame))
       (new-dashboard-with-main-persp)))
 
-  (dashboard-setup-startup-hook)
+  (add-to-list 'after-make-frame-functions #'dashboard-in-new-frame)
+
+  ;; Auto-open dashboard at startup after all packages are ready.
+  ;; Depth 90 ensures this runs AFTER persp-mode activation (depth 0).
+  (add-hook 'elpaca-after-init-hook
+            (lambda ()
+              (require 'dashboard-ls nil t)
+              (when (bound-and-true-p persp-mode)
+                (goto-default-persp))
+              (unless (daemonp)
+                (dashboard-insert-startupify-lists)
+                (when (get-buffer dashboard-buffer-name)
+                  (switch-to-buffer dashboard-buffer-name))))
+            90)
   :general
   ("<f9>"  #'new-dashboard-with-main-persp
    "C-c d" #'new-dashboard-with-main-persp))
+
+;; dashboard-ls extends dashboard with ls-directories/ls-files items
+(use-package dashboard-ls)
 
 ;; show-inactive-region (Melpa)
 (use-package show-inactive-region
@@ -179,11 +189,9 @@
 
 ;; Doom Modeline (Melpa)
 (use-package doom-modeline
-  :hook
-  (after-init . doom-modeline-mode)
   :after (nerd-icons)
-  :defer t
   :config
+  (doom-modeline-mode 1)
   (setq doom-modeline-vcs-max-length             40
         doom-modeline-height                     25
         doom-modeline-bar-width                  7
@@ -199,12 +207,7 @@
 
 ;; doom-themes (Melpa)
 (use-package doom-themes
-  :straight
-  (doom-themes
-   :type git
-   :host github
-   :repo "doomemacs/themes"
-   :branch "master")
+  :ensure (:host github :repo "doomemacs/themes" :branch "master")
   :config
   (setcdr (assoc 'gnus-group-news-low-empty doom-themes-base-faces)
           '(:inherit 'gnus-group-mail-1-empty :weight 'normal))

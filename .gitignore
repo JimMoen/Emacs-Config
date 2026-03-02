@@ -13,17 +13,14 @@
 # For no-littering persistent data files
 /var/
 
-# Management by package.el
-/elpa/
+# Elpaca package manager
+/elpaca/
 
 # Emacs custom files
 /etc/custom.el
 
 # ignore emacs native comp files
 /eln-cache/
-
-# ignore straight dir
-/straight/
 
 # asd
 # anything-sync-daemon

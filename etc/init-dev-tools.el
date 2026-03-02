@@ -33,17 +33,6 @@
 ;; VCS-Git
 ;; Magit (Melpa)
 (use-package magit
-  :init
-  (use-package magit-delta
-    :after magit
-    :ensure-system-package
-    (delta . git-delta)
-    ;; (`command-name` . `package-name`)
-    :hook
-    (magit-mode . magit-delta-mode)
-    (magit-mode . (lambda ()
-                    (display-line-numbers-mode -1))))
-
   :after
   nerd-icons
 
@@ -110,6 +99,16 @@ on the current line, if any."
   (:keymaps 'git-rebase-mode-map
             "h" 'my/change-commit-author))
 
+;; magit-delta (Melpa)
+(use-package magit-delta
+  :after magit
+  :ensure-system-package
+  (delta . git-delta)
+  :hook
+  (magit-mode . magit-delta-mode)
+  (magit-mode . (lambda ()
+                  (display-line-numbers-mode -1))))
+
 ;; diff unstaged
 ;; diff-hl (Melpa)
 (use-package diff-hl
@@ -120,8 +119,8 @@ on the current line, if any."
   (diff-hl-delete ((t (:inherit diff-removed :background unspecified))))
   :bind (:map diff-hl-command-map
               ("SPC" . diff-hl-mark-hunk))
-  :hook ((after-init . global-diff-hl-mode)
-         (after-init . global-diff-hl-show-hunk-mouse-mode)
+  :hook ((elpaca-after-init . global-diff-hl-mode)
+         (elpaca-after-init . global-diff-hl-show-hunk-mouse-mode)
          (dired-mode . diff-hl-dired-mode))
   :config
   ;; Highlight on-the-fly
@@ -172,37 +171,41 @@ on the current line, if any."
 ;; persp-mode to managment projcet buffers (Melpa)
 (require-all-elisp-in-directory "etc/editor-layouts")
 
+;; counsel-projectile (Melpa)
+(use-package counsel-projectile
+  :after (ivy counsel projectile)
+  :hook
+  (elpaca-after-init . counsel-projectile-mode))
+
 ;; file structure tree
 ;; treemacs (Melpa)
 (use-package treemacs
   :config
   (treemacs-follow-mode)
   (treemacs-project-follow-mode)
-
-  (use-package treemacs-projectile
-    :after (treemacs projectile))
-
-  (use-package treemacs-nerd-icons
-    ;; MUST after lsp-treemacs, otherwise treemacs icons would be theme "Default"
-    ;; https://github.com/rainstormstudio/treemacs-nerd-icons/issues/1
-    :after (treemacs lsp-treemacs nerd-icons)
-    :config
-    (treemacs-load-theme "nerd-icons"))
-
-  (use-package treemacs-magit
-    :after (treemacs magit))
-
-  ;; treemacs-perspective if you use perspective.el vs. persp-mode
-  (use-package treemacs-persp
-    :after (treemacs persp-mode) ;; persp-mode
-    :config (treemacs-set-scope-type 'Perspectives))
-
   (setq treemacs-width 60)
-
   :general
   (:prefix "C-x"
            "4t" 'treemacs
            "t"  'treemacs-select-window))
+
+(use-package treemacs-projectile
+  :after (treemacs projectile))
+
+(use-package treemacs-nerd-icons
+  ;; MUST after lsp-treemacs, otherwise treemacs icons would be theme "Default"
+  ;; https://github.com/rainstormstudio/treemacs-nerd-icons/issues/1
+  :after (treemacs lsp-treemacs nerd-icons)
+  :config
+  (treemacs-load-theme "nerd-icons"))
+
+(use-package treemacs-magit
+  :after (treemacs magit))
+
+;; treemacs-perspective if you use perspective.el vs. persp-mode
+(use-package treemacs-persp
+  :after (treemacs persp-mode)
+  :config (treemacs-set-scope-type 'Perspectives))
 
 ;; company-mode (Melpa)
 ;; complete framework
@@ -216,11 +219,9 @@ on the current line, if any."
                             company-dabbrev
                             company-dabbrev-code)
                            (company-ispell)))
-  (use-package company-box
-    :hook (company-mode . company-box-mode))
 
   :hook
-  (after-init . global-company-mode)
+  (elpaca-after-init . global-company-mode)
 
   :custom
   (company-dabbrev-ignore-case    nil)
@@ -235,34 +236,6 @@ on the current line, if any."
         company-require-match         nil
         company-selection-wrap-around t
         company-show-quick-access     t)
-
-  (use-package company-tabnine
-    :after company
-    :init
-    (defvar company-mode/enable-tabnine t
-      "Enable tabnine for all backends.")
-
-    (defvar company-backend/elisp '(company-elisp :with company-tabnine) ;; Do not add `:with company-tabnine` in company-backends alist
-      "Company backend for `elisp'.")
-
-    (defvar company-mode/disable-tabnine-backends-alist (cons company-backend/elisp '())
-      "Disable tabnine for specific backends.")
-
-    :config
-    (with-eval-after-load 'company-tabnine
-      (defun company-backend-with-tabnine (backend)
-        "Add with `tabnine' to company backend."
-        (if (or (not company-mode/enable-tabnine)
-                (member backend company-mode/disable-tabnine-backends-alist)
-                (and (listp backend)
-                     (member 'company-tabnine (member ':with backend))))
-            backend
-          (progn
-            (dolist (delq--var '(:with company-tabnine))
-              (delq delq--var (if (consp backend) backend (list backend))))
-            (append backend '(:with company-tabnine)))))
-      (setq company-backends (mapcar #'company-backend-with-tabnine company-backends))))
-
   (setq company-global-modes '(not erc-mode message-mode help-mode gud-mode eshell-mode shell-mode))
   (add-to-list 'company-transformers #'delete-dups)
 
@@ -274,6 +247,37 @@ on the current line, if any."
         ("C-x w"   . company-show-location)
         ([tab]     . company-complete-common-or-cycle)
         ([backtab] . company-select-previous-or-abort)))
+
+(use-package company-box
+  :after company
+  :hook (company-mode . company-box-mode))
+
+(use-package company-tabnine
+  :after company
+  :init
+  (defvar company-mode/enable-tabnine t
+    "Enable tabnine for all backends.")
+
+  (defvar company-backend/elisp '(company-elisp :with company-tabnine)
+    "Company backend for `elisp'.")
+
+  (defvar company-mode/disable-tabnine-backends-alist (cons company-backend/elisp '())
+    "Disable tabnine for specific backends.")
+
+  :config
+  (with-eval-after-load 'company-tabnine
+    (defun company-backend-with-tabnine (backend)
+      "Add with `tabnine' to company backend."
+      (if (or (not company-mode/enable-tabnine)
+              (member backend company-mode/disable-tabnine-backends-alist)
+              (and (listp backend)
+                   (member 'company-tabnine (member ':with backend))))
+          backend
+        (progn
+          (dolist (delq--var '(:with company-tabnine))
+            (delq delq--var (if (consp backend) backend (list backend))))
+          (append backend '(:with company-tabnine)))))
+    (setq company-backends (mapcar #'company-backend-with-tabnine company-backends))))
 
 ;; copilot (Melpa)
 ;; AI code completion
@@ -307,44 +311,68 @@ on the current line, if any."
 ;; prescient (Melpa)
 ;; sorting and filtering for Emacs.
 (use-package prescient
-  :hook (after-init . prescient-persist-mode)
-  :init
-  ;; for ivy support (Melpa)
-  (use-package ivy-prescient
-    :after counsel
-    :hook (ivy-mode . ivy-prescient-mode)
-    :config
-    (setq ivy-prescient-enable-filtering nil))
-  ;; for company support (Melpa)
-  (use-package company-prescient
-    :hook (company-mode . company-prescient-mode))
+  :hook (elpaca-after-init . prescient-persist-mode)
   :config
   (setq prescient-sort-full-matches-first t
         prescient-sort-length-enable      nil))
+
+;; for ivy support (Melpa)
+(use-package ivy-prescient
+  :after (counsel prescient)
+  :hook (ivy-mode . ivy-prescient-mode)
+  :config
+  (setq ivy-prescient-enable-filtering nil))
+
+;; for company support (Melpa)
+(use-package company-prescient
+  :after (company prescient)
+  :hook (company-mode . company-prescient-mode))
 
 ;; Code Check
 ;; flycheck (Melpa)
 (use-package flycheck
   :hook
-  (after-init . global-flycheck-mode)
+  (elpaca-after-init . global-flycheck-mode)
   :init
-  (setq flycheck-emacs-lisp-load-path 'inherit)
+  (setq flycheck-emacs-lisp-load-path 'inherit))
+
+(use-package sideline-flycheck
+  :after flycheck
+  :init
+  (defvar sideline-backends-right '())
+  :hook
+  ((flycheck-mode . sideline-flycheck-setup)
+   (flycheck-mode . sideline-mode))
   :config
-  (use-package sideline-flycheck
-    :init
-    (defvar sideline-backends-right '())
-    :hook
-    ((flycheck-mode . sideline-flycheck-setup)
-     (flycheck-mode . sideline-mode))
-    :config
-    (with-eval-after-load 'flycheck
-      (add-to-list 'sideline-backends-right 'sideline-flycheck))))
+  (with-eval-after-load 'flycheck
+    (add-to-list 'sideline-backends-right 'sideline-flycheck)))
+
+;; flycheck-aspell (Melpa)
+(use-package flycheck-aspell
+  :after (flycheck)
+  :config
+  ;; If you want to check TeX/LaTeX/ConTeXt buffers
+  (add-to-list 'flycheck-checkers 'tex-aspell-dynamic)
+  ;; If you want to check Markdown/GFM buffers
+  (add-to-list 'flycheck-checkers 'markdown-aspell-dynamic)
+  ;; If you want to check HTML buffers
+  (add-to-list 'flycheck-checkers 'html-aspell-dynamic)
+  ;; If you want to check XML/SGML buffers
+  (add-to-list 'flycheck-checkers 'xml-aspell-dynamic)
+  ;; If you want to check Nroff/Troff/Groff buffers
+  (add-to-list 'flycheck-checkers 'nroff-aspell-dynamic)
+  ;; If you want to check Texinfo buffers
+  (add-to-list 'flycheck-checkers 'texinfo-aspell-dynamic)
+  ;; If you want to check comments and strings for C-like languages
+  (add-to-list 'flycheck-checkers 'c-aspell-dynamic)
+  ;; If you want to check message buffers
+  (add-to-list 'flycheck-checkers 'mail-aspell-dynamic))
 
 ;; Code template
 ;; yasnippet (Melpa)
 (use-package yasnippet
   :hook
-  (after-init . yas-global-mode)
+  (elpaca-after-init . yas-global-mode)
   :config
   (setq yas-triggers-in-field t
         yas-wrap-around-region t)
@@ -442,7 +470,8 @@ active `major-mode', or for all major modes when ALL-MODES is t."
   ((prog-mode . (lambda ()
                   (unless
                       (or (apply 'derived-mode-p my/disabled-lsp-major-modes)
-                          (string-match (rx "_build/") (buffer-file-name)))
+                          (and (buffer-file-name)
+                               (string-match (rx "_build/") (buffer-file-name))))
                     (lsp-deferred))))
    (lsp-mode . my/lsp-enable-which-key-integration))
   :custom
@@ -489,14 +518,6 @@ active `major-mode', or for all major modes when ALL-MODES is t."
   :hook
   (lsp-mode . lsp-ui-mode)
   :config
-  (use-package lsp-treemacs
-    :after (treemacs lsp-mode))
-  (use-package sideline-lsp
-    :after (lsp-mode sideline)
-    :hook (lsp-mode . sideline-mode)
-    :config
-    (with-eval-after-load  'lsp-mode
-      (add-to-list 'sideline-backends-right 'sideline-lsp)))
   (setq lsp-ui-doc-delay                   0.5
         lsp-ui-doc-enable                  t
         lsp-ui-doc-show-with-mouse         t
@@ -527,6 +548,16 @@ active `major-mode', or for all major modes when ALL-MODES is t."
    "Gi" 'lsp-find-implementation
    "Gr" 'lsp-find-references
    "Gt" 'lsp-find-type-definition))
+
+(use-package lsp-treemacs
+  :after (treemacs lsp-mode))
+
+(use-package sideline-lsp
+  :after (lsp-mode sideline)
+  :hook (lsp-mode . sideline-mode)
+  :config
+  (with-eval-after-load 'lsp-mode
+    (add-to-list 'sideline-backends-right 'sideline-lsp)))
 
 ;; lsp-ivy (Melpa)
 (use-package lsp-ivy

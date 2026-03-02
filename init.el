@@ -42,11 +42,11 @@
 ;;   |--[I] var/
 ;;   |       |---@@ `no-littering.el      ;; Store packages using files.
 ;;   |       `----- [DIRS & FILES]        ;; (i.e) 'recentf', 'bookmark' 'projectile'...
-;;   |--[I] elpa/
-;;   |       |---@@ `package.el           ;; Download from elpa and melpa etc...
+;;   |--[I] elpaca/
+;;   |       |---@@ `elpaca               ;; Download from MELPA/GitHub etc...
 ;;   |       `----- [DIRS]                ;; Packages directories.
 ;;   `--[S] site-lisp/
-;;           |---@@ `GIT-SUBMODULE        ;; Lisp packages not managed by package.el (directories).  Management by git-submodule.
+;;           |---@@ `GIT-SUBMODULE        ;; Lisp packages not managed by elpaca (directories).  Management by git-submodule.
 ;;           `----- [DIRS]                ;; Site Packages directories.
 
 ;;; Code:
@@ -72,8 +72,7 @@
 
 (require 'init-core)
 ;; For package managent and crucial packages.
-;; Set Package-Archive. Initialize use-package.
-;; Hack Built-in 'package-selected-packages'
+;; Elpaca bootstrap and use-package integration.
 ;; Enable some disabled features.
 
 (require 'init-base)
@@ -96,8 +95,9 @@
 ;; For Programming languages
 
 
-(when (file-exists-p custom-file)
-  (load custom-file))
+(add-hook 'elpaca-after-init-hook
+          (lambda () (when (file-exists-p custom-file)
+                       (load custom-file 'noerror))))
 
 
 (provide 'init)

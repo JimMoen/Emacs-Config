@@ -55,7 +55,7 @@
     (delete "--persp-q" command-line-args))
 
   :hook
-  (after-init . persp-mode)
+  (elpaca-after-init . persp-mode)
   :custom
   (persp-keymap-prefix "w")
   :config

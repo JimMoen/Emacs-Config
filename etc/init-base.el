@@ -29,7 +29,9 @@
 ;;; Code:
 
 ;; general
-(use-package general)
+(use-package general
+  :ensure (:wait t)
+  :demand t)
 
 ;; The Keybindings and Key Hint
 ;; #### Personal Settings ####
@@ -50,15 +52,11 @@
    "C-x H"   'mark-whole-buffer
    "M-g g"   'nil
    "M-g M-g" 'nil
-   "<f12>"   'list-packages))
+   "<f12>"   'elpaca-manager))
 
 ;; nerd-icons (Melpa)
 (use-package nerd-icons
-  :straight
-  (nerd-icons
-   :type git
-   :host github
-   :repo "rainstormstudio/nerd-icons.el")
+  :ensure (:host github :repo "rainstormstudio/nerd-icons.el")
   :config
   (defun update-alist (alist-symbol rep-alist)
     "Update the alist specified by ALIST-SYMBOL with entries from REP-ALIST.
@@ -123,27 +121,11 @@ its value will be updated. If the key is not present, the entry will be added."
 ;; ivy (Melpa)
 (use-package ivy
   :hook
-  (after-init . ivy-mode)
+  (elpaca-after-init . ivy-mode)
   :config
   (setq ivy-use-virtual-buffers      t
         enable-recursive-minibuffers nil
         ivy-height                   15)
-
-  (use-package nerd-icons-ivy-rich
-    :ensure t
-    :after (counsel-projectile)
-    :init
-    (nerd-icons-ivy-rich-mode 1)
-    (ivy-rich-mode 1)
-    :config
-    (setq nerd-icons-ivy-rich-icon-size 1.0))
-
-  (use-package ivy-rich
-    :after (nerd-icons-ivy-rich))
-
-  (use-package ivy-hydra
-    :after (ivy hydra))
-
   :bind
   ;; Use persp-mode to switch/kill buffer in ONE project.
   ;; See ./etc/init-base.el: persp-mode
@@ -152,6 +134,20 @@ its value will be updated. If the key is not present, the entry will be added."
    ("C-c C-r"  . ivy-resume)
    ("C-c v"    . ivy-push-view)
    ("C-c V"    . ivy-pop-view)))
+
+(use-package nerd-icons-ivy-rich
+  :after (counsel-projectile)
+  :init
+  (nerd-icons-ivy-rich-mode 1)
+  (ivy-rich-mode 1)
+  :config
+  (setq nerd-icons-ivy-rich-icon-size 1.0))
+
+(use-package ivy-rich
+  :after (nerd-icons-ivy-rich))
+
+(use-package ivy-hydra
+  :after (ivy hydra))
 
 ;; counsel (Melpa)
 (use-package counsel
@@ -162,24 +158,19 @@ its value will be updated. If the key is not present, the entry will be added."
   (setq counsel-rg-base-command
         (list "rg" "-M" "240" "--with-filename" "--no-heading" "--line-number" "--color" "never" "%s"
               "-g" "!.git" ;; ignore .git directory
-              "-g" "!site-lisp" "-g" "!elpa" "-g" "!var" "-g" "!straight"
-              ;; ignore site-lisp/ elpa/ var/ in user-emacs-directory
+              "-g" "!site-lisp" "-g" "!elpaca" "-g" "!var"
+              ;; ignore site-lisp/ elpaca/ var/ in user-emacs-directory
               "--case-sensitive" "--hidden" "--multiline"
               ;; search hidden directories
               ))
   (use-package emacs
+    :ensure nil
     :after (ivy-rich)
     :general
     (:prefix "C-x h"
              "v" 'counsel-describe-variable
              "f" 'counsel-describe-function
              "o" 'counsel-describe-symbol))
-
-  ;; counsel-projectile (Melpa)
-  (use-package counsel-projectile
-    :after (ivy counsel projectile)
-    :hook
-    (after-init . counsel-projectile-mode))
 
   :bind
   (("M-x"       . counsel-M-x)
@@ -274,7 +265,7 @@ its value will be updated. If the key is not present, the entry will be added."
 
 ;; Dired-Single
 (use-package dired-single
-  :straight (:host github :repo "emacsattic/dired-single" :files ("*.el"))
+  :ensure (:host github :repo "emacsattic/dired-single" :files ("*.el"))
   :config
   (setq dired-single-magic-buffer-name "*Dired*")
   :bind
@@ -348,7 +339,7 @@ its value will be updated. If the key is not present, the entry will be added."
 ;; which-key (Melpa)
 (use-package which-key
   :hook
-  (after-init . which-key-mode)
+  (elpaca-after-init . which-key-mode)
   :init
   (which-key-setup-side-window-bottom)
   :config
@@ -462,6 +453,25 @@ its value will be updated. If the key is not present, the entry will be added."
   ;; See ./etc/init-dev-tools.el: projectile
   (("C-x C-S-b"     . ibuffer)))
 
+;; avy to jump char (Melpa)
+(use-package avy
+  :config
+  (setq avy-timeout-seconds 0.1
+        avy-background      nil)
+  (set-face-attribute 'avy-lead-face       nil :foreground "#1d1f21" :background "#ef9299")
+  (set-face-attribute 'avy-lead-face-0     nil :foreground "#1d1f21" :background "#8898bf")
+  (set-face-attribute 'avy-lead-face-1     nil :foreground "#1d1f21" :background "#9ac1c8")
+  (set-face-attribute 'avy-lead-face-2     nil :foreground "#1d1f21" :background "#f1d8b3")
+  :bind
+  (("C-M-g"   . avy-goto-char-in-line)
+   ("M-g M-c" . avy-goto-char)
+   ("M-g M-g" . avy-goto-char-2)
+   ("M-g s"   . avy-goto-whitespace-end)
+   ("M-g M-a" . avy-goto-line)
+   ("M-g M-l" . goto-line)
+   ("M-g M-e" . avy-goto-end-of-line)
+   ("M-g w"   . avy-goto-word-1)))
+
 ;; ace-window (Melpa)
 (use-package ace-window
   :config
@@ -471,7 +481,8 @@ its value will be updated. If the key is not present, the entry will be added."
         t))
 
   (setq graphic-only-plugins-setting ())
-  (push '(ace-window-posframe-mode t)
+  (push '(when (fboundp 'ace-window-posframe-mode)
+           (ace-window-posframe-mode t))
         graphic-only-plugins-setting)
 
   (if (not (graphic-p))
@@ -532,7 +543,7 @@ its value will be updated. If the key is not present, the entry will be added."
 ;; shackle (Melpa)
 (use-package shackle
   :hook
-  (after-init . shackle-mode)
+  (elpaca-after-init . shackle-mode)
   :init
   (setq shackle-default-rule nil
         shackle-select-reused-windows t
@@ -573,35 +584,6 @@ its value will be updated. If the key is not present, the entry will be added."
   (setq winner-boring-buffers '("*Backtrace*"
                                 "*Completions*"
                                 "*Compile-Log*")))
-
-
-(use-package flycheck-aspell
-  :after (flycheck)
-  :config
-  ;; If you want to check TeX/LaTeX/ConTeXt buffers
-  (add-to-list 'flycheck-checkers 'tex-aspell-dynamic)
-  ;; If you want to check Markdown/GFM buffers
-  (add-to-list 'flycheck-checkers 'markdown-aspell-dynamic)
-  ;; If you want to check HTML buffers
-  (add-to-list 'flycheck-checkers 'html-aspell-dynamic)
-  ;; If you want to check XML/SGML buffers
-  (add-to-list 'flycheck-checkers 'xml-aspell-dynamic)
-  ;; If you want to check Nroff/Troff/Groff buffers
-  (add-to-list 'flycheck-checkers 'nroff-aspell-dynamic)
-  ;; If you want to check Texinfo buffers
-  (add-to-list 'flycheck-checkers 'texinfo-aspell-dynamic)
-  ;; If you want to check comments and strings for C-like languages
-  (add-to-list 'flycheck-checkers 'c-aspell-dynamic)
-  ;; If you want to check message buffers
-  (add-to-list 'flycheck-checkers 'mail-aspell-dynamic)
-
-  ;; Because Aspell does not support Org syntax, the user has
-  ;; to define a checker with the desired flags themselves.
-  ;; (flycheck-aspell-define-checker "erlang"
-  ;;   "Erlang" ("--add-filter" "url")
-  ;;   (erlang-mode))
-  ;; (add-to-list 'flycheck-checkers 'erlang-aspell-dynamic)
-  )
 
 
 (provide 'init-base)

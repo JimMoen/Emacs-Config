@@ -35,7 +35,6 @@
 (use-package youdao-dictionary
   :defer nil
   :config
-  (use-package pos-tip)
   (setq url-automatic-caching t)
   (which-key-add-key-based-replacements "C-x y" "Youdao Dic")
   (defun youdao-search-and-play-voice-at-point ()
@@ -47,6 +46,9 @@
    ("C-x y v" . 'youdao-dictionary-play-voice-at-point)
    ("C-x y r" . 'youdao-dictionary-search-and-replace)
    ("C-x y i" . 'youdao-dictionary-search-from-input)))
+
+;; pos-tip (Melpa) required by youdao-dictionary
+(use-package pos-tip)
 
 ;; http(s) and socks proxy
 ;; use-praxy (Melpa)
@@ -160,7 +162,7 @@
 ;; mise integration
 (use-package mise
   :hook
-  (after-init . global-mise-mode))
+  (elpaca-after-init . global-mise-mode))
 
 ;; x509-mode (Melpa)
 ;; major mode to view x509 certificate/key files
@@ -177,6 +179,7 @@
 ;; conf-mode (Built-in)
 ;; major mode for conf files
 (use-package conf-mode
+  :ensure nil
   :init
   (add-to-list 'auto-mode-alist '("\\.tool-versions$" . conf-mode)))
 

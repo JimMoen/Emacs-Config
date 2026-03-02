@@ -29,7 +29,7 @@
 ;;; Code:
 
 (use-package c3-ts-mode
-  :straight (:host github :repo "c3lang/c3-ts-mode" :files ("*.el"))
+  :ensure (:host github :repo "c3lang/c3-ts-mode" :files ("*.el"))
   :config
   (add-to-list 'treesit-language-source-alist '(c3 "https://github.com/c3lang/tree-sitter-c3")))
 

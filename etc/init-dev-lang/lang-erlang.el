@@ -29,10 +29,11 @@
 ;;; Code:
 
 (use-package erlang-ts
-  :straight (:host github
+  :ensure (:host github
              :repo "JimMoen/emacs-erlang-ts"
              :files ("*.el")
-             :branch "feat-highlight-faces")
+             :branch "feat-highlight-faces"
+             :build (:not elpaca--check-version))
   :general
   (:keymaps 'erlang-ts-mode-map
             "C-c C-l" nil)
