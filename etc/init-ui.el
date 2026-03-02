@@ -145,7 +145,8 @@
     (with-selected-frame (or frame (selected-frame))
       (new-dashboard-with-main-persp)))
 
-  (add-to-list 'after-make-frame-functions #'dashboard-in-new-frame)
+  ;; For emacsclient -c: show dashboard after server fully sets up the frame
+  (add-hook 'server-after-make-frame-hook #'dashboard-in-new-frame)
 
   ;; Auto-open dashboard at startup after all packages are ready.
   ;; Depth 90 ensures this runs AFTER persp-mode activation (depth 0).
