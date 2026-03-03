@@ -68,6 +68,18 @@
 (add-hook 'after-init-hook #'elpaca-process-queues)
 (elpaca `(,@elpaca-order))
 
+;; Elpaca lock file for reproducible package versions
+(customize-set-variable 'elpaca-lock-file
+                        (expand-file-name "elpaca-lock.el" user-emacs-directory))
+
+(defun my/elpaca-write-lock-file ()
+  "Write lock file to `elpaca-lock-file'."
+  (interactive)
+  (if elpaca-lock-file
+      (progn (elpaca-write-lock-file elpaca-lock-file)
+             (message "Lock file written to %s" elpaca-lock-file))
+    (user-error "elpaca-lock-file is not set")))
+
 ;; Install use-package support for Elpaca
 (elpaca elpaca-use-package
   (elpaca-use-package-mode))
