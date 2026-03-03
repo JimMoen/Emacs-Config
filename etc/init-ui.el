@@ -145,6 +145,15 @@
     (with-selected-frame (or frame (selected-frame))
       (new-dashboard-with-main-persp)))
 
+  ;; Show dashboard for new emacsclient frames in Main perspective only.
+  ;; Project perspective frames (e.g. magit commit) are not affected.
+  (add-hook 'server-after-make-frame-hook
+            (lambda ()
+              (when (and (bound-and-true-p persp-mode)
+                         (string= (safe-persp-name (get-frame-persp))
+                                  default-persp-name))
+                (new-dashboard-with-main-persp))))
+
   ;; Auto-open dashboard at startup after all packages are ready.
   ;; Depth 90 ensures this runs AFTER persp-mode activation (depth 0).
   (add-hook 'elpaca-after-init-hook
