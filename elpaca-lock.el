@@ -74,6 +74,11 @@
                                              "*-tests.el" "LICENSE" "README*" "*-pkg.el"))
                                   :source "elpaca-menu-lock-file" :protocol https :inherit t :depth
                                   treeless :ref "8223d7439e005555b86995a005b225ae042f0538"))
+ (cns :source "elpaca-menu-lock-file" :recipe
+      (:source "elpaca-menu-lock-file" :protocol https :inherit t :depth treeless :host github :repo
+               "kanglmf/emacs-chinese-word-segmentation" :files ("cns.el") :pre-build
+               (("git" "submodule" "update" "--init" "--recursive") ("make")) :package "cns" :ref
+               "fd2e711dc7fd957267df5056a57575b3eb090ac4"))
  (colorful-mode :source "elpaca-menu-lock-file" :recipe
                 (:package "colorful-mode" :repo
                           ("https://github.com/DevelopmentCool2449/colorful-mode" . "colorful-mode")

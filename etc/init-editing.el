@@ -479,6 +479,33 @@ respectively."
   (sis-global-context-mode t)
   (sis-global-inline-mode t))
 
+;; cns (GitHub)
+;; Chinese word segmentation for M-f/M-b/M-d etc.
+;; Requires: C++ compiler and make (auto-compiled via :pre-build)
+(use-package cns
+  :ensure (:host github :repo "kanglmf/emacs-chinese-word-segmentation"
+           :files ("cns.el")
+           :pre-build (("git" "submodule" "update" "--init" "--recursive")
+                       ("make")))
+  :custom
+  (cns-process-type 'shell)
+  (cns-prog (expand-file-name
+             "elpaca/repos/emacs-chinese-word-segmentation/cnws"
+             user-emacs-directory))
+  (cns-dict-directory (expand-file-name
+                       "elpaca/repos/emacs-chinese-word-segmentation/cppjieba/dict"
+                       user-emacs-directory))
+  (cns-recent-segmentation-limit 20)
+  (cns-debug nil)
+  :hook (find-file . cns-auto-enable)
+  :config
+  ;; Make backward-kill-word respect Chinese word segmentation when cns-mode is active.
+  ;; This allows C-w (bound to backward-kill-word via general) to work with Chinese words.
+  (define-advice backward-kill-word (:around (orig-fn arg) cns-aware)
+    (if (bound-and-true-p cns-mode)
+        (cns-backward-kill-word arg)
+      (funcall orig-fn arg))))
+
 
 (provide 'init-editing)
 
