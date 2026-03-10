@@ -33,7 +33,7 @@
              :repo "JimMoen/emacs-erlang-ts"
              :files ("*.el")
              :branch "feat-highlight-faces"
-             :build (:not elpaca--check-version))
+             :build (:not elpaca-check-version))
   :general
   (:keymaps 'erlang-ts-mode-map
             "C-c C-l" nil)

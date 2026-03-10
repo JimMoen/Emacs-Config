@@ -481,19 +481,22 @@ respectively."
 
 ;; cns (GitHub)
 ;; Chinese word segmentation for M-f/M-b/M-d etc.
-;; Requires: C++ compiler and make (auto-compiled via :pre-build)
+;; Requires: C++ compiler and make (auto-compiled via :build script)
+(elpaca-defscript +cns-build (:type system :dir source)
+  ("git" "submodule" "update" "--init" "--recursive")
+  ("make"))
+
 (use-package cns
   :ensure (:host github :repo "kanglmf/emacs-chinese-word-segmentation"
            :files ("cns.el")
-           :pre-build (("git" "submodule" "update" "--init" "--recursive")
-                       ("make")))
+           :build ((:before elpaca-check-version +cns-build)))
   :custom
   (cns-process-type 'shell)
   (cns-prog (expand-file-name
-             "elpaca/repos/emacs-chinese-word-segmentation/cnws"
+             "elpaca/sources/emacs-chinese-word-segmentation/cnws"
              user-emacs-directory))
   (cns-dict-directory (expand-file-name
-                       "elpaca/repos/emacs-chinese-word-segmentation/cppjieba/dict"
+                       "elpaca/sources/emacs-chinese-word-segmentation/cppjieba/dict"
                        user-emacs-directory))
   (cns-recent-segmentation-limit 20)
   (cns-debug nil)

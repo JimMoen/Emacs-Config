@@ -190,6 +190,8 @@ on the current line, if any."
            "t"  'treemacs-select-window))
 
 (use-package treemacs-projectile
+  :ensure nil
+  :load-path "elpaca/sources/treemacs/src/extra"
   :after (treemacs projectile))
 
 (use-package treemacs-nerd-icons
@@ -200,10 +202,14 @@ on the current line, if any."
   (treemacs-load-theme "nerd-icons"))
 
 (use-package treemacs-magit
+  :ensure nil
+  :load-path "elpaca/sources/treemacs/src/extra"
   :after (treemacs magit))
 
 ;; treemacs-perspective if you use perspective.el vs. persp-mode
 (use-package treemacs-persp
+  :ensure nil
+  :load-path "elpaca/sources/treemacs/src/extra"
   :after (treemacs persp-mode)
   :config (treemacs-set-scope-type 'Perspectives))
 
