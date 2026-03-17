@@ -189,7 +189,7 @@
   :config
   (setq beacon-blink-when-focused                t
         beacon-blink-when-window-changes         t
-        beacon-blink-when-point-moves-vertically t
+        beacon-blink-when-point-moves-vertically 5
         beacon-blink-duration                    0.3
         beacon-size                              50)
   (beacon-mode 1))
