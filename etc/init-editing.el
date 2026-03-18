@@ -382,7 +382,8 @@ respectively."
 ;; Highlight current line (Built-in)
 (use-package hl-line
   :ensure nil
-  :hook (after-init . global-hl-line-mode)
+  :hook ((after-init . global-hl-line-mode)
+         (dashboard-mode . (lambda () (setq global-hl-line-mode nil))))
   :config
   (setq hl-line-sticky-flag t)
   ;; Highlight starts from EOL, to avoid conflicts with other overlays

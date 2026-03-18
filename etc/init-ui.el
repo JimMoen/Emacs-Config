@@ -118,14 +118,13 @@
   (setq dashboard-display-icons-p t ;; display icons on both GUI and terminal
         dashboard-icon-type 'nerd-icons) ;; use `nerd-icons' package
   (setq dashboard-buffer-name "*Dashboard*")
+  (setq dashboard-projects-backend 'projectile)
   (setq dashboard-center-content    t
         dashboard-set-navigator     t
         dashboard-set-file-icons    t
         dashboard-set-heading-icons nil)
-  (setq dashboard-items '((recents        . 15)
-                          (bookmarks      . 15)
-                          (ls-directories . 5)
-                          (ls-files       . 5)))
+  (setq dashboard-items '((projects  . 25)
+                          (bookmarks . 10)))
   (setq dashboard-projects-switch-function 'ivy-persp-switch-project-action)
 
   (defun new-dashboard-with-main-persp ()
