@@ -72,6 +72,13 @@
 (setenv "LANGUAGE" "en_US")
 (setenv "LC_CTYPE" "en_US.UTF-8")
 
+;; Ensure TERM is set for subprocesses (e.g. delta, less).
+;; GUI/daemon Emacs has no TERM, causing ncurses setupterm() to fall back to
+;; "unknown" (a generic terminal with the `gn' flag), which fails since less
+;; switched from termcap to terminfo in version 691.
+(unless (getenv "TERM")
+  (setenv "TERM" "dumb"))
+
 (setq process-environment (mapcar (lambda (x)
                                     (if (string-match "^LANG=" x) "LANG=en_US.UTF-8"
                                       (if (string-match "^LC_ALL=" x) "LC_ALL=en_US.UTF-8" x)))
