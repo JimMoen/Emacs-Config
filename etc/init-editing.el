@@ -254,28 +254,41 @@
 
 ;; treesit.el (Built-in)
 (use-package treesit
-  :ensure nil
-  :config
-  ;; treesit-langs (GitHub)
-  (use-package treesit-langs
-    :ensure (:host github :repo "emacs-tree-sitter/treesit-langs")
-    :config
-    (treesit-langs-major-mode-setup))
+  :ensure nil)
 
-  ;; Code folding
-  ;; treesit-fold (GitHub)
-  (use-package treesit-fold
-    :ensure (:host github :repo "emacs-tree-sitter/treesit-fold")
-    :config
-    (treesit-fold-mode 1)
-    ;; (global-treesit-fold-mode)
-    :bind
-    (("C-c t t"     . treesit-fold-toggle)
-     ("C-c t n"     . treesit-fold-open)
-     ("C-c t N"     . treesit-fold-close)
-     ("C-c t r"     . treesit-fold-open-recursively)
-     ("C-c t m"     . treesit-fold-close-all)
-     ("C-c t M"     . treesit-fold-open-all))))
+;; treesit-langs (GitHub)
+(use-package treesit-langs
+  :ensure (:host github :repo "emacs-tree-sitter/treesit-langs")
+  :config
+  ;; Override rename to create symlinks instead (foo.so -> libtree-sitter-foo.so)
+  (defun my/treesit-langs--rename ()
+    "Create libtree-sitter-* symlinks for all grammar files."
+    (when-let* ((bin (treesit-langs--bin-dir))
+                ((file-directory-p bin)))
+      (dolist (filename (treesit-langs--grammar-files bin))
+        (let* ((file (file-name-nondirectory filename))
+               (lang (file-name-sans-extension file))
+               (soext (car dynamic-library-suffixes))
+               (new-file (expand-file-name (concat "libtree-sitter-" lang soext) bin)))
+          (unless (or (string-prefix-p "libtree-sitter-" file)
+                      (file-exists-p new-file))
+            (make-symbolic-link filename new-file))))))
+  (advice-add 'treesit-langs--rename :override #'my/treesit-langs--rename)
+  (treesit-langs-install-grammars :skip-if-installed)
+  (treesit-langs-major-mode-setup))
+
+;; Code folding
+;; treesit-fold (GitHub)
+(use-package treesit-fold
+  :ensure (:host github :repo "emacs-tree-sitter/treesit-fold")
+  :hook (prog-mode . treesit-fold-mode)
+  :bind
+  (("C-c t t"     . treesit-fold-toggle)
+   ("C-c t n"     . treesit-fold-open)
+   ("C-c t N"     . treesit-fold-close)
+   ("C-c t r"     . treesit-fold-open-recursively)
+   ("C-c t m"     . treesit-fold-close-all)
+   ("C-c t M"     . treesit-fold-open-all)))
 
 ;; colorful-mode (Melpa)
 ;; Rainbow hex color

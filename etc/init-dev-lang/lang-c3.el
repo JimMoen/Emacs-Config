@@ -31,7 +31,9 @@
 (use-package c3-ts-mode
   :ensure (:host github :repo "c3lang/c3-ts-mode" :files ("*.el"))
   :config
-  (add-to-list 'treesit-language-source-alist '(c3 "https://github.com/c3lang/tree-sitter-c3")))
+  (add-to-list 'treesit-language-source-alist '(c3 "https://github.com/c3lang/tree-sitter-c3"))
+  (unless (treesit-language-available-p 'c3)
+    (treesit-install-language-grammar 'c3)))
 
 (provide 'lang-c3)
 
