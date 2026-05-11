@@ -125,6 +125,7 @@ on the current line, if any."
   :config
   ;; Highlight on-the-fly
   (diff-hl-flydiff-mode 1)
+  (setq diff-hl-update-async 'thread)
 
   ;; Set fringe style
   (setq-default fringes-outside-margins t)
