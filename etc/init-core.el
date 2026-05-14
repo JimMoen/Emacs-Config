@@ -34,7 +34,7 @@
 (defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
 (defvar elpaca-sources-directory (expand-file-name "sources/" elpaca-directory))
 (defvar elpaca-order '(elpaca :repo "https://github.com/progfolio/elpaca.git"
-                              :ref nil :depth 1 :inherit ignore
+                              :ref nil :depth nil :inherit ignore
                               :files (:defaults "elpaca-test.el" (:exclude "extensions"))
                               :build (:not elpaca-activate)))
 (let* ((repo  (expand-file-name "elpaca/" elpaca-sources-directory))
@@ -71,6 +71,9 @@
 ;; Limit concurrent clone processes to avoid TLS connection failures
 (setq elpaca-queue-limit 16)
 
+;; Use full clone (no shallow/treeless) for all packages
+(setq elpaca-order-defaults (list :type 'git :protocol 'https :inherit t :depth nil))
+
 ;; Elpaca lock file for reproducible package versions
 (customize-set-variable 'elpaca-lock-file
                         (expand-file-name "elpaca-lock.el" user-emacs-directory))
@@ -82,6 +85,39 @@
       (progn (elpaca-write-lock-file elpaca-lock-file)
              (message "Lock file written to %s" elpaca-lock-file))
     (user-error "elpaca-lock-file is not set")))
+
+(defun my/elpaca-fix-detached-heads ()
+  "Checkout all elpaca packages from detached HEAD to their default branch.
+Lock file writes commit hashes as :ref, causing detached HEAD on install.
+Run this before `elpaca-pull-all' to restore branch tracking."
+  (interactive)
+  (let ((fixed 0) (skipped 0) (failed nil))
+    (dolist (pair (elpaca--queued))
+      (let* ((id (car pair))
+             (e (cdr pair))
+             (dir (elpaca<-source-dir e)))
+        (when (and dir (file-exists-p dir))
+          (let ((default-directory dir))
+            (if (string-prefix-p "refs/heads/"
+                  (string-trim
+                   (shell-command-to-string "git symbolic-ref HEAD 2>/dev/null")))
+                (cl-incf skipped)
+              (let* ((branches (split-string
+                                (string-trim
+                                 (shell-command-to-string
+                                  "git branch --format='%(refname:short)'"))
+                                "\n" t))
+                     (branch (or (car (seq-intersection '("main" "master") branches))
+                                 (car branches))))
+                (if branch
+                    (progn
+                      (shell-command-to-string (format "git checkout %s 2>&1" branch))
+                      (cl-incf fixed)
+                      (message "  ✓ %s → %s" id branch))
+                  (push id failed))))))))
+    (message "Fixed %d detached, %d already on branch%s"
+             fixed skipped
+             (if failed (format ", %d failed: %s" (length failed) failed) ""))))
 
 ;; Install use-package support for Elpaca
 (elpaca elpaca-use-package
