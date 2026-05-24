@@ -50,7 +50,7 @@
         inhibit-compacting-font-caches    t)                ;; Don’t compact font caches during GC.
   (defalias 'yes-or-no-p 'y-or-n-p)                         ;; Use y-or-n instead of yes-or-no
 
-  (add-to-list 'default-frame-alist '(alpha . (95 92)))
+  (add-to-list 'default-frame-alist '(alpha . (90 85)))
   ;; Frame
   (set-face-attribute 'default nil :font "Sarasa Mono SC Nerd Font-11")
   (defvar user/cjk-font "Sarasa Mono SC Nerd Font"
