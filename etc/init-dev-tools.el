@@ -31,6 +31,13 @@
 (require 'init-lib)
 
 ;; VCS-Git
+;; Transient (from GitHub, override Emacs 31 built-in which removed APIs magit still uses)
+;; (when (featurep 'transient)
+;;   (unload-feature 'transient))
+
+(use-package transient
+  :ensure (:host github :repo "magit/transient" :built-in 'override))
+
 ;; Magit (Melpa)
 (use-package magit
   :after
@@ -75,6 +82,119 @@
           ((unstaged) (status))
           1))
   (set-face-attribute 'magit-diff-file-heading nil :foreground "#f57bae" :weight 'bold)
+
+  ;; ---------------------------------------------------------------------------
+  ;; Show diverge vs. base branch in status buffer.
+  ;;
+  ;; Magit only shows diffs against remote/upstream by default. For a
+  ;; feature-branch workflow we also want to see:
+  ;;   1. Commits on the current branch that are not in the base branch.
+  ;;   2. Commits added to the base branch since we forked off of it.
+  ;;
+  ;; Base resolution (highest priority wins):
+  ;;   1. `git config branch.<current>.baseBranch' — explicit per-branch
+  ;;      override. Set with: git config branch.fix-autoheal.baseBranch main-emqx-4.3
+  ;;   2. Auto-detect: scan local branches matching
+  ;;      `my/magit-base-branch-patterns', pick the one where the base is
+  ;;      LEAST ahead of HEAD (i.e. HEAD is based on it). Ties broken by
+  ;;      smallest HEAD-ahead count (closest fork point).
+  ;;
+  ;; This handles non-standard base names (e.g. `main-emqx-4.3', `release/v2')
+  ;; without any manual configuration.
+  ;; ---------------------------------------------------------------------------
+  (defvar my/magit-base-branch-patterns
+    '("main*" "master" "develop" "trunk" "release/*" "release-*")
+    "Glob patterns for local branches considered as base-branch candidates.
+Patterns are passed to `git for-each-ref' under `refs/heads/'.")
+
+  (defvar my/magit-base-log-limit 30
+    "Maximum number of commits shown on each side of the base-branch diverge.")
+
+  (defun my/magit--base-candidates ()
+    "Return local branches matching `my/magit-base-branch-patterns'."
+    (let ((current (magit-get-current-branch)))
+      (seq-remove
+       (lambda (b) (equal b current))
+       (magit-git-lines "for-each-ref" "--format=%(refname:short)"
+                        (mapcar (lambda (p) (concat "refs/heads/" p))
+                                my/magit-base-branch-patterns)))))
+
+  (defun my/magit--base-score (base)
+    "Return (BEHIND AHEAD MERGE-BASE) of HEAD vs BASE, or nil when unrelated."
+    (when-let ((mb (magit-git-string "merge-base" "HEAD" base)))
+      (list (string-to-number (or (magit-git-string "rev-list" "--count"
+                                                    (concat mb ".." base))
+                                  "0"))
+            (string-to-number (or (magit-git-string "rev-list" "--count"
+                                                    (concat mb "..HEAD"))
+                                  "0"))
+            mb)))
+
+  (defun my/magit-base-branch ()
+    "Resolve the base branch for the current branch.
+Returns a cons (BASE-NAME . MERGE-BASE-SHA) or nil."
+    (when-let ((current (magit-get-current-branch)))
+      (or ;; 1. Explicit override via git config
+       (when-let* ((explicit (magit-git-string
+                              "config" (format "branch.%s.baseBranch" current)))
+                   (mb (magit-git-string "merge-base" "HEAD" explicit)))
+         (cons explicit mb))
+       ;; 2. Auto-detect: pick the candidate where HEAD is most based-on it
+       (when-let* ((candidates (my/magit--base-candidates))
+                   (scored (delq nil
+                                 (mapcar (lambda (b)
+                                           (when-let ((s (my/magit--base-score b)))
+                                             (cons b s)))
+                                         candidates)))
+                   (best (car (sort scored
+                                    (lambda (a b)
+                                      ;; lower behind wins; tiebreak by ahead
+                                      (let ((ba (nth 1 a)) (bb (nth 1 b))
+                                            (aa (nth 2 a)) (ab (nth 2 b)))
+                                        (if (= ba bb) (< aa ab) (< ba bb))))))))
+         (cons (car best) (nth 3 best))))))
+
+  (defun my/magit-insert-diverge-from-base ()
+    "Insert diverge sections between HEAD and the resolved base branch.
+Heading highlighting mirrors magit's native
+`magit-insert-unpulled-from-upstream' (uses `magit-section-heading' for the
+prose and `magit-branch-local' for the branch name). Section count is
+appended automatically by `magit-log-insert-child-count'."
+    (when-let* ((base-info (my/magit-base-branch))
+                (base (car base-info))
+                (fork (cdr base-info)))
+      (let ((ahead-range  (concat fork "..HEAD"))
+            (behind-range (concat fork ".." base))
+            (log-args (cons (format "-n%d" my/magit-base-log-limit)
+                            magit-buffer-log-args)))
+        ;; HEAD ahead of base: commits to be merged INTO base.
+        (when (> (string-to-number
+                  (or (magit-git-string "rev-list" "--count" ahead-range) "0"))
+                 0)
+          (magit-insert-section (unmerged-into-base ahead-range t)
+            (magit-insert-heading
+              (format (propertize "Unmerged into %s:"
+                                  'font-lock-face 'magit-section-heading)
+                      (propertize base 'font-lock-face 'magit-branch-local)))
+            (magit--insert-log nil ahead-range log-args)
+            (magit-log-insert-child-count)))
+        ;; Base ahead of HEAD: commits added to base since fork.
+        (when (> (string-to-number
+                  (or (magit-git-string "rev-list" "--count" behind-range) "0"))
+                 0)
+          (magit-insert-section (unpulled-from-base behind-range t)
+            (magit-insert-heading
+              (format (propertize "New in %s since fork:"
+                                  'font-lock-face 'magit-section-heading)
+                      (propertize base 'font-lock-face 'magit-branch-local)))
+            (magit--insert-log nil behind-range log-args)
+            (magit-log-insert-child-count))))))
+
+  (magit-add-section-hook 'magit-status-sections-hook
+                          'my/magit-insert-diverge-from-base
+                          'magit-insert-unpulled-from-upstream
+                          'append)
+
   (defun my/change-commit-author (arg)
     "Change the commit author during an interactive rebase in Magit.
 With a prefix argument, insert a new change commit author command
@@ -92,9 +212,17 @@ on the current line, if any."
                        (format "git commit --amend --author='%s'" author)
                      ""))
        arg)))
+
+  (defun my/magit-find-file-head ()
+    "Find a file from the working tree (including uncommitted changes)."
+    (interactive)
+    (magit-find-file "{worktree}"
+                     (magit-read-file-from-rev "HEAD" "Find file")))
   :general
-  ("C-x g" 'magit-status
-   "C-x G" 'magit-blame-addition)
+  ("C-x g"     'magit-status
+   "C-x G"     'magit-blame-addition
+   "C-x c f"   'my/magit-find-file-head
+   "C-x c C-f" 'magit-find-file)
   ;; (:keymaps 'magit-mode-map)
   (:keymaps 'git-rebase-mode-map
             "h" 'my/change-commit-author))
