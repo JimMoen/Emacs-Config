@@ -96,6 +96,10 @@
           (lambda () (when (file-exists-p custom-file)
                        (load custom-file 'noerror))))
 
+(add-hook 'server-after-make-frame-hook
+          (lambda ()
+            (when (display-graphic-p)
+              (set-frame-parameter (selected-frame) 'fullscreen 'maximized))))
 
 (provide 'init)
 
