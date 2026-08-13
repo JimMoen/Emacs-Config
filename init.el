@@ -101,6 +101,23 @@
             (when (display-graphic-p)
               (set-frame-parameter (selected-frame) 'fullscreen 'maximized))))
 
+(defvar my/restart-via-systemd nil)
+
+(defun my/maybe-restart-daemon ()
+  (when (and my/restart-via-systemd (daemonp))
+    (start-process "my-restart-daemon" nil
+                   "systemd-run" "--user" "--collect"
+                   "systemctl" "--user" "restart" "emacs.service")))
+
+(defun my/restart-emacs-around (orig-fn)
+  (if (not (daemonp))
+      (funcall orig-fn)
+    (let ((my/restart-via-systemd t))
+      (save-buffers-kill-emacs nil nil))))
+
+(advice-add 'restart-emacs :around #'my/restart-emacs-around)
+(add-hook 'kill-emacs-hook #'my/maybe-restart-daemon)
+
 (provide 'init)
 
 ;;; init.el ends here
