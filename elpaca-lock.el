@@ -7,15 +7,6 @@
                                   "LICENSE" "README*" "*-pkg.el"))
                        :source "elpaca-menu-lock-file" :id ace-window :type git :protocol https
                        :inherit t :depth nil :ref "77115afc1b0b9f633084cf7479c767988106c196"))
- (aider :source "elpaca-menu-lock-file" :recipe
-        (:package "aider" :fetcher github :repo "tninja/aider.el" :files (:defaults "snippets")
-                  :source "elpaca-menu-lock-file" :id aider :type git :protocol https :inherit t
-                  :depth nil :ref "ac10526c5cfcc2f4288d3539853ff23f4ee7f915"))
- (aio :source "elpaca-menu-lock-file" :recipe
-      (:package "aio" :fetcher github :repo "skeeto/emacs-aio" :files
-                ("aio.el" "README.md" "UNLICENSE") :source "elpaca-menu-lock-file" :id aio :type git
-                :protocol https :inherit t :depth nil :ref
-                "0e94a06bb035953cbbb4242568b38ca15443ad4c"))
  (apheleia :source "elpaca-menu-lock-file" :recipe
            (:package "apheleia" :fetcher github :repo "radian-software/apheleia" :files
                      (:defaults ("scripts" "scripts/formatters")) :source "elpaca-menu-lock-file"
@@ -130,25 +121,6 @@
                         "README*" "*-pkg.el"))
              :source "elpaca-menu-lock-file" :id cond-let :type git :protocol https :inherit t
              :depth nil :ref "c48600dfab6372670225f046cace263700c78eab"))
- (copilot :source "elpaca-menu-lock-file" :recipe
-          (:package "copilot" :fetcher github :repo "copilot-emacs/copilot.el" :files
-                    ("*.el" "*.el.in" "dir" "*.info" "*.texi" "*.texinfo" "doc/dir" "doc/*.info"
-                     "doc/*.texi" "doc/*.texinfo" "lisp/*.el" "docs/dir" "docs/*.info" "docs/*.texi"
-                     "docs/*.texinfo"
-                     (:exclude ".dir-locals.el" "test.el" "tests.el" "*-test.el" "*-tests.el"
-                               "LICENSE" "README*" "*-pkg.el"))
-                    :source "elpaca-menu-lock-file" :id copilot :type git :protocol https :inherit t
-                    :depth nil :ref "277ca357422ba34bcf7fe650cb720580994eea84"))
- (copilot-chat :source "elpaca-menu-lock-file" :recipe
-               (:package "copilot-chat" :fetcher github :repo "chep/gh-copilot-chat.el" :files
-                         ("*.el" "*.el.in" "dir" "*.info" "*.texi" "*.texinfo" "doc/dir"
-                          "doc/*.info" "doc/*.texi" "doc/*.texinfo" "lisp/*.el" "docs/dir"
-                          "docs/*.info" "docs/*.texi" "docs/*.texinfo"
-                          (:exclude ".dir-locals.el" "test.el" "tests.el" "*-test.el" "*-tests.el"
-                                    "LICENSE" "README*" "*-pkg.el"))
-                         :main "gh-copilot-chat.el" :source "elpaca-menu-lock-file" :id copilot-chat
-                         :type git :protocol https :inherit t :depth nil :ref
-                         "28432c50878843a45337538ea6fe8a710526ce51"))
  (counsel :source "elpaca-menu-lock-file" :recipe
           (:package "counsel" :repo "abo-abo/swiper" :fetcher github :files ("counsel.el") :source
                     "elpaca-menu-lock-file" :id counsel :type git :protocol https :inherit t :depth
@@ -571,15 +543,6 @@
                           :source "elpaca-menu-lock-file" :id markdown-mode :type git :protocol
                           https :inherit t :depth nil :ref
                           "f441e8bc9951e73b12c61e9198658488dd8e86e1"))
- (mcp :source "elpaca-menu-lock-file" :recipe
-      (:package "mcp" :fetcher github :repo "lizqwerscott/mcp.el" :files
-                ("*.el" "*.el.in" "dir" "*.info" "*.texi" "*.texinfo" "doc/dir" "doc/*.info"
-                 "doc/*.texi" "doc/*.texinfo" "lisp/*.el" "docs/dir" "docs/*.info" "docs/*.texi"
-                 "docs/*.texinfo"
-                 (:exclude ".dir-locals.el" "test.el" "tests.el" "*-test.el" "*-tests.el" "LICENSE"
-                           "README*" "*-pkg.el"))
-                :source "elpaca-menu-lock-file" :id mcp :type git :protocol https :inherit t :depth
-                nil :ref "2d172809cbdb2a40d86b28ad73bd65547cefe0e1"))
  (mise :source "elpaca-menu-lock-file" :recipe
        (:package "mise" :fetcher github :repo "eki3z/mise.el" :files
                  ("*.el" "*.el.in" "dir" "*.info" "*.texi" "*.texinfo" "doc/dir" "doc/*.info"
@@ -707,15 +670,6 @@
                           :source "elpaca-menu-lock-file" :id pkgbuild-mode :type git :protocol
                           https :inherit t :depth nil :ref
                           "aadf3d1d19c5eb9b52c15c5b73b1a46faac5b7d5"))
- (polymode :source "elpaca-menu-lock-file" :recipe
-           (:package "polymode" :fetcher github :repo "polymode/polymode" :files
-                     ("*.el" "*.el.in" "dir" "*.info" "*.texi" "*.texinfo" "doc/dir" "doc/*.info"
-                      "doc/*.texi" "doc/*.texinfo" "lisp/*.el" "docs/dir" "docs/*.info"
-                      "docs/*.texi" "docs/*.texinfo"
-                      (:exclude ".dir-locals.el" "test.el" "tests.el" "*-test.el" "*-tests.el"
-                                "LICENSE" "README*" "*-pkg.el"))
-                     :source "elpaca-menu-lock-file" :id polymode :type git :protocol https :inherit
-                     t :depth nil :ref "8cb72fa5dcc0d98746c680043dc121edc7621e3a"))
  (popup :source "elpaca-menu-lock-file" :recipe
         (:package "popup" :fetcher github :repo "auto-complete/popup-el" :files
                   ("*.el" "*.el.in" "dir" "*.info" "*.texi" "*.texinfo" "doc/dir" "doc/*.info"
@@ -806,11 +760,6 @@
                                            region-occurrences-highlighter :type git :protocol https
                                            :inherit t :depth nil :ref
                                            "444789ea3567fc85ba32c7349050024ba8e5b9f8"))
- (request :source "elpaca-menu-lock-file"
-   :recipe
-   (:package "request" :repo "tkf/emacs-request" :fetcher github :files ("request.el") :source
-             "elpaca-menu-lock-file" :id request :type git :protocol https :inherit t :depth nil
-             :ref "c22e3c23a6dd90f64be536e176ea0ed6113a5ba6"))
  (restclient :source "elpaca-menu-lock-file" :recipe
              (:package "restclient" :fetcher github :repo "emacsorphanage/restclient" :files
                        ("restclient.el") :source "elpaca-menu-lock-file" :id restclient :type git
@@ -847,15 +796,6 @@
                                "LICENSE" "README*" "*-pkg.el"))
                     :source "elpaca-menu-lock-file" :id shackle :type git :protocol https :inherit t
                     :depth nil :ref "ae25e7e0e593520c8590440fe5e3c0ea8053dc26"))
- (shell-maker :source "elpaca-menu-lock-file" :recipe
-              (:package "shell-maker" :fetcher github :repo "xenodium/shell-maker" :files
-                        ("*.el" "*.el.in" "dir" "*.info" "*.texi" "*.texinfo" "doc/dir" "doc/*.info"
-                         "doc/*.texi" "doc/*.texinfo" "lisp/*.el" "docs/dir" "docs/*.info"
-                         "docs/*.texi" "docs/*.texinfo"
-                         (:exclude ".dir-locals.el" "test.el" "tests.el" "*-test.el" "*-tests.el"
-                                   "LICENSE" "README*" "*-pkg.el"))
-                        :source "elpaca-menu-lock-file" :id shell-maker :type git :protocol https
-                        :inherit t :depth nil :ref "071c6df3ca22a2f4c0daa689848ac9bd21bf4e2b"))
  (show-inactive-region :source "elpaca-menu-lock-file" :recipe
                        (:package "show-inactive-region" :fetcher codeberg :repo
                                  "ideasman42/emacs-show-inactive-region" :files

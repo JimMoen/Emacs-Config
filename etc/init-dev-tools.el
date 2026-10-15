@@ -414,35 +414,6 @@ on the current line, if any."
           (append backend '(:with company-tabnine)))))
     (setq company-backends (mapcar #'company-backend-with-tabnine company-backends))))
 
-;; copilot (Melpa)
-;; AI code completion
-(use-package copilot
-  :hook
-  (prog-mode . copilot-mode)
-  :config
-  (setq copilot-max-char                      -1
-        copilot-indent-offset-warning-disable t)
-  (with-eval-after-load 'company
-    ;; disable inline previews
-    (delq 'company-preview-if-just-one-frontend company-frontends))
-
-  (define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
-  (define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion))
-
-;; copilot-chat (Melpa)
-;; AI chat completion
-(use-package copilot-chat)
-
-
-;; Aider (Melpa)
-;; AI code completion use aider
-(use-package aider
-  :config
-  (setq aider-args `("--config" ,(expand-file-name "~/.aider.conf.yml")))
-  (aider-magit-setup-transients)
-  :bind
-  (("C-c a" . aider-transient-menu)))
-
 ;; prescient (Melpa)
 ;; sorting and filtering for Emacs.
 (use-package prescient
